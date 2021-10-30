@@ -6,7 +6,18 @@ body {
 /* Основные стили */
 html {
     font-size: 10px;
+
+    /* height: 100%; */
 }
 body {
     font-family: 'Montserrat', sans-serif;
+
+    /* Адаптивный фиксированный фон страницы */
+    background-image: url(../img/background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
+
+
