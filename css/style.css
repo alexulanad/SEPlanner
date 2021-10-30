@@ -1,0 +1,12 @@
+/* Сброс стандартных стилей */
+body {
+    margin: 0;
+}
+
+/* Основные стили */
+html {
+    font-size: 10px;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+}
