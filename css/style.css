@@ -6,9 +6,8 @@ body {
 /* Основные стили */
 html {
     font-size: 10px;
-
-    /* height: 100%; */
 }
+
 body {
     font-family: 'Montserrat', sans-serif;
 
@@ -19,5 +18,40 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+
+.logo {
+    font-family: 'Syncopate';
+    font-size: 3.6rem;
+    font-weight: 400;
+    color:#ffffff;
+    line-height: 32px;
+    display: flex;
+}
+
+.logo-red-block,
+.logo-blue-block {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 4px;
+
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    margin-right: 3px;
+
+    text-align: center;
+}
+
+.logo-red-block {
+    background-color: #DC5656;
+}
+
+.logo-blue-block {
+    background-color: #4EA4D5;
+}
+
+.logo-text {
+    margin-left: 1px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);   
+}
+
 
 
