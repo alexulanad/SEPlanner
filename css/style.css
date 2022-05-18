@@ -1,9 +1,9 @@
-/* Сброс стандартных стилей */
+/* Сброс стандартных стилей
 body {
     margin: 0;
 }
-
-/* Основные стили */
+*/
+/* Main style */
 html {
     font-size: 10px;
 }
@@ -17,8 +17,29 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+
+    align:center;
 }
 
+/* Page */
+
+.page {
+    margin: 10px auto;
+    width: 1170px;
+    min-width: 1170px;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: rgba(30, 46, 61, 0.7);
+    box-sizing: border-box;
+}
+
+.page2 {
+    width: 100%;
+    border: 1px solid blue;
+    box-sizing: border-box;
+}
+
+/* Logo */
 .logo {
     font-family: 'Syncopate';
     font-size: 3.6rem;
