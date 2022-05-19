@@ -89,5 +89,18 @@ body {
 .content__block__body {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 0 0 10px 10px;
+    display: flex;
+}
+
+.content__block_small_image_block {
+    /* border: 1px solid red; */
+    border-radius: 5px;
+    margin: 8px;
+}
+
+.size {
+    border: 1px solid #ffffff;
+    width: 64px;
+    height: 64px;
 }
 /* end content__block */
