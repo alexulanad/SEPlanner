@@ -10,21 +10,20 @@ body {
     background-size: cover;
 }
 
-/* Content = Основной блок страницы с контентом */
+/* main-block = Основной блок страницы с контентом */
 
-.page {
-    margin: 10px auto;
-    width: 1170px;
+.main {
+    max-width: 1170px;
     min-width: 1170px;
+    margin: 8px auto;
+    padding: 8px;
     border-radius: 10px;
     background-color: rgba(30, 46, 61, 0.7);
-    box-sizing: border-box;
-    padding: 8px;
 }
 
 .header {
+    /* border: 1px solid red; */
 }
-
 /* Logo */
 .logo {
     font-family: 'Syncopate';
@@ -32,41 +31,37 @@ body {
     font-weight: 400;
     color:#ffffff;
     line-height: 32px;
-    display: flex;
-    margin: 7px 15px 15px 67px;
+    display: inline-flex;
+    clear: both;
+    margin: 8px 0px 16px 67px;
 }
 
-.logo-red-block,
-.logo-blue-block {
-    min-width: 32px;
+.logo__block {
+    width: 32px;
     height: 32px;
     border-radius: 4px;
-
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
-    margin-right: 3px;
-
     text-align: center;
 }
 
-.logo-red-block {
+.logo__block--red {
     background-color: #DC5656;
+    margin-right: 3px;
 }
 
-.logo-blue-block {
+.logo__block--blue {
     background-color: #4EA4D5;
 }
 
-.logo-text {
-    margin-left: 1px;
+.logo__name {
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    margin-left: 5px;
 }
 /* end logo */
 
 /* content__block */
-.content__block {
-    margin: 0 0 0 0;
-}
-.content__block__header {
+
+.content-block__header {
     font-size: 12px;
     background-color: #486377;
     border-radius: 10px 10px 0 0;
@@ -77,30 +72,38 @@ body {
     letter-spacing: 1px;
 }
 
-.content__block__header_title {
+.content-block__title {
     font-weight: 600;
 }
 
-.content__block__header_category_name {
+.content-block__category-name {
     margin: 0 auto;
     font-weight: 500;
 }
 
-.content__block__body {
+.content-block__body {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 0 0 10px 10px;
     display: flex;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-.content__block_small_image_block {
-    /* border: 1px solid red; */
-    border-radius: 5px;
+.content-block__categories {
     margin: 8px;
 }
 
-.size {
-    border: 1px solid #ffffff;
+.block-image {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    float: left;
+}
+.block-image--ms {
+    border-radius: 5px;
     width: 64px;
     height: 64px;
+    margin-right: 6px;
 }
 /* end content__block */
