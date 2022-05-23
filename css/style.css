@@ -12,18 +12,20 @@ body {
 
 /* main-block = Основной блок страницы с контентом */
 
-.main {
-    max-width: 1170px;
-    min-width: 1170px;
+.wrapper {
+    max-width: 1182px;
+    min-width: 1182px;
     margin: 8px auto;
-    padding: 8px;
+    padding: 8px 8px 0 8px;
     border-radius: 10px;
     background-color: rgba(30, 46, 61, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .header {
     /* border: 1px solid red; */
 }
+
 /* Logo */
 .logo {
     font-family: 'Syncopate';
@@ -89,21 +91,24 @@ body {
     border-right: 1px solid;
     border-bottom: 1px solid;
     border-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 2px 2px 8px;
+    margin: 0 0 8px 0;
 }
 
-.content-block__categories {
-    margin: 8px;
-}
+/* .content-block__categories { */
+    /* margin: 8px; */
+/* } */
 
 .block-image {
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 6px 6px 0;
     float: left;
 }
 .block-image--ms {
     border-radius: 5px;
-    width: 64px;
-    height: 64px;
-    margin-right: 6px;
+    width: 66px;
+    height: 66px;
+    /* margin-right: 6px; */
 }
 /* end content__block */
