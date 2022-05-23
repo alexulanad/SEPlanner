@@ -13,6 +13,8 @@ body {
 /* main-block = Основной блок страницы с контентом */
 
 .wrapper {
+    display: flex;
+    flex-wrap: wrap;
     max-width: 1182px;
     min-width: 1182px;
     margin: 8px auto;
@@ -24,6 +26,11 @@ body {
 
 .header {
     /* border: 1px solid red; */
+    /* flex-grow: 1; */
+    /* width: 100%; */
+    /* flex-grow: 0; */
+    /* flex-shrink: 0; */
+    /* flex-basis: 100%; */
 }
 
 /* Logo */
@@ -34,7 +41,7 @@ body {
     color:#ffffff;
     line-height: 32px;
     display: inline-flex;
-    clear: both;
+    /* clear: both; */
     margin: 8px 0px 16px 67px;
 }
 
@@ -62,6 +69,9 @@ body {
 /* end logo */
 
 /* content__block */
+.content-block {
+    /* flex-grow: 1; */
+}
 
 .content-block__header {
     font-size: 12px;
@@ -87,6 +97,7 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 0 0 10px 10px;
     display: flex;
+    flex-wrap: wrap;
     border-left: 1px solid;
     border-right: 1px solid;
     border-bottom: 1px solid;
@@ -110,5 +121,17 @@ body {
     width: 66px;
     height: 66px;
     /* margin-right: 6px; */
+}
+
+.content-block--category-blocks {
+    /* width: auto; */
+    margin-right: 8px;
+    flex-grow: 1;
+}
+
+.content-block--project-blocks {
+    /* width: auto; */
+    flex-grow: 1;
+
 }
 /* end content__block */
