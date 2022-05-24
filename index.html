@@ -21,9 +21,9 @@
     <div class="content-block">
         <div class="content-block__header">
             <div class="content-block__title">Категории</div>
-            <div class="content-block__category-name">Легкая броня</div>
+            <div class="content-block__category-name" id="category-name">Легкая броня</div>
         </div>
-        <div class="content-block__body">
+        <div class="content-block__body" id="categories">
                 <img class="block-image block-image--ms" tabindex="1" src="img/blocks/lightArmorBlock.png" alt="" autofocus>
                 <img class="block-image block-image--ms" tabindex="1" src="img/blocks/heavyArmorBlock.png" alt="">
                 <img class="block-image block-image--ms" tabindex="1" src="img/blocks/landingGear.png" alt="">
@@ -59,8 +59,18 @@
             <div class="content-block__title">Блоки</div>
             <div class="content-block__category-name">Легкая броня</div>
         </div>
-        <div class="content-block__body">
-            <img class="block-image block-image--ms" src="img/blocks/lightArmorBlock.png" alt="">
+        <div class="content-block__body content-block__body--height">
+            <div class="content-block__menu">
+                <div class="size-selection">
+                    <div class="size-selection__large-block" id="large-block-category"></div>
+                    <div class="size-selection__small-blocks" id="small-blocks-category">
+                        <div class="size-selection__small-block"></div>
+                        <div class="size-selection__small-block"></div>
+                        <div class="size-selection__small-block size-selection__small-block--margin"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div><img class="block-image block-image--ms" src="img/blocks/lightArmorBlock.png" alt=""></div> -->
         </div> <!-- end content-block__body -->
     </div> <!-- end content__block -->
 
@@ -75,6 +85,8 @@
     </div> <!-- end content__block -->
 
     </div> <!-- end wrapper -->
+    <script src="js/main.js"></script>
+    <script src="js/blocks.js"></script>
 </body>
 </html>
 
