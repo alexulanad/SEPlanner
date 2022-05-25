@@ -1,31 +1,11 @@
 "use strict";
 
-// categories.addEventListener("click", (e) => {
-//     if (e.target.tagName === "img") {
-//     }
-// });
-
-// sizeSelectionCategory
 let largeBlockCategoryActive = true;
 let LargeBlockProjectActive = true;
 const largeBlockCategory = document.querySelector('#large-block-category');
 const smallBlocksCategory = document.querySelector('#small-blocks-category');
 let categories = document.querySelector('#categories');
 let categoryTitle = document.querySelector('#category-title');
-
-// for (let item of categories.children) {
-//     if (item.tagName === "IMG") {
-//         item.addEventListener("mouseover", (e, categoryName)=> {
-//             categoryName.textContent = e.dataset.categoryTitle;
-//         });
-//         item.addEventListener("mouseout", ()=> {
-
-//         });
-//         item.addEventListener("click", ()=> {
-
-//         } );
-//     }
-// }
 
 const addClass = function(event, className) {
     if (event.target) {
@@ -43,30 +23,18 @@ const removeClass = function(event, className) {
     }
 };
 
-// for (let item of categories.children) {
-// if (item.dataset.active === "true") {
-//     console.log(item.dataset.active);
-//     addClass(item, "block-image--focus");
-// } else {
-//     console.log(item.dataset.active);
-//     removeClass(item, "block-image--focus");
-// }
-// }
-// addClass(categories.firstElementChild, "block-image--focus");
-
 for (let item of categories.children) {
-
-
     if (item.tagName === "IMG") {
         item.addEventListener("mouseover", (event) => {
             addClass(event, "block-image--hover");
             categoryTitle.textContent = item.dataset.categoryName;
         }, false);
+
         item.addEventListener("mouseout", (event) => removeClass(event, "block-image--hover"), false);
+
         item.addEventListener("click", () => {
             item.dataset.active = "true";
             addClass(item, "block-image--focus");
-
             const categoryName = item.dataset.categoryName;
             for (let item of categories.children) {
                 if (item.dataset.categoryName != categoryName) {
@@ -78,50 +46,40 @@ for (let item of categories.children) {
     }
 }
 
-largeBlockCategory.addEventListener("mouseover", ()=> {
-    largeBlockCategory.classList.add('size-selection__large-block--hover');
+largeBlockCategory.addEventListener("mouseover", (event) => {
+    addClass(event, "size-selection--hover");
 });
 
-largeBlockCategory.addEventListener("mouseout", ()=> {
-    largeBlockCategory.classList.remove('size-selection__large-block--hover');
+largeBlockCategory.addEventListener("mouseout", (event) => {
+    removeClass(event, "size-selection--hover");
 });
 
-largeBlockCategory.addEventListener("click", ()=> {
+largeBlockCategory.addEventListener("click", (event)=> {
     largeBlockCategoryActive = true;
-    largeBlockCategory.classList.add('size-selection__large-block--focus');
+    addClass(event, "size-selection--focus");
     for (let item of smallBlocksCategory.children) {
-        if (item.classList.contains("size-selection__small-block")) {
-            item.classList.remove('size-selection__small-block--focus');
-        }
+        removeClass(item, "size-selection--focus");
     }
-    console.log(largeBlockCategoryActive);
 });
 
 smallBlocksCategory.addEventListener("mouseover", ()=> {
     for (let item of smallBlocksCategory.children) {
-        if (item.classList.contains("size-selection__small-block")) {
-            item.classList.add('size-selection__small-block--hover');
-        }
+        addClass(item, "size-selection--hover");
     }
 });
 
 smallBlocksCategory.addEventListener("mouseout", ()=> {
     for (let item of smallBlocksCategory.children) {
-        if (item.classList.contains("size-selection__small-block")) {
-            item.classList.remove('size-selection__small-block--hover');
-        }
+        removeClass(item, "size-selection--hover");
     }
 });
 
-smallBlocksCategory.addEventListener("click", ()=> {
+smallBlocksCategory.addEventListener("click", (event)=> {
     largeBlockCategoryActive = false;
-    largeBlockCategory.classList.remove('size-selection__large-block--focus');
+    removeClass(largeBlockCategory, "size-selection--focus");
     for (let item of smallBlocksCategory.children) {
-        if (item.classList.contains("size-selection__small-block")) {
-            item.classList.add('size-selection__small-block--focus');
-        }
+        addClass(item, "size-selection--focus");
     }
-    console.log(largeBlockCategoryActive);
-});
+}, false);
 
 
