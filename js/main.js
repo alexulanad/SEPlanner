@@ -2,10 +2,12 @@
 
 let largeBlockCategoryActive = true;
 let LargeBlockProjectActive = true;
+
 const largeBlockCategory = document.querySelector('#large-block-category');
 const smallBlocksCategory = document.querySelector('#small-blocks-category');
-let categories = document.querySelector('#categories');
+const categories = document.querySelector('#categories');
 let categoryTitle = document.querySelector('#category-title');
+let projectTitle = document.querySelector('#project-title');
 
 const addClass = function(event, className) {
     if (event.target) {
@@ -30,11 +32,15 @@ for (let item of categories.children) {
             categoryTitle.textContent = item.dataset.categoryName;
         }, false);
 
-        item.addEventListener("mouseout", (event) => removeClass(event, "block-image--hover"), false);
+        item.addEventListener("mouseout", (event) => {
+            removeClass(event, "block-image--hover");
+            categoryTitle.textContent = "";
+        }, false);
 
         item.addEventListener("click", () => {
             item.dataset.active = "true";
             addClass(item, "block-image--focus");
+            projectTitle.textContent = item.dataset.categoryName;
             const categoryName = item.dataset.categoryName;
             for (let item of categories.children) {
                 if (item.dataset.categoryName != categoryName) {
