@@ -1,13 +1,14 @@
 "use strict";
 
 let largeBlockCategoryActive = true;
-let LargeBlockProjectActive = true;
+let largeBlockProjectActive = true;
 
-const largeBlockCategory = document.querySelector('#large-block-category');
-const smallBlocksCategory = document.querySelector('#small-blocks-category');
+const blockSelectionLarge = document.querySelector('#block-selection-large');
+const blockSelectionSmall = document.querySelector('#block-selection-small');
 const categories = document.querySelector('#categories');
 let categoryTitle = document.querySelector('#category-title');
 let projectTitle = document.querySelector('#project-title');
+const blockListCategory = document.querySelector('#block-list-category');
 
 const addClass = function(event, className) {
     if (event.target) {
@@ -24,6 +25,14 @@ const removeClass = function(event, className) {
         event.classList.remove(className);
     }
 };
+
+const displayBlocksCategory = function(categoryKey) {
+    blockListCategory.innerHTML = "";
+    console.log(categoryKey);
+    blockListCategory.innerHTML = "";
+};
+
+displayBlocksCategory(categories.firstElementChild.dataset.categoryKey);
 
 for (let item of categories.children) {
     if (item.tagName === "IMG") {
@@ -52,39 +61,39 @@ for (let item of categories.children) {
     }
 }
 
-largeBlockCategory.addEventListener("mouseover", (event) => {
-    addClass(event, "size-selection--hover");
+blockSelectionLarge.addEventListener("mouseover", (event) => {
+    addClass(event, "size-block-selection--hover");
 });
 
-largeBlockCategory.addEventListener("mouseout", (event) => {
-    removeClass(event, "size-selection--hover");
+blockSelectionLarge.addEventListener("mouseout", (event) => {
+    removeClass(event, "size-block-selection--hover");
 });
 
-largeBlockCategory.addEventListener("click", (event)=> {
+blockSelectionLarge.addEventListener("click", (event)=> {
     largeBlockCategoryActive = true;
-    addClass(event, "size-selection--focus");
-    for (let item of smallBlocksCategory.children) {
-        removeClass(item, "size-selection--focus");
+    addClass(event, "size-block-selection--focus");
+    for (let item of blockSelectionSmall.children) {
+        removeClass(item, "size-block-selection--focus");
     }
 });
 
-smallBlocksCategory.addEventListener("mouseover", ()=> {
-    for (let item of smallBlocksCategory.children) {
-        addClass(item, "size-selection--hover");
+blockSelectionSmall.addEventListener("mouseover", ()=> {
+    for (let item of blockSelectionSmall.children) {
+        addClass(item, "size-block-selection--hover");
     }
 });
 
-smallBlocksCategory.addEventListener("mouseout", ()=> {
-    for (let item of smallBlocksCategory.children) {
-        removeClass(item, "size-selection--hover");
+blockSelectionSmall.addEventListener("mouseout", ()=> {
+    for (let item of blockSelectionSmall.children) {
+        removeClass(item, "size-block-selection--hover");
     }
 });
 
-smallBlocksCategory.addEventListener("click", (event)=> {
+blockSelectionSmall.addEventListener("click", (event)=> {
     largeBlockCategoryActive = false;
-    removeClass(largeBlockCategory, "size-selection--focus");
-    for (let item of smallBlocksCategory.children) {
-        addClass(item, "size-selection--focus");
+    removeClass(blockSelectionLarge, "size-block-selection--focus");
+    for (let item of blockSelectionSmall.children) {
+        addClass(item, "size-block-selection--focus");
     }
 }, false);
 

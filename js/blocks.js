@@ -104,7 +104,17 @@ const smallBlocks = {
     },
 };
 
+const BlockCategory = {
+    lightArmor: {
+        large: [largeBlocks.lightArmorBlock, largeBlocks.lightArmorSlope],
+        small: [smallBlocks.lightArmorBlock, smallBlocks.lightArmorSlope],
+    };
 
+    heavyArmor: {
+        large: [largeBlocks.heavyArmorBlock, largeBlocks.heavyArmorSlope],
+        small: [smallBlocks.heavyArmorBlock, smallBlocks.heavyArmorSlope],
+    };
+}
 const lightArmor = {
     large: [largeBlocks.lightArmorBlock, largeBlocks.lightArmorSlope],
     small: [smallBlocks.lightArmorBlock, smallBlocks.lightArmorSlope],

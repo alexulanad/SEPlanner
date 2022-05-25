@@ -59,11 +59,6 @@ body {
 /* END LOGO */
 
 /* content__block */
-.content-block {
-    display: flex;
-    flex-direction: column;
-}
-
 .content-block__header {
     font-size: 12px;
     background-color: #486377;
@@ -88,7 +83,7 @@ body {
 .content-block__body {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 0 0 10px 10px;
-    /* display: flex; */
+    display: flex;
     /* flex-wrap: wrap; */
     /* flex-shrink: 0; */
     border-left: 1px solid;
@@ -97,7 +92,6 @@ body {
     border-color: rgba(255, 255, 255, 0.1);
     padding: 8px 2px 2px 8px;
     margin: 0 0 8px 0;
-    flex: 1 0 auto;
 }
 
 .block-image {
@@ -125,27 +119,25 @@ body {
     margin-right: 8px;
     /* flex-grow: 1; */
     width: 50%;
-    /* flex: 1 0 auto; */
 }
 
 .content-block--display-blocks-project {
-    /* flex-grow: 1; */
-    /* width: %; */
-    flex: 1 0 auto;
+    flex-grow: 1;
+    width: 49%;
+    flex: 1 0 auto;/*Три*/
 }
 
 .content-block__menu {
     /* width: 100%; */
     margin-right: 6px;
-    margin-bottom: 8px;
-    /* border: 1px solid #fff; */
+    border: 1px solid #fff;
 }
 
-.size-block-selection {
+.size-selection {
     display: flex;
 }
 
-.size-block-selection__large {
+.size-selection__large-block {
     width: 24px;
     height: 24px;
     border: 1px solid #486377;
@@ -153,7 +145,7 @@ body {
     margin-right: 4px;
 }
 
-.size-block-selection__small {
+.size-selection__small-blocks {
     display: inline-block;
     width: 26px;
 }
@@ -167,34 +159,16 @@ body {
     float: left;
 }
 
-.size-block-selection--hover {
+.size-selection--hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.size-block-selection--focus {
+.size-selection--focus {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* .size-selection__small-block--margin {
+.size-selection__small-block--margin {
     margin-top: 2px;
-} */
-
-.content-block__block-list {
-    /* border: 1px solid #fff; */
-    margin-right: 6px;
 }
-
-.content-block__block-list--normal {
-    background-color: rgba(255, 255, 255, 0.03);
-}
-
-.content-block__block-list--hover {
-    
-}
-
-.content-block__block-list--focus {
-
-}
-
 /* end content__block */
