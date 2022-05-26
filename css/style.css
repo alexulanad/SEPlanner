@@ -112,6 +112,12 @@ body {
     height: 66px;
 }
 
+.block-image--ss {
+    border-radius: 5px;
+    width: 32px;
+    height: 32px;
+}
+
 .block-image--hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -185,15 +191,32 @@ body {
     margin-right: 6px;
 }
 
-.content-block__block-list--normal {
+.content-block__block-item {
+    /* border: 1px solid #fff; */
     background-color: rgba(255, 255, 255, 0.03);
+    margin-bottom: 4px;
+    display: flex;
+
 }
 
-.content-block__block-list--hover {
-    
+.content-block__block-item-name {
+    /* margin: 0 auto; */
+    /* padding-right: 7.4%; */
+    text-transform: uppercase;
+    /* text-transform: lowercase; */
+    align-self: center;
+    font-size: 9px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 1px;
+    padding-left: 8px;
 }
 
-.content-block__block-list--focus {
+.content-block__block-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.content-block__block-item--focus {
 
 }
 

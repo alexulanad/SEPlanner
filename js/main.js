@@ -29,7 +29,21 @@ const removeClass = function(event, className) {
 const displayBlocksCategory = function(categoryKey) {
     blockListCategory.innerHTML = "";
     console.log(categoryKey);
-    blockListCategory.innerHTML = "";
+    let blocks = [];
+    if (largeBlockCategoryActive == "true") {
+        blocks = BlockCategories[categoryKey].large;
+        console.log(blocks);
+    } else {
+        blocks = BlockCategories[categoryKey].small;
+    }
+    blocks.forEach(item => {
+        blockListCategory.innerHTML += `
+        <div class="content-block__block-item">
+            <img class="block-image--ss" src="img/blocks/${item.img}">
+            <span class="content-block__block-item-name">${item.nameRu}</span>
+        </div>
+        `;
+    });
 };
 
 displayBlocksCategory(categories.firstElementChild.dataset.categoryKey);
