@@ -30,9 +30,8 @@ const displayBlocksCategory = function(categoryKey) {
     blockListCategory.innerHTML = "";
     console.log(categoryKey);
     let blocks = [];
-    if (largeBlockCategoryActive == "true") {
+    if (largeBlockCategoryActive === true) {
         blocks = BlockCategories[categoryKey].large;
-        console.log(blocks);
     } else {
         blocks = BlockCategories[categoryKey].small;
     }
@@ -40,7 +39,7 @@ const displayBlocksCategory = function(categoryKey) {
         blockListCategory.innerHTML += `
         <div class="content-block__block-item">
             <img class="block-image--ss" src="img/blocks/${item.img}">
-            <span class="content-block__block-item-name">${item.nameRu}</span>
+            <span class="content-block__block-item-name">${item.title.ru}</span>
         </div>
         `;
     });
