@@ -31,9 +31,9 @@ const displayBlocksCategory = function(categoryKey) {
     console.log(categoryKey);
     let blocks = [];
     if (largeBlockCategoryActive === true) {
-        blocks = BlockCategories[categoryKey].large;
+        blocks = blockCategories[categoryKey].large;
     } else {
-        blocks = BlockCategories[categoryKey].small;
+        blocks = blockCategories[categoryKey].small;
     }
     blocks.forEach(item => {
         blockListCategory.innerHTML += `
