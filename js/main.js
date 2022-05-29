@@ -44,15 +44,11 @@ const displayBlocksCategory = function(categoryKey) {
         `;
     });
     blockListCategory.lastElementChild.style.marginBottom = 0;
-    console.dir(blockListCategory);
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
     if (blockListCategory.offsetWidth > blockListCategory.clientWidth) {
         let blockItem = document.querySelectorAll('.content-block__block-item').forEach(item => {
             item.style.marginRight = "4px";
-
         });
-            // blockItem.style.marginRight = "4px";
-        // console.log("scroll");
     }
 };
 
@@ -71,7 +67,7 @@ for (let item of categories.children) {
         }, false);
 
         item.addEventListener("click", () => {
-            item.dataset.active = "true";
+            // item.dataset.active = "true";
             addClass(item, "block-image--focus");
             projectTitle.textContent = item.dataset.categoryName;
             const categoryName = item.dataset.categoryName;
@@ -81,6 +77,9 @@ for (let item of categories.children) {
                     removeClass(item, "block-image--focus");
                 }
             }
+            displayBlocksCategory(item.dataset.categoryKey);
+            // Возвращаем положение скролла в начальную позицию
+            blockListCategory.scrollTop = 0;
         });
     }
 }

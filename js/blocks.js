@@ -597,28 +597,172 @@ const largeBlocks = {
             ru: "Основа угловой наклонной тяжелой брони",
             en: "Heavy Armor Sloped Corner Base",
         },
-        weight: 496,
-        integrity: 2480,
+        weight: 2780,
+        integrity: 2780,
         img: "heavyArmorSlopedCornerBase.png",
     },
-    heavyArmorSlopedCorner,
-    heavyArmorHalfSlopedCornerBase,
-    heavyArmorPanel,
-    heavyArmorPanelSlope,
-    heavyArmorPanelSide,
-    heavyArmorPanel2x1SlopeBase,
-    heavyArmorPanel2x1SlopeTip,
-    heavyArmorPanel2x1BaseRight,
-    heavyArmorPanel2x1TipRight,
-    heavyArmorPanel2x1BaseLeft,
-    heavyArmorPanel2x1TipLeft,
-    heavyArmorPanelHalfSlope,
-    heavyArmorHalfPanel2x1BaseRight,
-    heavyArmorHalfPanel2x1TipRight,
-    heavyArmorHalfPanel2x1BaseLeft,
-    heavyArmorHalfPanel2x1TipLeft,
-    heavyArmorHalfPanel,
-    heavyArmorQuarterPanel,
+    heavyArmorSlopedCorner: {
+        title: {
+            ru: "Угловая наклонная тяжелая броня",
+            en: "Heavy Armor Sloped Corner",
+        },
+        weight: 1650,
+        integrity: 8250,
+        img: "heavyArmorSlopedCorner.png",
+    },
+    heavyArmorHalfSlopedCornerBase: {
+        title: {
+            ru: "Полублок основы угловой наклонной тяжелой брони",
+            en: "Heavy Armor Half Sloped Corner Base",
+        },
+        weight: 990,
+        integrity: 4950,
+        img: "heavyArmorHalfSlopedCornerBase.png",
+    },
+    heavyArmorPanel: {
+        title: {
+            ru: "Панель тяжелой обшивки",
+            en: "Heavy Armor Panel",
+        },
+        weight: 330,
+        integrity: 1650,
+        img: "heavyArmorPanel.png",
+    },
+    heavyArmorPanelSlope: {
+        title: {
+            ru: "Панель тяжелой обшивки (скат)",
+            en: "Heavy Armor Panel Slope",
+        },
+        weight: 462,
+        integrity: 2310,
+        img: "heavyArmorPanelSlope.png",
+    },
+    heavyArmorPanelSide: {
+        title: {
+            ru: "Панель тяжелой обшивки (бок)",
+            en: "Heavy Armor Panel Side",
+        },
+        weight: 178,
+        integrity: 890,
+        img: "heavyArmorPanelSide.png",
+    },
+    heavyArmorPanel2x1SlopeBase: {
+        title: {
+            ru: "Панель тяжелой обшивки 2х1 (основа, скат)",
+            en: "Heavy Armor Panel 2x1 Slope Base",
+        },
+        weight: 396,
+        integrity: 1980,
+        img: "heavyArmorPanel2x1SlopeBase.png",
+    },
+    heavyArmorPanel2x1SlopeTip: {
+        title: {
+            ru: "Панель тяжелой обшивки 2х1 (вершина, скат)",
+            en: "Heavy Armor Panel 2x1 Slope Tip",
+        },
+        weight: 396,
+        integrity: 1980,
+        img: "heavyArmorPanel2x1SlopeTip.png",
+    },
+    heavyArmorPanel2x1BaseRight: {
+        title: {
+            ru: "Панель тяжелой обшивки 2х1 (основа, правая)",
+            en: "Heavy Armor Panel 2x1 Base Right",
+        },
+        weight: 264,
+        integrity: 1320,
+        img: "heavyArmorPanel2x1BaseRight.png",
+    },
+    heavyArmorPanel2x1TipRight: {
+        title: {
+            ru: "Панель тяжелой обшивки 2х1 (вершина, правая)",
+            en: "Heavy Armor Panel 2x1 Tip Right",
+        },
+        weight: 132,
+        integrity: 660,
+        img: "heavyArmorPanel2x1TipRight.png",
+    },
+    heavyArmorPanel2x1BaseLeft: {
+        title: {
+            ru: "Панель тяжелой обшивки 2х1 (основа, левая)",
+            en: "Heavy Armor Panel 2x1 Base Left",
+        },
+        weight: 264,
+        integrity: 1320,
+        img: "heavyArmorPanel2x1BaseLeft.png",
+    },
+    heavyArmorPanel2x1TipLeft: {
+        title: {
+            ru: "Панель  тяжелой обшивки 2х1 (вершина, левая)",
+            en: "Heavy Armor Panel 2x1 Tip Left",
+        },
+        weight: 132,
+        integrity: 660,
+        img: "heavyArmorPanel2x1TipLeft.png",
+    },
+    heavyArmorPanelHalfSlope: {
+        title: {
+            ru: "Панель  тяжелой обшивки (полускат)",
+            en: "Heavy Armor Panel Half Slope",
+        },
+        weight: 198,
+        integrity: 990,
+        img: "heavyArmorPanelHalfSlope.png",
+    },
+    heavyArmorHalfPanel2x1BaseRight: {
+        title: {
+            ru: "Полупанель  тяжелой обшивки 2х1 (основа, правая)",
+            en: "Heavy Armor Half Panel 2x1 Base Right",
+        },
+        weight: 198,
+        integrity: 990,
+        img: "heavyArmorHalfPanel2x1BaseRight.png",
+    },
+    heavyArmorHalfPanel2x1TipRight: {
+        title: {
+            ru: "Полупанель  тяжелой обшивки 2х1 (вершина, правая)",
+            en: "Heavy Armor Half Panel 2x1 Tip Right",
+        },
+        weight: 198,
+        integrity: 990,
+        img: "heavyArmorHalfPanel2x1TipRight.png",
+    },
+    heavyArmorHalfPanel2x1BaseLeft: {
+        title: {
+            ru: "Полупанель  тяжелой обшивки 2х1 (основа, левая)",
+            en: "Heavy Armor Half Panel 2x1 Base Left",
+        },
+        weight: 198,
+        integrity: 990,
+        img: "heavyArmorHalfPanel2x1BaseLeft.png",
+    },
+    heavyArmorHalfPanel2x1TipLeft: {
+        title: {
+            ru: "Полупанель  тяжелой обшивки 2х1 (вершина, левая)",
+            en: "Heavy Armor Half Panel 2x1 Tip Left",
+        },
+        weight: 198,
+        integrity: 990,
+        img: "heavyArmorHalfPanel2x1TipLeft.png",
+    },
+    heavyArmorHalfPanel: {
+        title: {
+            ru: "Полупанель тяжелой обшивки",
+            en: "Heavy Armor Half Panel",
+        },
+        weight: 178,
+        integrity: 890,
+        img: "heavyArmorHalfPanel.png",
+    },
+    heavyArmorQuarterPanel: {
+        title: {
+            ru: "Четверть панель тяжелой обшивки",
+            en: "Heavy Armor Quarter Panel",
+        },
+        weight: 112,
+        integrity: 560,
+        img: "heavyArmorQuarterPanel.png",
+    },
 
 
 
