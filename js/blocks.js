@@ -402,6 +402,230 @@ const largeBlocks = {
         integrity: 8250,
         img: "heavyArmorSlope.png",
     },
+
+    heavyArmorCorner: {
+        title: {
+            ru: "Угол тяжелой брони",
+            en: "Heavy Armor Corner",
+        },
+        weight: 560,
+        integrity: 2800,
+        img: "heavyArmorCorner.png",
+    },
+    heavyArmorInvertedCorner: {
+        title: {
+            ru: "Обратный угол тяжелой брони",
+            en: "Heavy Armor Inverted Corner",
+        },
+        weight: 2800,
+        integrity: 14000,
+        img: "heavyArmorInvertedCorner.png",
+    },
+    heavyArmorCornerSquareBlock: {
+        title: {
+            ru: "Прямоугольный угловой блок тяжелой брони",
+            en: "Heavy Armor Corner Square Block",
+        },
+        weight: 890,
+        integrity: 4450,
+        img: "heavyArmorCornerSquareBlock.png",
+    },
+    heavyArmorCornerSquareInvertedBlock: {
+        title: {
+            ru: "Обратный прямоугольный угловой блок тяжелой брони",
+            en: "Heavy Armor Corner Square Inverted Block",
+        },
+        weight: 2480,
+        integrity: 12400,
+        img: "heavyArmorCornerSquareInvertedBlock.png",
+    },
+    heavyRoundArmorSlope: {
+        title: {
+            ru: "Круглая тяжелая броня",
+            en: "Heavy Round Armor Slope",
+        },
+        weight: 2900,
+        integrity: 14500,
+        img: "heavyRoundArmorSlope.png",
+    },
+    heavyRoundArmorCorner: {
+        title: {
+            ru: "Круглый угол тяжелой брони",
+            en: "Heavy Round Armor Corner",
+        },
+        weight: 2740,
+        integrity: 13700,
+        img: "heavyRoundArmorCorner.png",
+    },
+    heavyRoundArmorInvertedCorner: {
+        title: {
+            ru: "Круглый обратный угол тяжелой брони",
+            en: "Heavy Round Armor Inverted Corner",
+        },
+        weight: 3100,
+        integrity: 15500,
+        img: "heavyRoundArmorInvertedCorner.png",
+    },
+    heavyArmorSlope2x1x1Base: {
+        title: {
+            ru: "Скат 2х1 основа тяжелой брони",
+            en: "Heavy Armor Slope 2x1x1 Base",
+        },
+        weight: 2510,
+        integrity: 12550,
+        img: "heavyArmorSlope2x1x1Base.png",
+    },
+    heavyArmorSlope2x1x1Tip: {
+        title: {
+            ru: "Скат 2х1 вершина тяжелой брони",
+            en: "Heavy Armor Slope 2x1x1 Tip",
+        },
+        weight: 736,
+        integrity: 3680,
+        img: "heavyArmorSlope2x1x1Tip.png",
+    },
+    halfHeavyArmorBlock: {
+        title: {
+            ru: "Полублок тяжелой брони",
+            en: "Half Heavy Armor Block",
+        },
+        weight: 1650,
+        integrity: 8250,
+        img: "halfHeavyArmorBlock.png",
+    },
+    halfSlopeHeavyArmorBlock: {
+        title: {
+            ru: "Угловой полублок тяжелой брони",
+            en: "Half Slope Heavy Armor Block",
+        },
+        weight: 990,
+        integrity: 4950,
+        img: "halfSlopeHeavyArmorBlock.png",
+    },
+    halfSlopeCornerHeavyArmor: {
+        title: {
+            ru: "Угловой наклонный полублок тяжелой брони",
+            en: "Half Slope Corner Heavy Armor",
+        },
+        weight: 264,
+        integrity: 1320,
+        img: "halfSlopeCornerHeavyArmor.png",
+    },
+    heavyArmorHalfCornerBlock: {
+        title: {
+            ru: "Угловой полублок тяж. брони",
+            en: "Heavy Armor Half Corner Block",
+        },
+        weight: 772,
+        integrity: 3860,
+        img: "heavyArmorHalfCornerBlock.png",
+    },
+    heavyArmorHalfSlopedCorner: {
+        title: {
+            ru: "Угловой полублок тяж. брони",
+            en: "Heavy Armor Half Sloped Corner",
+        },
+        weight: 930,
+        integrity: 4650,
+        img: "heavyArmorHalfSlopedCorner.png",
+    },
+    heavyArmorCorner2x1x1Base: {
+        title: {
+            ru: "Угол 2х1 основа тяжелой брони",
+            en: "Heavy Armor Corner 2x1x1 Base",
+        },
+        weight: 1190,
+        integrity: 5950,
+        img: "heavyArmorCorner2x1x1Base.png",
+    },
+    heavyArmorCorner2x1x1Tip: {
+        title: {
+            ru: "Угол 2х1 вершина тяжелой брони",
+            en: "Heavy Armor Corner 2x1x1 Tip",
+        },
+        weight: 416,
+        integrity: 2080,
+        img: "heavyArmorCorner2x1x1Tip.png",
+    },
+    heavyArmorInventedCorner2x1x1Base: {
+        title: {
+            ru: "Обратный угол 2х1 основа тяжелой брони",
+            en: "Heavy Armor Invented Corner 2x1x1 Base",
+        },
+        weight: 2930,
+        integrity: 14650,
+        img: "heavyArmorInventedCorner2x1x1Base.png",
+    },
+    heavyArmorInventedCorner2x1x1Tip: {
+        title: {
+            ru: "Обратный угол 2х1 вершина тяжелой брони",
+            en: "Heavy Armor Invented Corner 2x1x1 Tip",
+        },
+        weight: 2030,
+        integrity: 10150,
+        img: "heavyArmorInventedCorner2x1x1Tip.png",
+    },
+    halfSlopeCornerInventedHeavyArmor: {
+        title: {
+            ru: "Обратный угловой наклонный полублок тяжелой брони",
+            en: "Half Slope Corner Invented Heavy Armor",
+        },
+        weight: 3050,
+        integrity: 15250,
+        img: "halfSlopeCornerInventedHeavyArmor.png",
+    },
+    halfSlopeInventedHeavyArmor: {
+        title: {
+            ru: "Обратный наклонный полублок тяжелой брони",
+            en: "Half Slope Invented Heavy Armor",
+        },
+        weight: 2930,
+        integrity: 14650,
+        img: "halfSlopeInventedHeavyArmor.png",
+    },
+    slopedCornerHeavyArmorTip: {
+        title: {
+            ru: "Вершина угловой наклонной тяжелой брони",
+            en: "Sloped Corner Heavy Armor Tip",
+        },
+        weight: 496,
+        integrity: 2480,
+        img: "slopedCornerHeavyArmorTip.png",
+    },
+    heavyArmorSlopedCornerBase: {
+        title: {
+            ru: "Основа угловой наклонной тяжелой брони",
+            en: "Heavy Armor Sloped Corner Base",
+        },
+        weight: 496,
+        integrity: 2480,
+        img: "heavyArmorSlopedCornerBase.png",
+    },
+    heavyArmorSlopedCorner,
+    heavyArmorHalfSlopedCornerBase,
+    heavyArmorPanel,
+    heavyArmorPanelSlope,
+    heavyArmorPanelSide,
+    heavyArmorPanel2x1SlopeBase,
+    heavyArmorPanel2x1SlopeTip,
+    heavyArmorPanel2x1BaseRight,
+    heavyArmorPanel2x1TipRight,
+    heavyArmorPanel2x1BaseLeft,
+    heavyArmorPanel2x1TipLeft,
+    heavyArmorPanelHalfSlope,
+    heavyArmorHalfPanel2x1BaseRight,
+    heavyArmorHalfPanel2x1TipRight,
+    heavyArmorHalfPanel2x1BaseLeft,
+    heavyArmorHalfPanel2x1TipLeft,
+    heavyArmorHalfPanel,
+    heavyArmorQuarterPanel,
+
+
+
+
+
+
+
     landingGear: {
         title: {
             ru: "Посадочные шасси",
@@ -548,7 +772,51 @@ const BlockCategories = {
     },
 
     heavyArmor: {
-        large: [largeBlocks.heavyArmorBlock, largeBlocks.heavyArmorSlope],
+        large: [
+            largeBlocks.heavyArmorBlock,
+            largeBlocks.heavyArmorSlope,
+            largeBlocks.heavyArmorCorner,
+            largeBlocks.heavyArmorInvertedCorner,
+            largeBlocks.heavyArmorCornerSquareBlock,
+            largeBlocks.heavyArmorCornerSquareInvertedBlock,
+            largeBlocks.heavyRoundArmorSlope,
+            largeBlocks.heavyRoundArmorCorner,
+            largeBlocks.heavyRoundArmorInvertedCorner,
+            largeBlocks.heavyArmorSlope2x1x1Base,
+            largeBlocks.heavyArmorSlope2x1x1Tip,
+            largeBlocks.halfHeavyArmorBlock,
+            largeBlocks.halfSlopeHeavyArmorBlock,
+            largeBlocks.halfSlopeCornerHeavyArmor,
+            largeBlocks.heavyArmorHalfCornerBlock,
+            largeBlocks.heavyArmorHalfSlopedCorner,
+            largeBlocks.heavyArmorCorner2x1x1Base,
+            largeBlocks.heavyArmorCorner2x1x1Tip,
+            largeBlocks.heavyArmorInventedCorner2x1x1Base,
+            largeBlocks.heavyArmorInventedCorner2x1x1Tip,
+            largeBlocks.halfSlopeCornerInventedHeavyArmor,
+            largeBlocks.halfSlopeInventedHeavyArmor,
+            largeBlocks.slopedCornerHeavyArmorTip,
+            largeBlocks.heavyArmorSlopedCornerBase,
+            largeBlocks.heavyArmorSlopedCorner,
+            largeBlocks.heavyArmorHalfSlopedCornerBase,
+            largeBlocks.heavyArmorPanel,
+            largeBlocks.heavyArmorPanelSlope,
+            largeBlocks.heavyArmorPanelSide,
+            largeBlocks.heavyArmorPanel2x1SlopeBase,
+            largeBlocks.heavyArmorPanel2x1SlopeTip,
+            largeBlocks.heavyArmorPanel2x1BaseRight,
+            largeBlocks.heavyArmorPanel2x1TipRight,
+            largeBlocks.heavyArmorPanel2x1BaseLeft,
+            largeBlocks.heavyArmorPanel2x1TipLeft,
+            largeBlocks.heavyArmorPanelHalfSlope,
+            largeBlocks.heavyArmorHalfPanel2x1BaseRight,
+            largeBlocks.heavyArmorHalfPanel2x1TipRight,
+            largeBlocks.heavyArmorHalfPanel2x1BaseLeft,
+            largeBlocks.heavyArmorHalfPanel2x1TipLeft,
+            largeBlocks.heavyArmorHalfPanel,
+            largeBlocks.heavyArmorQuarterPanel,
+        ],
+
         small: [smallBlocks.heavyArmorBlock, smallBlocks.heavyArmorSlope],
     },
     landingGear: {

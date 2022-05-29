@@ -43,6 +43,17 @@ const displayBlocksCategory = function(categoryKey) {
         </div>
         `;
     });
+    blockListCategory.lastElementChild.style.marginBottom = 0;
+    console.dir(blockListCategory);
+    // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
+    if (blockListCategory.offsetWidth > blockListCategory.clientWidth) {
+        let blockItem = document.querySelectorAll('.content-block__block-item').forEach(item => {
+            item.style.marginRight = "4px";
+
+        });
+            // blockItem.style.marginRight = "4px";
+        // console.log("scroll");
+    }
 };
 
 displayBlocksCategory(categories.firstElementChild.dataset.categoryKey);
