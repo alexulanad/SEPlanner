@@ -339,6 +339,30 @@ const blockCategories = {
             smallBlocks.mergeBlock,
             smallBlocks.smallMergeBlock,
         ], // end connectors--small
+    }, // end connectors
+
+    // Блоки-инструменты
+    toolBlocks: {
+        large: [
+            largeBlocks.drill,
+            largeBlocks.grinder,
+            largeBlocks.welder,
+        ],
+        small: [
+            smallBlocks.drill,
+            smallBlocks.grinder,
+            smallBlocks.welder,
+        ],
     },
-    // end connectors
+    // end toolBlocks
+    // Ускорители
+    thrusters: {
+        large: [
+
+        ],
+        small: [
+
+        ],
+    },
+    // end thrusters
 };

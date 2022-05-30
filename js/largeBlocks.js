@@ -1289,4 +1289,34 @@ const largeBlocks = {
         img: "mergeBlock.png",
     },
     // end connectors
+
+    // Блоки-инструменты // toolBlocks
+    drill: {
+        title: {
+            ru: "Бур",
+            en: "Drill",
+        },
+        weight: 6741,
+        integrity: 32125,
+        img: "drill.png",
+    },
+    grinder: {
+        title: {
+            ru: "Резак",
+            en: "Grinder",
+        },
+        weight: 761.4,
+        integrity: 3122,
+        img: "grinder.png",
+    },
+    welder: {
+        title: {
+            ru: "Сварщик",
+            en: "Welder",
+        },
+        weight: 713.4,
+        integrity: 3042,
+        img: "welder.png",
+    },
+    // end toolBlocks
 };
