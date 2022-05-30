@@ -855,4 +855,59 @@ const smallBlocks = {
         img: "passengerSeat.png",
     }, // end cockpit
 
+    // Источники энергии // energySources
+    battery: {
+        title: {
+            ru: "Батарея",
+            en: "Battery",
+        },
+        weight: 1040.4,
+        integrity: 3652,
+        img: "battery.png",
+    },
+    smallBattery: {
+        title: {
+            ru: "Малая батарея",
+            en: "Small Battery",
+        },
+        weight: 146.4,
+        integrity: 562,
+        img: "smallBattery.png",
+    },
+    smallReactor: {
+        title: {
+            ru: "Малый реактор",
+            en: "Small Reactor",
+        },
+        weight: 278,
+        integrity: 830,
+        img: "smallReactor.png",
+    },
+    largeReactor: {
+        title: {
+            ru: "Большой реактор",
+            en: "Large Reactor",
+        },
+        weight: 3901,
+        integrity: 8845,
+        img: "largeReactor.png",
+    },
+    hydrogenEngine: {
+        title: {
+            ru: "Водородный генератор",
+            en: "Hydrogen Engine",
+        },
+        weight: 1005.2,
+        integrity: 4141,
+        img: "hydrogenEngineSmall.png",
+    },
+    solarPanel: {
+        title: {
+            ru: "Солнечная батарея",
+            en: "Solar Panel",
+        },
+        weight: 143.2,
+        integrity: 389,
+        img: "solarPanel.png",
+    },// end energySources
 };

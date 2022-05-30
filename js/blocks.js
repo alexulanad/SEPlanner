@@ -45,7 +45,7 @@ const blockCategories = {
             largeBlocks.lightArmorHalfPanel2x1TipLeft,
             largeBlocks.lightArmorHalfPanel,
             largeBlocks.lightArmorQuarterPanel,
-        ], // End lightArmor--large
+        ], // end lightArmor--large
 
         small: [
             smallBlocks.lightArmorBlock,
@@ -90,8 +90,8 @@ const blockCategories = {
             smallBlocks.lightArmorHalfPanel2x1TipLeft,
             smallBlocks.lightArmorHalfPanel,
             smallBlocks.lightArmorQuarterPanel,
-        ], // End lightArmor--small
-    }, // End lightArmor
+        ], // end lightArmor--small
+    }, // end lightArmor
 
     heavyArmor: {
         large: [
@@ -137,7 +137,7 @@ const blockCategories = {
             largeBlocks.heavyArmorHalfPanel2x1TipLeft,
             largeBlocks.heavyArmorHalfPanel,
             largeBlocks.heavyArmorQuarterPanel,
-        ], // End heavyArmor--large
+        ], // end heavyArmor--large
 
         small: [
             smallBlocks.heavyArmorBlock,
@@ -182,21 +182,21 @@ const blockCategories = {
             smallBlocks.heavyArmorHalfPanel2x1TipLeft,
             smallBlocks.heavyArmorHalfPanel,
             smallBlocks.heavyArmorQuarterPanel,
-        ], // End heavyArmor--small
-    }, // End heavyArmor
+        ], // end heavyArmor--small
+    }, // end heavyArmor
 
     landingGear: {
         large: [
             largeBlocks.landingGear,
             largeBlocks.magneticPlate,
             largeBlocks.largeMagneticPlate,
-        ], // End landingGear--large
+        ], // end landingGear--large
         small: [
             smallBlocks.landingGear,
             smallBlocks.magneticPlate,
             smallBlocks.largeMagneticPlate,
-        ], // End landingGear--small
-    },// End landingGear
+        ], // end landingGear--small
+    },// end landingGear
 
     cockpits: {
         large: [
@@ -206,7 +206,7 @@ const blockCategories = {
             largeBlocks.controlStation,
             largeBlocks.flightSeat,
             largeBlocks.passengerSeat,
-        ],
+        ], // end cockpits--large
         small: [
             smallBlocks.cockpit,
             smallBlocks.fighterCockpit,
@@ -215,6 +215,25 @@ const blockCategories = {
             smallBlocks.roverCockpit,
             smallBlocks.buggyCockpit,
             smallBlocks.passengerSeat,
-        ]
-    }
+        ], // end cockpits--small
+    }, // end cockpits
+
+    energySources: {
+        large: [
+            largeBlocks.battery,
+            largeBlocks.smallReactor,
+            largeBlocks.largeReactor,
+            largeBlocks.hydrogenEngine,
+            largeBlocks.windTurbine,
+            largeBlocks.solarPanel,
+        ], // end energySources--large
+        small: [
+            smallBlocks.battery,
+            smallBlocks.smallBattery,
+            smallBlocks.smallReactor,
+            smallBlocks.largeReactor,
+            smallBlocks.hydrogenEngine,
+            smallBlocks.solarPanel,
+        ], // end energySources--small
+    }, // end energySources
 };
