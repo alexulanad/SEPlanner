@@ -2,6 +2,7 @@
 
 let largeBlockCategoryActive = true;
 let largeBlockProjectActive = true;
+let categoryKeyTarget = "lightArmor";
 
 const blockSelectionLarge = document.querySelector('#block-selection-large');
 const blockSelectionSmall = document.querySelector('#block-selection-small');
@@ -26,15 +27,18 @@ const removeClass = function(event, className) {
     }
 };
 
+// Функция вывода блоков игры из выбранной категории
 const displayBlocksCategory = function(categoryKey) {
     blockListCategory.innerHTML = "";
-    console.log(categoryKey);
     let blocks = [];
     if (largeBlockCategoryActive === true) {
         blocks = blockCategories[categoryKey].large;
+        console.log("Large");
     } else {
         blocks = blockCategories[categoryKey].small;
+        console.log("Small");
     }
+
     blocks.forEach(item => {
         blockListCategory.innerHTML += `
         <div class="content-block__block-item">
@@ -43,6 +47,7 @@ const displayBlocksCategory = function(categoryKey) {
         </div>
         `;
     });
+
     blockListCategory.lastElementChild.style.marginBottom = 0;
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
     if (blockListCategory.offsetWidth > blockListCategory.clientWidth) {
@@ -52,8 +57,10 @@ const displayBlocksCategory = function(categoryKey) {
     }
 };
 
+// Стартовый вызов функции вывода игровых блоков из первой категории
 displayBlocksCategory(categories.firstElementChild.dataset.categoryKey);
 
+// Инициализация событий для категорий
 for (let item of categories.children) {
     if (item.tagName === "IMG") {
         item.addEventListener("mouseover", (event) => {
@@ -77,7 +84,10 @@ for (let item of categories.children) {
                     removeClass(item, "block-image--focus");
                 }
             }
+            // Вызов функции вывода блоков выбранной категории
             displayBlocksCategory(item.dataset.categoryKey);
+            // Сохраняет ключ, выбранной категории, для передачи значения функции при выборе размера блока
+            categoryKeyTarget = item.dataset.categoryKey;
             // Возвращаем положение скролла в начальную позицию
             blockListCategory.scrollTop = 0;
         });
@@ -98,6 +108,8 @@ blockSelectionLarge.addEventListener("click", (event)=> {
     for (let item of blockSelectionSmall.children) {
         removeClass(item, "size-block-selection--focus");
     }
+    displayBlocksCategory(categoryKeyTarget);
+    blockListCategory.scrollTop = 0;
 });
 
 blockSelectionSmall.addEventListener("mouseover", ()=> {
@@ -112,12 +124,14 @@ blockSelectionSmall.addEventListener("mouseout", ()=> {
     }
 });
 
-blockSelectionSmall.addEventListener("click", (event)=> {
+blockSelectionSmall.addEventListener("click", ()=> {
     largeBlockCategoryActive = false;
     removeClass(blockSelectionLarge, "size-block-selection--focus");
     for (let item of blockSelectionSmall.children) {
         addClass(item, "size-block-selection--focus");
     }
+    displayBlocksCategory(categoryKeyTarget);
+    blockListCategory.scrollTop = 0;
 }, false);
 
 

@@ -379,7 +379,7 @@ const smallBlocks = {
         weight: 20,
         integrity: 100,
         img: "lightArmorQuarterPanel.png",
-    },
+    }, // end lightArmor
 
     // Тяжелая броня // Heavy Armor
     heavyArmorBlock: {
@@ -759,7 +759,7 @@ const smallBlocks = {
         weight: 46,
         integrity: 230,
         img: "heavyArmorQuarterPanel.png",
-    },
+    }, // end heavyArmor
 
     // Шасси // Landing Gear
     landingGear: {
@@ -788,5 +788,71 @@ const smallBlocks = {
         weight: 312,
         integrity: 1170,
         img: "largeMagneticPlateSmall.png",
+    }, // end landingGear
+
+    // Кокпиты // Cockpits
+    cockpit: {
+        title: {
+            ru: "Кокпит",
+            en: "Cockpit",
+        },
+        weight: 797,
+        integrity: 3180,
+        img: "cockpit.png",
     },
+    fighterCockpit: {
+        title: {
+            ru: "Кокпит истребителя",
+            en: "Fighter Cockpit",
+        },
+        weight: 1325,
+        integrity: 5605,
+        img: "fighterCockpit.png",
+    },
+    industrialCockpit: {
+        title: {
+            ru: "Промышленный кокпит",
+            en: "Industrial Cockpit",
+        },
+        weight: 1460,
+        integrity: 5780,
+        img: "industrialCockpitSmall.png",
+    },
+    controlSeat: {
+        title: {
+            ru: "Кресло пилота",
+            en: "Control Seat",
+        },
+        weight: 263,
+        integrity: 965,
+        img: "controlSeatSmall.png",
+    },
+    roverCockpit: {
+        title: {
+            ru: "Кабина вездехода",
+            en: "Rover Cockpit",
+        },
+        weight: 374,
+        integrity: 1320,
+        img: "roverCockpit.png",
+    },
+    buggyCockpit: {
+        title: {
+            ru: "Кабина багги",
+            en: "Buggy Cockpit",
+        },
+        weight: 374,
+        integrity: 1320,
+        img: "buggyCockpit.png",
+    },
+    passengerSeat: {
+        title: {
+            ru: "Пассажирское кресло",
+            en: "Passenger Seat",
+        },
+        weight: 220,
+        integrity: 900,
+        img: "passengerSeat.png",
+    }, // end cockpit
+
 };

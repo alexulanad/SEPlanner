@@ -45,7 +45,7 @@ const blockCategories = {
             largeBlocks.lightArmorHalfPanel2x1TipLeft,
             largeBlocks.lightArmorHalfPanel,
             largeBlocks.lightArmorQuarterPanel,
-        ],
+        ], // End lightArmor--large
 
         small: [
             smallBlocks.lightArmorBlock,
@@ -90,8 +90,8 @@ const blockCategories = {
             smallBlocks.lightArmorHalfPanel2x1TipLeft,
             smallBlocks.lightArmorHalfPanel,
             smallBlocks.lightArmorQuarterPanel,
-        ],
-    },
+        ], // End lightArmor--small
+    }, // End lightArmor
 
     heavyArmor: {
         large: [
@@ -137,7 +137,7 @@ const blockCategories = {
             largeBlocks.heavyArmorHalfPanel2x1TipLeft,
             largeBlocks.heavyArmorHalfPanel,
             largeBlocks.heavyArmorQuarterPanel,
-        ],
+        ], // End heavyArmor--large
 
         small: [
             smallBlocks.heavyArmorBlock,
@@ -182,18 +182,39 @@ const blockCategories = {
             smallBlocks.heavyArmorHalfPanel2x1TipLeft,
             smallBlocks.heavyArmorHalfPanel,
             smallBlocks.heavyArmorQuarterPanel,
-        ],
-    },
+        ], // End heavyArmor--small
+    }, // End heavyArmor
+
     landingGear: {
         large: [
             largeBlocks.landingGear,
             largeBlocks.magneticPlate,
-            largeBlocks.largeMagneticPlate
-        ],
+            largeBlocks.largeMagneticPlate,
+        ], // End landingGear--large
         small: [
             smallBlocks.landingGear,
             smallBlocks.magneticPlate,
-            smallBlocks.largeMagneticPlate
+            smallBlocks.largeMagneticPlate,
+        ], // End landingGear--small
+    },// End landingGear
+
+    cockpits: {
+        large: [
+            largeBlocks.cockpit,
+            largeBlocks.industrialCockpit,
+            largeBlocks.controlSeat,
+            largeBlocks.controlStation,
+            largeBlocks.flightSeat,
+            largeBlocks.passengerSeat,
         ],
-    },
+        small: [
+            smallBlocks.cockpit,
+            smallBlocks.fighterCockpit,
+            smallBlocks.industrialCockpit,
+            smallBlocks.controlSeat,
+            smallBlocks.roverCockpit,
+            smallBlocks.buggyCockpit,
+            smallBlocks.passengerSeat,
+        ]
+    }
 };

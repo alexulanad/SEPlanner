@@ -379,7 +379,7 @@ const largeBlocks = {
         weight: 40,
         integrity: 200,
         img: "lightArmorQuarterPanel.png",
-    },
+    }, // End lightArmor
 
     // Тяжелая броня // Heavy Armor
     heavyArmorBlock: {
@@ -760,7 +760,7 @@ const largeBlocks = {
         weight: 112,
         integrity: 560,
         img: "heavyArmorQuarterPanel.png",
-    },
+    }, // End heavyArmor
 
     // Шасси // Landing Gear
     landingGear: {
@@ -789,6 +789,62 @@ const largeBlocks = {
         weight: 9960,
         integrity: 47600,
         img: "largeMagneticPlate.png",
+    }, // end landingGear
+
+    // Кокпиты // Cockpits
+    cockpit: {
+        title: {
+            ru: "Кокпит",
+            en: "Cockpit",
+        },
+        weight: 1768,
+        integrity: 7380,
+        img: "cockpit.png",
     },
+    industrialCockpit: {
+        title: {
+            ru: "Промышленный кокпит",
+            en: "Industrial Cockpit",
+        },
+        weight: 2110,
+        integrity: 8490,
+        img: "industrialCockpit.png",
+    },
+    controlSeat: {
+        title: {
+            ru: "Кресло пилота",
+            en: "Control Seat",
+        },
+        weight: 446,
+        integrity: 1560,
+        img: "controlSeat.png",
+    },
+    controlStation: {
+        title: {
+            ru: "Станция управления",
+            en: "Control Station",
+        },
+        weight: 368,
+        integrity: 1130,
+        img: "controlStation.png",
+    },
+    flightSeat: {
+        title: {
+            ru: "Кресло пилота",
+            en: "Flight Seat",
+        },
+        weight: 320,
+        integrity: 1100,
+        img: "flightSeat.png",
+    },
+    passengerSeat: {
+        title: {
+            ru: "Пассажирское кресло",
+            en: "Passenger Seat",
+        },
+        weight: 220,
+        integrity: 900,
+        img: "passengerSeat.png",
+    }, // end cockpit
 
 };
