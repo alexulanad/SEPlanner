@@ -1058,4 +1058,142 @@ const largeBlocks = {
         img: "oxygenTank.png",
     },
     // end production
+
+    // Грузовые блоки // cargoBlocks
+    smallCargoContainer: {
+        title: {
+            ru: "Малый контейнер",
+            en: "Small Cargo Container",
+        },
+        weight: 648.4,
+        integrity: 2387,
+        img: "smallCargoContainer.png",
+    },
+    largeCargoContainer: {
+        title: {
+            ru: "Большой контейнер",
+            en: "Large Cargo Container",
+        },
+        weight: 2593.6,
+        integrity: 10233,
+        img: "largeCargoContainer.png",
+    },
+    largeIndustrialCargoContainer: {
+        title: {
+            ru: "Большой промышленный контейнер",
+            en: "Large Industrial Cargo Container",
+        },
+        weight: 2593.6,
+        integrity: 10233,
+        img: "largeIndustrialCargoContainer.png",
+    },
+    conveyorJunction: {
+        title: {
+            ru: "Конвейер",
+            en: "Conveyor Junction",
+        },
+        weight: 524,
+        integrity: 1740,
+        img: "conveyorJunction.png",
+    },
+    conveyorTube: {
+        title: {
+            ru: "Конвейерная труба",
+            en: "Conveyor Tube",
+        },
+        weight: 394,
+        integrity: 1230,
+        img: "conveyorTube.png",
+    },
+    curvedConveyorTube: {
+        title: {
+            ru: "Изогнутая конвейерная труба",
+            en: "Curved Conveyor Tube",
+        },
+        weight: 394,
+        integrity: 1230,
+        img: "curvedConveyorTube.png",
+    },
+    conveyorSorter: {
+        title: {
+            ru: "Сортировщик",
+            en: "Conveyor Sorter",
+        },
+        weight: 1362,
+        integrity: 5200,
+        img: "conveyorSorter.png",
+    },
+    industrialConveyorSorter: {
+        title: {
+            ru: "Промышленный сортировщик",
+            en: "Industrial Conveyor Sorter",
+        },
+        weight: 1362,
+        integrity: 5200,
+        img: "industrialConveyorSorter.png",
+    },
+    conveyorPipeJunction: {
+        title: {
+            ru: "Конвейерная труба (пересечение)",
+            en: "Conveyor Pipe Junction",
+        },
+        weight: 524,
+        integrity: 1740,
+        img: "conveyorPipeJunction.png",
+    },
+    conveyorPipe: {
+        title: {
+            ru: "Конвейерная труба",
+            en: "Conveyor Pipe",
+        },
+        weight: 394,
+        integrity: 1230,
+        img: "conveyorPipe.png",
+    },
+    conveyorPipeCurved: {
+        title: {
+            ru: "Конвейерная труба (изогнутая)",
+            en: "Conveyor Pipe Curved",
+        },
+        weight: 394,
+        integrity: 1230,
+        img: "conveyorPipeCurved.png",
+    },
+    conveyorPipeCross: {
+        title: {
+            ru: "Конвейерная труба (крест)",
+            en: "Conveyor Pipe Cross",
+        },
+        weight: 422,
+        integrity: 1350,
+        img: "conveyorPipeCross.png",
+    },
+    conveyorPipeFlanged: {
+        title: {
+            ru: "Конвейерная труба (с фланцем)",
+            en: "Conveyor Pipe Flanged",
+        },
+        weight: 394,
+        integrity: 1230,
+        img: "conveyorPipeFlanged.png",
+    },
+    conveyorPipeEnd: {
+        title: {
+            ru: "Конвейерная труба (конец)",
+            en: "Conveyor Pipe End",
+        },
+        weight: 394,
+        integrity: 1230,
+        img: "conveyorPipeEnd.png",
+    },
+    collector: {
+        title: {
+            ru: "Коллектор",
+            en: "Collector",
+        },
+        weight: 1574,
+        integrity: 6530,
+        img: "collector.png",
+    },
+    // end cargoBlocks
 };

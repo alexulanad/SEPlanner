@@ -1,6 +1,7 @@
 "use strict";
 
 const blockCategories = {
+    // Легкая броня
     lightArmor: {
         large: [
             largeBlocks.lightArmorBlock,
@@ -93,6 +94,7 @@ const blockCategories = {
         ], // end lightArmor--small
     }, // end lightArmor
 
+    // Тяжелая броня
     heavyArmor: {
         large: [
             largeBlocks.heavyArmorBlock,
@@ -185,6 +187,7 @@ const blockCategories = {
         ], // end heavyArmor--small
     }, // end heavyArmor
 
+    // Шасси
     landingGear: {
         large: [
             largeBlocks.landingGear,
@@ -198,6 +201,7 @@ const blockCategories = {
         ], // end landingGear--small
     },// end landingGear
 
+    // Кокпиты
     cockpits: {
         large: [
             largeBlocks.cockpit,
@@ -218,6 +222,7 @@ const blockCategories = {
         ], // end cockpits--small
     }, // end cockpits
 
+    // Источники энергии
     energySources: {
         large: [
             largeBlocks.battery,
@@ -236,7 +241,8 @@ const blockCategories = {
             smallBlocks.solarPanel,
         ], // end energySources--small
     }, // end energySources
-
+    
+    // Производство
     production: {
         large: [
             largeBlocks.survivalKit,
@@ -266,4 +272,41 @@ const blockCategories = {
             smallBlocks.oxygenTank,
         ], // end production--small
     }, // end production
+
+    // Грузовые блоки
+    cargoBlocks: {
+        large: [
+            largeBlocks.smallCargoContainer,
+            largeBlocks.largeCargoContainer,
+            largeBlocks.largeIndustrialCargoContainer,
+            largeBlocks.conveyorJunction,
+            largeBlocks.conveyorTube,
+            largeBlocks.curvedConveyorTube,
+            largeBlocks.conveyorSorter,
+            largeBlocks.industrialConveyorSorter,
+            largeBlocks.conveyorPipeJunction,
+            largeBlocks.conveyorPipe,
+            largeBlocks.conveyorPipeCurved,
+            largeBlocks.conveyorPipeCross,
+            largeBlocks.conveyorPipeFlanged,
+            largeBlocks.conveyorPipeEnd,
+            largeBlocks.collector,
+        ], // end cargoBlocks--large
+        small: [
+            smallBlocks.smallCargoContainer,
+            smallBlocks.mediumCargoContainer,
+            smallBlocks.largeCargoContainer,
+            smallBlocks.smallConveyor,
+            smallBlocks.smallConveyorTube,
+            smallBlocks.smallCurvedConveyorTube,
+            smallBlocks.smallConveyorSorter,
+            smallBlocks.conveyorJunction,
+            smallBlocks.conveyorTube,
+            smallBlocks.conveyorFrame,
+            smallBlocks.curvedConveyorTube,
+            smallBlocks.conveyorSorterMedium,
+            smallBlocks.collector,
+            smallBlocks.ejector,
+        ], // end cargoBlocks--small
+    }, // end cargoBlocks
 };

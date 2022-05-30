@@ -967,4 +967,133 @@ const smallBlocks = {
         img: "oxygenTankSmall.png",
     },
     // end production
+
+    // Грузовые блоки // cargoBlocks
+    smallCargoContainer: {
+        title: {
+            ru: "Малый контейнер",
+            en: "Small Cargo Container",
+        },
+        weight: 49.2,
+        integrity: 121,
+        img: "smallCargoContainer.png",
+    },
+    mediumCargoContainer: {
+        title: {
+            ru: "Средний контейнер",
+            en: "Medium Cargo Container",
+        },
+        weight: 274.8,
+        integrity: 919,
+        img: "mediumCargoContainer.png",
+    },
+    largeCargoContainer: {
+        title: {
+            ru: "Большой контейнер",
+            en: "Large Cargo Container",
+        },
+        weight: 626.2,
+        integrity: 2206,
+        img: "largeCargoContainer.png",
+    },
+    smallConveyor: {
+        title: {
+            ru: "Малый конвейер",
+            en: "Small Conveyor",
+        },
+        weight: 68,
+        integrity: 220,
+        img: "smallConveyor.png",
+    },
+    smallConveyorTube: {
+        title: {
+            ru: "Малая конвейерная труба",
+            en: "Small Conveyor Tube",
+        },
+        weight: 35,
+        integrity: 85,
+        img: "smallConveyorTube.png",
+    },
+    smallCurvedConveyorTube: {
+        title: {
+            ru: "Малая изогнутая конвейерная труба",
+            en: "Small Curved Conveyor Tube",
+        },
+        weight: 35,
+        integrity: 85,
+        img: "smallCurvedConveyorTube.png",
+    },
+    smallConveyorSorter: {
+        title: {
+            ru: "Малый сортировщик",
+            en: "Small Conveyor Sorter",
+        },
+        weight: 180,
+        integrity: 595,
+        img: "smallConveyorSorter.png",
+    },
+    conveyorJunction: {
+        title: {
+            ru: "Конвейер",
+            en: "Conveyor Junction",
+        },
+        weight: 583,
+        integrity: 2180,
+        img: "conveyorJunction.png",
+    },
+    conveyorTube: {
+        title: {
+            ru: "Средняя конвейерная труба",
+            en: "Medium Conveyor Tube",
+        },
+        weight: 374,
+        integrity: 1140,
+        img: "conveyorTube.png",
+    },
+    conveyorFrame: {
+        title: {
+            ru: "Рамка конвейера",
+            en: "Conveyor Frame",
+        },
+        weight: 179,
+        integrity: 590,
+        img: "conveyorFrame.png",
+    },
+    curvedConveyorTube: {
+        title: {
+            ru: "Изогнутая конвейерная труба",
+            en: "Curved Conveyor Tube",
+        },
+        weight: 365,
+        integrity: 1095,
+        img: "curvedConveyorTube.png",
+    },
+    conveyorSorterMedium: {
+        title: {
+            ru: "Сортировщик",
+            en: "Conveyor Sorter",
+        },
+        weight: 180,
+        integrity: 595,
+        img: "conveyorSorterMedium.png",
+    },
+    collector: {
+        title: {
+            ru: "Коллектор",
+            en: "Collector",
+        },
+        weight: 1237.6,
+        integrity: 5068,
+        img: "collector.png",
+    },
+    ejector: {
+        title: {
+            ru: "Извлекатель",
+            en: "Ejector",
+        },
+        weight: 204.8,
+        integrity: 894,
+        img: "ejector.png",
+    },
+    // end cargoBlocks
 };
