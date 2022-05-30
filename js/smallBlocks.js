@@ -910,4 +910,61 @@ const smallBlocks = {
         integrity: 389,
         img: "solarPanel.png",
     },// end energySources
+
+    // Производство // Production
+    survivalKit: {
+        title: {
+            ru: "Комплект для выживания",
+            en: "Survival Kit",
+        },
+        weight: 691,
+        integrity: 1040,
+        img: "survivalKitSmall.png",
+    },
+    airVent: {
+        title: {
+            ru: "Вентиляция",
+            en: "Air Vent",
+        },
+        weight: 289,
+        integrity: 1185,
+        img: "airVent.png",
+    },
+    o2H2Generator: {
+        title: {
+            ru: "Генератор O2/H2",
+            en: "O2/H2 Generator",
+        },
+        weight: 298.6,
+        integrity: 1203,
+        img: "o2H2GeneratorSmall.png",
+    },
+    hydrogenTank: {
+        title: {
+            ru: "Водородный бак",
+            en: "Hydrogen Tank",
+        },
+        weight: 1580.8,
+        integrity: 6254,
+        img: "hydrogenTank.png",
+    },
+    smallHydrogenTank: {
+        title: {
+            ru: "Малый водородный бак",
+            en: "Small Hydrogen Tank",
+        },
+        weight: 109.8,
+        integrity: 454,
+        img: "smallHydrogenTankSmall.png",
+    },
+    oxygenTank: {
+        title: {
+            ru: "Кислородный бак",
+            en: "Oxygen Tank",
+        },
+        weight: 641.6,
+        integrity: 2538,
+        img: "oxygenTankSmall.png",
+    },
+    // end production
 };

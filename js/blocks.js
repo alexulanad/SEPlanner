@@ -236,4 +236,34 @@ const blockCategories = {
             smallBlocks.solarPanel,
         ], // end energySources--small
     }, // end energySources
+
+    production: {
+        large: [
+            largeBlocks.survivalKit,
+            largeBlocks.basicRefinery,
+            largeBlocks.refinery,
+            largeBlocks.industrialRefinery,
+            largeBlocks.basicAssembler,
+            largeBlocks.assembler,
+            largeBlocks.industrialAssembler,
+            largeBlocks.speedModule,
+            largeBlocks.yieldModule,
+            largeBlocks.powerEfficiencyModule,
+            largeBlocks.airVent,
+            largeBlocks.o2H2Generator,
+            largeBlocks.hydrogenTank,
+            largeBlocks.smallHydrogenTank,
+            largeBlocks.industrialHydrogenTank,
+            largeBlocks.oxygenFarm,
+            largeBlocks.oxygenTank,
+        ], // end production--large
+        small: [
+            smallBlocks.survivalKit,
+            smallBlocks.airVent,
+            smallBlocks.o2H2Generator,
+            smallBlocks.hydrogenTank,
+            smallBlocks.smallHydrogenTank,
+            smallBlocks.oxygenTank,
+        ], // end production--small
+    }, // end production
 };

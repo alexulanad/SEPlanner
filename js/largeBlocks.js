@@ -902,4 +902,160 @@ const largeBlocks = {
         integrity: 1276,
         img: "solarPanel.png",
     }, // end energySources
+
+    // Производство // Production
+    survivalKit: {
+        title: {
+            ru: "Комплект для выживания",
+            en: "Survival Kit",
+        },
+        weight: 1171,
+        integrity: 3440,
+        img: "survivalKit.png",
+    },
+    basicRefinery: {
+        title: {
+            ru: "Базовый очиститель",
+            en: "Basic Refinery",
+        },
+        weight: 2802,
+        integrity: 13010,
+        img: "basicRefinery.png",
+    },
+    refinery: {
+        title: {
+            ru: "Очистительный завод",
+            en: "Refinery",
+        },
+        weight: 25330,
+        integrity: 123660,
+        img: "refinery.png",
+    },
+    industrialRefinery: {
+        title: {
+            ru: "Промышленный очиститель",
+            en: "Industrial Refinery",
+        },
+        weight: 25330,
+        integrity: 123660,
+        img: "industrialRefinery.png",
+    },
+    basicAssembler: {
+        title: {
+            ru: "Базовый сборщик",
+            en: "Basic Assembler",
+        },
+        weight: 2208,
+        integrity: 9700,
+        img: "basicAssembler.png",
+    },
+    assembler: {
+        title: {
+            ru: "Сборщик",
+            en: "Assembler",
+        },
+        weight: 4092,
+        integrity: 17710,
+        img: "assembler.png",
+    },
+    industrialAssembler: {
+        title: {
+            ru: "Промышленный сборщик",
+            en: "Industrial Assembler",
+        },
+        weight: 4092,
+        integrity: 17710,
+        img: "industrialAssembler.png",
+    },
+    speedModule: {
+        title: {
+            ru: "Модуль продуктивности",
+            en: "Speed Module",
+        },
+        weight: 2508,
+        integrity: 11720,
+        img: "speedModule.png",
+    },
+    yieldModule: {
+        title: {
+            ru: "Модуль выработки",
+            en: "Yield Module",
+        },
+        weight: 2856,
+        integrity: 11985,
+        img: "yieldModule.png",
+    },
+    powerEfficiencyModule: {
+        title: {
+            ru: "Модуль энергоэффективности",
+            en: "Power Efficiency Module",
+        },
+        weight: 2996,
+        integrity: 12660,
+        img: "powerEfficiencyModule.png",
+    },
+    airVent: {
+        title: {
+            ru: "Вентиляция",
+            en: "Air Vent",
+        },
+        weight: 1301,
+        integrity: 5505,
+        img: "airVent.png",
+    },
+    o2H2Generator: {
+        title: {
+            ru: "Генератор O2/H2",
+            en: "O2/H2 Generator",
+        },
+        weight: 2587,
+        integrity: 12435,
+        img: "o2H2Generator.png",
+    },
+    hydrogenTank: {
+        title: {
+            ru: "Водородный бак",
+            en: "Hydrogen Tank",
+        },
+        weight: 8161.6,
+        integrity: 34908,
+        img: "hydrogenTank.png",
+    },
+    smallHydrogenTank: {
+        title: {
+            ru: "Малый водородный бак",
+            en: "Small Hydrogen Tank",
+        },
+        weight: 3161.6,
+        integrity: 12508,
+        img: "smallHydrogenTank.png",
+    },
+    industrialHydrogenTank: {
+        title: {
+            ru: "Промышленный водородный бак",
+            en: "Industrial Hydrogen Tank",
+        },
+        weight: 8161.6,
+        integrity: 34908,
+        img: "industrialHydrogenTank.png",
+    },
+    oxygenFarm: {
+        title: {
+            ru: "Кислородная ферма",
+            en: "Oxygen Farm",
+        },
+        weight: 3004,
+        integrity: 11970,
+        img: "oxygenFarm.png",
+    },
+    oxygenTank: {
+        title: {
+            ru: "Кислородный бак",
+            en: "Oxygen Tank",
+        },
+        weight: 3161.6,
+        integrity: 12508,
+        img: "oxygenTank.png",
+    },
+    // end production
 };
