@@ -355,13 +355,37 @@ const blockCategories = {
         ],
     },
     // end toolBlocks
+
     // Ускорители
     thrusters: {
         large: [
-
+            largeBlocks.atmosphericThruster,
+            largeBlocks.largeAtmosphericThruster,
+            largeBlocks.sciFiAtmosphericThruster,
+            largeBlocks.sciFiLargeAtmosphericThruster,
+            largeBlocks.hydrogenThruster,
+            largeBlocks.largeHydrogenThruster,
+            largeBlocks.industrialHydrogenThruster,
+            largeBlocks.industrialLargeHydrogenThruster,
+            largeBlocks.ionThruster,
+            largeBlocks.largeIonThruster,
+            largeBlocks.sciFiIonThruster,
+            largeBlocks.sciFiLargeIonThruster,
+            largeBlocks.jumpDrive,
         ],
         small: [
-
+            smallBlocks.atmosphericThruster,
+            smallBlocks.largeAtmosphericThruster,
+            smallBlocks.SciFiAtmosphericThruster,
+            smallBlocks.SciFiLargeAtmosphericThruster,
+            smallBlocks.hydrogenThruster,
+            smallBlocks.largeHydrogenThruster,
+            smallBlocks.industrialHydrogenThruster,
+            smallBlocks.industrialLargeHydrogenThruster,
+            smallBlocks.ionThruster,
+            smallBlocks.largeIonThruster,
+            smallBlocks.SciFiIonThruster,
+            smallBlocks.SciFiLargeIonThruster,
         ],
     },
     // end thrusters

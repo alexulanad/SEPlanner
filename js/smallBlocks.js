@@ -1247,8 +1247,115 @@ const smallBlocks = {
     },
     // end toolBlocks
 
-    // Ускорители
-
+    // Ускорители // thrusters
+    atmosphericThruster: {
+        title: {
+            ru: "Атмосферный ускоритель",
+            en: "Atmospheric Thruster",
+        },
+        weight: 699,
+        integrity: 1770,
+        img: "atmosphericThruster.png",
+    },
+    largeAtmosphericThruster: {
+        title: {
+            ru: "Большой атмосферный ускоритель",
+            en: "Large Atmospheric Thruster",
+        },
+        weight: 2948,
+        integrity: 6980,
+        img: "largeAtmosphericThruster.png",
+    },
+    SciFiAtmosphericThruster: {
+        title: {
+            ru: "Атмосферный НФ-ускоритель",
+            en: "Sci-Fi Atmospheric Thruster",
+        },
+        weight: 699,
+        integrity: 1770,
+        img: "SciFiAtmosphericThrusterSmall.png",
+    },
+    SciFiLargeAtmosphericThruster: {
+        title: {
+            ru: "Большой атмосферный НФ-ускоритель",
+            en: "Sci-Fi Large Atmospheric Thruster",
+        },
+        weight: 2948,
+        integrity: 6980,
+        img: "SciFiLargeAtmosphericThrusterSmall.png",
+    },
+    hydrogenThruster: {
+        title: {
+            ru: "Водородный ускоритель",
+            en: "Hydrogen Thruster",
+        },
+        weight: 334,
+        integrity: 1390,
+        img: "hydrogenThruster.png",
+    },
+    largeHydrogenThruster: {
+        title: {
+            ru: "Большой водородный ускоритель",
+            en: "Large Hydrogen Thruster",
+        },
+        weight: 1222,
+        integrity: 5160,
+        img: "largeHydrogenThruster.png",
+    },
+    industrialHydrogenThruster: {
+        title: {
+            ru: "Промышленный водородный ускоритель",
+            en: "Industrial Hydrogen Thruster",
+        },
+        weight: 334,
+        integrity: 1390,
+        img: "industrialHydrogenThruster.png",
+    },
+    industrialLargeHydrogenThruster: {
+        title: {
+            ru: "Промышленный большой водородный ускоритель",
+            en: "Industrial Large Hydrogen Thruster",
+        },
+        weight: 1222,
+        integrity: 5160,
+        img: "industrialLargeHydrogenThruster.png",
+    },
+    ionThruster: {
+        title: {
+            ru: "Ионный ускоритель",
+            en: "Ion Thruster",
+        },
+        weight: 121,
+        integrity: 350,
+        img: "ionThruster.png",
+    },
+    largeIonThruster: {
+        title: {
+            ru: "Большой ионный ускоритель",
+            en: "Large Ion Thruster",
+        },
+        weight: 721,
+        integrity: 1220,
+        img: "largeIonThruster.png",
+    },
+    SciFiIonThruster: {
+        title: {
+            ru: "Ионный НФ-ускоритель",
+            en: "Sci-Fi Ion Thruster",
+        },
+        weight: 121,
+        integrity: 350,
+        img: "SciFiIonThrusterSmall.png",
+    },
+    SciFiLargeIonThruster: {
+        title: {
+            ru: "Большой ионный НФ-ускоритель",
+            en: "Sci-Fi Large Ion Thruster",
+        },
+        weight: 721,
+        integrity: 1220,
+        img: "SciFiLargeIonThrusterSmall.png",
+    },
     // end thrusters
 
 };
