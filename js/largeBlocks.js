@@ -1196,4 +1196,97 @@ const largeBlocks = {
         img: "collector.png",
     },
     // end cargoBlocks
+
+    // Соединители // connectors
+    connector: {
+        title: {
+            ru: "Коннектор",
+            en: "Connector",
+        },
+        weight: 3564,
+        integrity: 16720,
+        img: "connector.png",
+    },
+    piston: {
+        title: {
+            ru: "Поршень",
+            en: "Piston",
+        },
+        weight: 576.4,
+        integrity: 2202,
+        img: "piston.png",
+    },
+    topPistonPart: {
+        title: {
+            ru: "Головка поршня",
+            en: "Top Piston Part",
+        },
+        weight: 400,
+        integrity: 1480,
+        img: "topPistonPart.png",
+    },
+    rotor: {
+        title: {
+            ru: "Ротор",
+            en: "Rotor",
+        },
+        weight: 576.4,
+        integrity: 2202,
+        img: "rotor.png",
+    },
+    rotorPart: {
+        title: {
+            ru: "Часть ротора",
+            en: "Rotor Part",
+        },
+        weight: 750,
+        integrity: 3360,
+        img: "rotorPart.png",
+    },
+    advancedRotor: {
+        title: {
+            ru: "Улучшенный ротор",
+            en: "Advanced Rotor",
+        },
+        weight: 576.4,
+        integrity: 2202,
+        img: "advancedRotor.png",
+    },
+    advancedRotorPart: {
+        title: {
+            ru: "Улучшенная часть ротора",
+            en: "Advanced Rotor Part",
+        },
+        weight: 850,
+        integrity: 3600,
+        img: "advancedRotorPart.png",
+    },
+    hinge: {
+        title: {
+            ru: "Шарнир",
+            en: "Hinge",
+        },
+        weight: 596.4,
+        integrity: 2302,
+        img: "hinge.png",
+    },
+    hingePart: {
+        title: {
+            ru: "Шарнирная деталь",
+            en: "Hinge Part",
+        },
+        weight: 404,
+        integrity: 1680,
+        img: "hingePart.png",
+    },
+    mergeBlock: {
+        title: {
+            ru: "Соединитель",
+            en: "Merge Block",
+        },
+        weight: 558.4,
+        integrity: 2092,
+        img: "mergeBlock.png",
+    },
+    // end connectors
 };

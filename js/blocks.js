@@ -309,4 +309,36 @@ const blockCategories = {
             smallBlocks.ejector,
         ], // end cargoBlocks--small
     }, // end cargoBlocks
+
+    // Соединители
+    connectors: {
+        large: [
+            largeBlocks.connector,
+            largeBlocks.piston,
+            largeBlocks.topPistonPart,
+            largeBlocks.rotor,
+            largeBlocks.rotorPart,
+            largeBlocks.advancedRotor,
+            largeBlocks.advancedRotorPart,
+            largeBlocks.hinge,
+            largeBlocks.hingePart,
+            largeBlocks.mergeBlock,
+        ], // end connectors--large
+        small: [
+            smallBlocks.connector,
+            smallBlocks.piston,
+            smallBlocks.topPistonPart,
+            smallBlocks.rotor,
+            smallBlocks.rotorPart,
+            smallBlocks.advancedRotor,
+            smallBlocks.advancedRotorPart,
+            smallBlocks.hinge3x3,
+            smallBlocks.hingePart3x3,
+            smallBlocks.hinge,
+            smallBlocks.hingePart,
+            smallBlocks.mergeBlock,
+            smallBlocks.smallMergeBlock,
+        ], // end connectors--small
+    },
+    // end connectors
 };

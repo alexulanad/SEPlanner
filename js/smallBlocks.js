@@ -1096,4 +1096,124 @@ const smallBlocks = {
         img: "ejector.png",
     },
     // end cargoBlocks
+
+    // Соединители // connectors
+    connector: {
+        title: {
+            ru: "Коннектор",
+            en: "Connector",
+        },
+        weight: 685.2,
+        integrity: 2796,
+        img: "connector.png",
+    },
+    piston: {
+        title: {
+            ru: "Поршень",
+            en: "Piston",
+        },
+        weight: 306.2,
+        integrity: 661,
+        img: "piston.png",
+    },
+    topPistonPart: {
+        title: {
+            ru: "Головка поршня",
+            en: "Top Piston Part",
+        },
+        weight: 130,
+        integrity: 520,
+        img: "topPistonPart.png",
+    },
+    rotor: {
+        title: {
+            ru: "Ротор",
+            en: "Rotor",
+        },
+        weight: 432.2,
+        integrity: 706,
+        img: "rotor.png",
+    },
+    rotorPart: {
+        title: {
+            ru: "Часть ротора",
+            en: "Rotor Part",
+        },
+        weight: 264,
+        integrity: 1290,
+        img: "rotorPart.png",
+    },
+    advancedRotor: {
+        title: {
+            ru: "Улучшенный ротор",
+            en: "Advanced Rotor",
+        },
+        weight: 1018.2,
+        integrity: 706,
+        img: "advancedRotor.png",
+    },
+    advancedRotorPart: {
+        title: {
+            ru: "Улучшенная часть ротора",
+            en: "Advanced Rotor Part",
+        },
+        weight: 850,
+        integrity: 3600,
+        img: "advancedRotorPart.png",
+    },
+    hinge3x3: {
+        title: {
+            ru: "Шарнир 3х3",
+            en: "Hinge 3x3",
+        },
+        weight: 548.4,
+        integrity: 1382,
+        img: "hinge3x3.png",
+    },
+    hingePart3x3: {
+        title: {
+            ru: "Шарнирная деталь 3х3",
+            en: "Hinge Part 3x3",
+        },
+        weight: 202,
+        integrity: 840,
+        img: "hingePart3x3.png",
+    },
+    hinge: {
+        title: {
+            ru: "Шарнир",
+            en: "Hinge",
+        },
+        weight: 326.4,
+        integrity: 862,
+        img: "hingeSmall.png",
+    },
+    hingePart: {
+        title: {
+            ru: "Шарнирная деталь",
+            en: "Hinge Part",
+        },
+        weight: 101,
+        integrity: 420,
+        img: "hingePartSmall.png",
+    },
+    mergeBlock: {
+        title: {
+            ru: "Соединитель",
+            en: "Merge Block",
+        },
+        weight: 152.2,
+        integrity: 621,
+        img: "mergeBlock.png",
+    },
+    smallMergeBlock: {
+        title: {
+            ru: "Малый соединитель",
+            en: "Small Merge Block",
+        },
+        weight: 92.2,
+        integrity: 346,
+        img: "smallMergeBlock.png",
+    },
+    // end connectors
 };
