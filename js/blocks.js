@@ -508,4 +508,32 @@ const blockCategories = {
         ],
     },
     // end weapon
+
+    // Дисплеи // display
+    display: {
+        large:[
+            largeBlocks.textPanel,
+            largeBlocks.LCDPanel,
+            largeBlocks.wideLCDPanel,
+            largeBlocks.transparentLCD,
+            largeBlocks.cornerLCDTop,
+            largeBlocks.cornerLCDBottom,
+            largeBlocks.cornerLCDFlatTop,
+            largeBlocks.cornerLCDFlatBottom,
+            largeBlocks.sciFiLCDPanel3x3,
+            largeBlocks.sciFiLCDPanel5x3,
+            largeBlocks.sciFiLCDPanel5x5,
+        ],
+        small:[
+            smallBlocks.textPanel,
+            smallBlocks.LCDPanel,
+            smallBlocks.wideLCDPanel,
+            smallBlocks.transparentLCD,
+            smallBlocks.cornerLCDTop,
+            smallBlocks.cornerLCDBottom,
+            smallBlocks.cornerLCDFlatTop,
+            smallBlocks.cornerLCDFlatBottom,
+        ],
+    },
+    // end display
 };

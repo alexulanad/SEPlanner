@@ -1865,4 +1865,106 @@ const largeBlocks = {
         img: "targetDummy.png",
     },
     // end weapon
+
+    // Дисплеи // display
+    textPanel: {
+        title: {
+            ru: "Дисплей",
+            en: "Text Panel",
+        },
+        weight: 162.2,
+        integrity: 371,
+        img: "textPanel.png",
+    },
+    LCDPanel: {
+        title: {
+            ru: "Дисплей 1х1",
+            en: "LCD Panel",
+        },
+        weight: 222.2,
+        integrity: 611,
+        img: "LCDPanel.png",
+    },
+    wideLCDPanel: {
+        title: {
+            ru: "Дисплей 1х2",
+            en: "Wide LCD Panel",
+        },
+        weight: 444.4,
+        integrity: 1222,
+        img: "wideLCDPanel.png",
+    },
+    transparentLCD: {
+        title: {
+            ru: "Прозрачная ЖК-панель",
+            en: "Transparent LCD",
+        },
+        weight: 295.2,
+        integrity: 896,
+        img: "transparentLCD.png",
+    },
+    cornerLCDTop: {
+        title: {
+            ru: "Угловой дисплей, верх",
+            en: "Corner LCD Top",
+        },
+        weight: 48.6,
+        integrity: 158,
+        img: "cornerLCDTop.png",
+    },
+    cornerLCDBottom: {
+        title: {
+            ru: "Угловой дисплей, низ",
+            en: "Corner LCD Bottom",
+        },
+        weight: 48.6,
+        integrity: 158,
+        img: "cornerLCDBottom.png",
+    },
+    cornerLCDFlatTop: {
+        title: {
+            ru: "Малый дисплей, верх",
+            en: "Corner LCD Flat Top",
+        },
+        weight: 48.6,
+        integrity: 158,
+        img: "cornerLCDFlatTop.png",
+    },
+    cornerLCDFlatBottom: {
+        title: {
+            ru: "Малый дисплей, низ",
+            en: "Corner LCD Flat Bottom",
+        },
+        weight: 48.6,
+        integrity: 158,
+        img: "cornerLCDFlatBottom.png",
+    },
+    sciFiLCDPanel3x3: {
+        title: {
+            ru: "НФ-дисплей 3х3",
+            en: "Sci-Fi LCD Panel 3x3",
+        },
+        weight: 1902,
+        integrity: 5110,
+        img: "sciFiLCDPanel3x3.png",
+    },
+    sciFiLCDPanel5x3: {
+        title: {
+            ru: "НФ-дисплей 5х3",
+            en: "Sci-Fi LCD Panel 5x3",
+        },
+        weight: 3318,
+        integrity: 9090,
+        img: "sciFiLCDPanel5x3.png",
+    },
+    sciFiLCDPanel5x5: {
+        title: {
+            ru: "НФ-дисплей 5х5",
+            en: "Sci-Fi LCD Panel 5x5",
+        },
+        weight: 5530,
+        integrity: 15150,
+        img: "sciFiLCDPanel5x5.png",
+    },
+    // end display
 };

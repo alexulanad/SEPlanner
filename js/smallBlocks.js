@@ -1729,4 +1729,79 @@ const smallBlocks = {
         img: "decoy.png",
     },
     // end weapon
+
+    // Дисплеи // display
+    textPanel: {
+        title: {
+            ru: "Дисплей",
+            en: "Text Panel",
+        },
+        weight: 74.8,
+        integrity: 214,
+        img: "textPanel.png",
+    },
+    LCDPanel: {
+        title: {
+            ru: "Дисплей 1х1",
+            en: "LCD Panel",
+        },
+        weight: 89.8,
+        integrity: 274,
+        img: "LCDPanel.png",
+    },
+    wideLCDPanel: {
+        title: {
+            ru: "Дисплей 1х2",
+            en: "Wide LCD Panel",
+        },
+        weight: 146.6,
+        integrity: 413,
+        img: "wideLCDPanel.png",
+    },
+    transparentLCD: {
+        title: {
+            ru: "Прозрачная ЖК-панель",
+            en: "Transparent LCD",
+        },
+        weight: 71.8,
+        integrity: 199,
+        img: "transparentLCD.png",
+    },
+    cornerLCDTop: {
+        title: {
+            ru: "Угловой дисплей, верх",
+            en: "Corner LCD Top",
+        },
+        weight: 32.4,
+        integrity: 97,
+        img: "cornerLCDTop.png",
+    },
+    cornerLCDBottom: {
+        title: {
+            ru: "Угловой дисплей, низ",
+            en: "Corner LCD Bottom",
+        },
+        weight: 32.4,
+        integrity: 97,
+        img: "cornerLCDBottom.png",
+    },
+    cornerLCDFlatTop: {
+        title: {
+            ru: "Малый дисплей, верх",
+            en: "Corner LCD Flat Top",
+        },
+        weight: 32.4,
+        integrity: 97,
+        img: "cornerLCDFlatTop.png",
+    },
+    cornerLCDFlatBottom: {
+        title: {
+            ru: "Малый дисплей, низ",
+            en: "Corner LCD Flat Bottom",
+        },
+        weight: 32.4,
+        integrity: 97,
+        img: "cornerLCDFlatBottom.png",
+    },
+    // end display
 };
