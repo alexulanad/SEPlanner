@@ -536,4 +536,28 @@ const blockCategories = {
         ],
     },
     // end display
+
+    // Двери // doors
+    doors: {
+        large: [
+            largeBlocks.door,
+            largeBlocks.slidingDoor,
+            largeBlocks.offsetDoor,
+            largeBlocks.gate,
+            largeBlocks.airtightHangarDoor,
+            largeBlocks.blastDoors,
+            largeBlocks.blastDoorCorner,
+            largeBlocks.blastDoorCornerInverted,
+            largeBlocks.blastDoorEdge,
+        ],
+        small: [
+            smallBlocks.door,
+            smallBlocks.sciFiSlidingDoor,
+            smallBlocks.blastDoors,
+            smallBlocks.blastDoorCorner,
+            smallBlocks.blastDoorCornerInverted,
+            smallBlocks.blastDoorEdge,
+        ],
+    },
+    // end doors
 };

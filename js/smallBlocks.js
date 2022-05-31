@@ -1804,4 +1804,61 @@ const smallBlocks = {
         img: "cornerLCDFlatBottom.png",
     },
     // end display
+
+    // Двери // doors
+    door: {
+        title: {
+            ru: "Дверь",
+            en: "Door",
+        },
+        weight: 456.4,
+        integrity: 1767,
+        img: "doorSmall.png",
+    },
+    sciFiSlidingDoor: {
+        title: {
+            ru: "Sci-Fi Sliding Door",
+            en: "Sci-Fi Sliding Door",
+        },
+        weight: 514.4,
+        integrity: 2057,
+        img: "sciFiSlidingDoor.png",
+    },
+    blastDoors: {
+        title: {
+            ru: "Блок ангарной двери",
+            en: "Blast Doors",
+        },
+        weight: 100,
+        integrity: 500,
+        img: "blastDoors.png",
+    },
+    blastDoorCorner: {
+        title: {
+            ru: "Угол ангарной двери",
+            en: "Blast Door Corner",
+        },
+        weight: 100,
+        integrity: 500,
+        img: "blastDoorCorner.png",
+    },
+    blastDoorCornerInverted: {
+        title: {
+            ru: "Обратный угол ангарной двери",
+            en: "Blast Door Corner Inverted",
+        },
+        weight: 100,
+        integrity: 500,
+        img: "blastDoorCornerInverted.png",
+    },
+    blastDoorEdge: {
+        title: {
+            ru: "Край ангарной двери",
+            en: "Blast Door Edge",
+        },
+        weight: 100,
+        integrity: 500,
+        img: "blastDoorEdge.png",
+    },
+    // end doors
 };

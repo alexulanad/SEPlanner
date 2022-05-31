@@ -1967,4 +1967,88 @@ const largeBlocks = {
         img: "sciFiLCDPanel5x5.png",
     },
     // end display
+
+    // Двери // doors
+    door: {
+        title: {
+            ru: "Дверь",
+            en: "Door",
+        },
+        weight: 582.4,
+        integrity: 2297,
+        img: "door.png",
+    },
+    slidingDoor: {
+        title: {
+            ru: "Раздвижная дверь",
+            en: "Sliding Door",
+        },
+        weight: 1065.4,
+        integrity: 4327,
+        img: "slidingDoor.png",
+    },
+    offsetDoor: {
+        title: {
+            ru: "Сдвижная дверь",
+            en: "Offset Door",
+        },
+        weight: 990.4,
+        integrity: 4137,
+        img: "offsetDoor.png",
+    },
+    gate: {
+        title: {
+            ru: "Ворота",
+            en: "Gate",
+        },
+        weight: 17680,
+        integrity: 85310,
+        img: "gate.png",
+    },
+    airtightHangarDoor: {
+        title: {
+            ru: "Герметичная створка ангара",
+            en: "Airtight Hangar Door",
+        },
+        weight: 7864.4,
+        integrity: 37442,
+        img: "airtightHangarDoor.png",
+    },
+    blastDoors: {
+        title: {
+            ru: "Блок ангарной двери",
+            en: "Blast Doors",
+        },
+        weight: 2800,
+        integrity: 14000,
+        img: "blastDoors.png",
+    },
+    blastDoorCorner: {
+        title: {
+            ru: "Угол ангарной двери",
+            en: "Blast Door Corner",
+        },
+        weight: 2400,
+        integrity: 12000,
+        img: "blastDoorCorner.png",
+    },
+    blastDoorCornerInverted: {
+        title: {
+            ru: "Обратный угол ангарной двери",
+            en: "Blast Door Corner Inverted",
+        },
+        weight: 2700,
+        integrity: 13500,
+        img: "blastDoorCornerInverted.png",
+    },
+    blastDoorEdge: {
+        title: {
+            ru: "Край ангарной двери",
+            en: "Blast Door Edge",
+        },
+        weight: 2600,
+        integrity: 13000,
+        img: "blastDoorEdge.png",
+    },
+    // end doors
 };
