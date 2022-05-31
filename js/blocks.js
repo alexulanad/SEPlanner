@@ -623,4 +623,33 @@ const blockCategories = {
         ],
     },
     // end windows
+    // Освещение // lighting
+    lighting: {
+        large: [
+            largeBlocks.spotlight,
+            largeBlocks.interiorLight,
+            largeBlocks.cornerLight,
+            largeBlocks.cornerLightDouble,
+            largeBlocks.rotatingLight,
+            largeBlocks.neonTubes1,
+            largeBlocks.neonTubes2,
+            largeBlocks.neonTubesCorner,
+            largeBlocks.neonTubesUp,
+            largeBlocks.neonTubesDown,
+            largeBlocks.neonTubesEnd1,
+            largeBlocks.neonTubesEnd2,
+            largeBlocks.neonTubesDown2,
+            largeBlocks.neonTubesUShape,
+        ],
+        small: [
+            smallBlocks.spotlight,
+            smallBlocks.offsetLight,
+            smallBlocks.offsetSpotlight,
+            smallBlocks.interiorLight,
+            smallBlocks.cornerLight,
+            smallBlocks.cornerLightDouble,
+            smallBlocks.rotatingLight,
+        ],
+    },
+    // end lighting
 };

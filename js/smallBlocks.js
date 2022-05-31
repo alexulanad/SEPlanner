@@ -2080,4 +2080,70 @@ const smallBlocks = {
         img: "barredWindowFace.png",
     },
     // end windows
+
+    // Освещение // lighting
+    spotlight: {
+        title: {
+            ru: "Прожектор",
+            en: "Spotlight",
+        },
+        weight: 86,
+        integrity: 325,
+        img: "spotlight.png",
+    },
+    offsetLight: {
+        title: {
+            ru: "Навесная фара",
+            en: "Offset Light",
+        },
+        weight: 16,
+        integrity: 60,
+        img: "offsetLight.png",
+    },
+    offsetSpotlight: {
+        title: {
+            ru: "Навесной прожектор",
+            en: "Offset Spotlight ",
+        },
+        weight: 31,
+        integrity: 120,
+        img: "offsetSpotlight.png",
+    },
+    interiorLight: {
+        title: {
+            ru: "Лампа",
+            en: "Interior Light",
+        },
+        weight: 0,
+        integrity: 60,
+        img: "interiorLight.png",
+    },
+    cornerLight: {
+        title: {
+            ru: "Угловая лампа",
+            en: "Corner Light",
+        },
+        weight: 0,
+        integrity: 60,
+        img: "cornerLight.png",
+    },
+    cornerLightDouble: {
+        title: {
+            ru: "Двойная угловая лампа",
+            en: "Corner Light - Double",
+        },
+        weight: 0,
+        integrity: 120,
+        img: "cornerLightDouble.png",
+    },
+    rotatingLight: {
+        title: {
+            ru: "Вращающийся светильник",
+            en: "Rotating Light",
+        },
+        weight: 48,
+        integrity: 130,
+        img: "rotatingLight.png",
+    },
+    // end lighting
 };

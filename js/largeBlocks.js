@@ -2333,4 +2333,133 @@ const largeBlocks = {
         img: "halfWindowCornerInv.png",
     },
     // end windows
+
+    // Освещение // lighting
+    spotlight: {
+        title: {
+            ru: "Прожектор",
+            en: "Spotlight",
+        },
+        weight: 450,
+        integrity: 1910,
+        img: "spotlight.png",
+    },
+    interiorLight: {
+        title: {
+            ru: "Лампа",
+            en: "Interior Light",
+        },
+        weight: 0,
+        integrity: 60,
+        img: "interiorLight.png",
+    },
+    cornerLight: {
+        title: {
+            ru: "Угловая лампа",
+            en: "Corner Light",
+        },
+        weight: 0,
+        integrity: 90,
+        img: "cornerLight.png",
+    },
+    cornerLightDouble: {
+        title: {
+            ru: "Двойная угловая лампа",
+            en: "Corner Light - Double",
+        },
+        weight: 0,
+        integrity: 180,
+        img: "cornerLightDouble.png",
+    },
+    rotatingLight: {
+        title: {
+            ru: "Вращающийся светильник",
+            en: "Rotating Light",
+        },
+        weight: 48,
+        integrity: 130,
+        img: "rotatingLight.png",
+    },
+    neonTubes1: {
+        title: {
+            ru: "Неоновые лампы 1",
+            en: "Neon Tubes 1",
+        },
+        weight: 58,
+        integrity: 240,
+        img: "neonTubes1.png",
+    },
+    neonTubes2: {
+        title: {
+            ru: "Неоновые лампы 2",
+            en: "Neon Tubes 2",
+        },
+        weight: 58,
+        integrity: 240,
+        img: "neonTubes2.png",
+    },
+    neonTubesCorner: {
+        title: {
+            ru: "Неоновые лампы (угол)",
+            en: "Neon Tubes Corner",
+        },
+        weight: 58,
+        integrity: 240,
+        img: "neonTubesCorner.png",
+    },
+    neonTubesUp: {
+        title: {
+            ru: "Неоновые лампы (верх)",
+            en: "Neon Tubes Up",
+        },
+        weight: 116,
+        integrity: 480,
+        img: "neonTubesUp.png",
+    },
+    neonTubesDown: {
+        title: {
+            ru: "Неоновые лампы (низ)",
+            en: "Neon Tubes Down",
+        },
+        weight: 29,
+        integrity: 120,
+        img: "neonTubesDown.png",
+    },
+    neonTubesEnd1: {
+        title: {
+            ru: "Неоновые лампы (конец) 1",
+            en: "Neon Tubes End 1",
+        },
+        weight: 58,
+        integrity: 240,
+        img: "neonTubesEnd1.png",
+    },
+    neonTubesEnd2: {
+        title: {
+            ru: "Неоновые лампы (конец) 2",
+            en: "Neon Tubes End 2",
+        },
+        weight: 86,
+        integrity: 360,
+        img: "neonTubesEnd2.png",
+    },
+    neonTubesDown2: {
+        title: {
+            ru: "Неоновые лампы (низ) 2",
+            en: "Neon Tubes Down 2",
+        },
+        weight: 87,
+        integrity: 360,
+        img: "neonTubesDown2.png",
+    },
+    neonTubesUShape: {
+        title: {
+            ru: 'Неоновые лампы ("U")',
+            en: "Neon Tubes U Shape",
+        },
+        weight: 174,
+        integrity: 720,
+        img: "neonTubesUShape.png",
+    },
+    // end lighting
 };
