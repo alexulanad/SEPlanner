@@ -39,13 +39,15 @@ const displayBlocksCategory = function(categoryKey) {
         console.log("Small");
     }
 
-    blocks.forEach(item => {
+     blocks.forEach(item => {
         blockListCategory.innerHTML += `
         <div class="content-block__block-item">
             <img class="block-image--ss" src="img/blocks/${item.img}">
             <span class="content-block__block-item-name">${item.title.ru}</span>
         </div>
         `;
+        // сделать появление каждого итема через определенный интервал (возможно добавить анимацию)
+        // реализовать через стили, скрытие элемента и появление его кажду итерацию на + 10мс
     });
 
     blockListCategory.lastElementChild.style.marginBottom = 0;

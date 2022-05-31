@@ -1439,4 +1439,178 @@ const largeBlocks = {
         img: "jumpDrive.png",
     },
     // end thrusters
+
+        // Колеса // wheels
+        wheel1x1: {
+            title: {
+                ru: "Колесо 1х1",
+                en: "Wheel 1x1",
+            },
+            weight: 420,
+            integrity: 1640,
+            img: "wheel1x1.png",
+        },
+        wheel3x3: {
+            title: {
+                ru: "Колесо 3х3",
+                en: "Wheel 3x3",
+            },
+            weight: 590,
+            integrity: 2310,
+            img: "wheel3x3.png",
+        },
+        wheel5x5: {
+            title: {
+                ru: "Колесо 5х5",
+                en: "Wheel 5x5",
+            },
+            weight: 760,
+            integrity: 2980,
+            img: "wheel5x5.png",
+        },
+        wheelSuspension1x1Left: {
+            title: {
+                ru: "Колесо с подвеской 1х1 левое",
+                en: "Wheel Suspension 1x1 Left",
+            },
+            weight: 962,
+            integrity: 3730,
+            img: "wheelSuspension1x1Left.png",
+        },
+        wheelSuspension3x3Left: {
+            title: {
+                ru: "Колесо с подвеской 3х3 левое",
+                en: "Wheel Suspension 3x3 Left",
+            },
+            weight: 962,
+            integrity: 3730,
+            img: "wheelSuspension3x3Left.png",
+        },
+        wheelSuspension5x5Left: {
+            title: {
+                ru: "Колесо с подвеской 5х5 левое",
+                en: "Wheel Suspension 5x5 Left",
+            },
+            weight: 2820,
+            integrity: 10650,
+            img: "wheelSuspension5x5Left.png",
+        },
+        wheelSuspension1x1Right: {
+            title: {
+                ru: "Колесо с подвеской 1х1 правое",
+                en: "Wheel Suspension 1x1 Right",
+            },
+            weight: 962,
+            integrity: 3730,
+            img: "wheelSuspension1x1Right.png",
+        },
+        wheelSuspension3x3Right: {
+            title: {
+                ru: "Колесо с подвеской 3х3 правое",
+                en: "Wheel Suspension 3x3 Right",
+            },
+            weight: 962,
+            integrity: 3730,
+            img: "wheelSuspension3x3Right.png",
+        },
+        wheelSuspension5x5Right: {
+            title: {
+                ru: "Колесо с подвеской 5х5 правое",
+                en: "Wheel Suspension 5x5 Right",
+            },
+            weight: 2820,
+            integrity: 10650,
+            img: "wheelSuspension5x5Right.png",
+        },
+        offroadWheel1x1: {
+            title: {
+                ru: "Колесо внедорожника 1х1",
+                en: "Offroad Wheel 1x1",
+            },
+            weight: 420,
+            integrity: 1640,
+            img: "offroadWheel1x1.png",
+        },
+        offroadWheel3x3: {
+            title: {
+                ru: "Колесо внедорожника 3х3",
+                en: "Offroad Wheel 3x3",
+            },
+            weight: 590,
+            integrity: 2310,
+            img: "offroadWheel3x3.png",
+        },
+        offroadWheel5x5: {
+            title: {
+                ru: "Колесо внедорожника 5х5",
+                en: "Offroad Wheel 5x5",
+            },
+            weight: 760,
+            integrity: 2980,
+            img: "offroadWheel5x5.png",
+        },
+        offroadwheelSuspension1x1Left: {
+            title: {
+                ru: "Подвеска колеса внедорожника 1х1 (левая)",
+                en: "Offroad Wheel Suspension 1x1 Left",
+            },
+            weight: 962,
+            integrity: 3730,
+            img: "offroadwheelSuspension1x1Left.png",
+        },
+        offroadwheelSuspension3x3Left: {
+            title: {
+                ru: "Подвеска колеса внедорожника 3х3 (левая)",
+                en: "Offroad Wheel Suspension 3x3 Left",
+            },
+            weight: 962,
+            integrity: 3730,
+            img: "offroadwheelSuspension3x3Left.png",
+        },
+        offroadwheelSuspension5x5Left: {
+            title: {
+                ru: "Подвеска колеса внедорожника 5х5 (левая)",
+                en: "Offroad Wheel Suspension 5x5 Left",
+            },
+            weight: 2820,
+            integrity: 10650,
+            img: "offroadwheelSuspension5x5Left.png",
+        },
+        offroadwheelSuspension1x1Right: {
+            title: {
+                ru: "Подвеска колеса внедорожника 1х1 (правая)",
+                en: "Offroad Wheel Suspension 1x1 Right",
+            },
+            weight: 962,
+            integrity: 3730,
+            img: "offroadwheelSuspension1x1Right.png",
+        },
+        offroadwheelSuspension3x3Right: {
+            title: {
+                ru: "Подвеска колеса внедорожника 3х3 (правая)",
+                en: "Offroad Wheel Suspension 3x3 Right",
+            },
+            weight: 962,
+            integrity: 3730,
+            img: "offroadwheelSuspension3x3Right.png",
+        },
+        offroadwheelSuspension5x5Right: {
+            title: {
+                ru: "Подвеска колеса внедорожника 5х5 (правая)",
+                en: "Offroad Wheel Suspension 5x5 Right",
+            },
+            weight: 2820,
+            integrity: 10650,
+            img: "offroadwheelSuspension5x5Right.png",
+        },
+        exhaustPipe: {
+            title: {
+                ru: "Выхлопная труба",
+                en: "Exhaust Pipe",
+            },
+            weight: 526,
+            integrity: 2080,
+            img: "exhaustPipe.png",
+        },
+        // end wheels
 };

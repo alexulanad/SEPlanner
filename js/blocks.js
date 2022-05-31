@@ -353,8 +353,7 @@ const blockCategories = {
             smallBlocks.grinder,
             smallBlocks.welder,
         ],
-    },
-    // end toolBlocks
+    }, // end toolBlocks
 
     // Ускорители
     thrusters: {
@@ -387,6 +386,52 @@ const blockCategories = {
             smallBlocks.SciFiIonThruster,
             smallBlocks.SciFiLargeIonThruster,
         ],
+    }, // end thrusters
+
+    // Колеса // wheels
+    wheels: {
+        large: [
+            largeBlocks.wheel1x1,
+            largeBlocks.wheel3x3,
+            largeBlocks.wheel5x5,
+            largeBlocks.wheelSuspension1x1Left,
+            largeBlocks.wheelSuspension3x3Left,
+            largeBlocks.wheelSuspension5x5Left,
+            largeBlocks.wheelSuspension1x1Right,
+            largeBlocks.wheelSuspension3x3Right,
+            largeBlocks.wheelSuspension5x5Right,
+            largeBlocks.offroadWheel1x1,
+            largeBlocks.offroadWheel3x3,
+            largeBlocks.offroadWheel5x5,
+            largeBlocks.offroadwheelSuspension1x1Left,
+            largeBlocks.offroadwheelSuspension3x3Left,
+            largeBlocks.offroadwheelSuspension5x5Left,
+            largeBlocks.offroadwheelSuspension1x1Right,
+            largeBlocks.offroadwheelSuspension3x3Right,
+            largeBlocks.offroadwheelSuspension5x5Right,
+            largeBlocks.exhaustPipe,
+        ],
+        small: [
+            smallBlocks.wheel1x1,
+            smallBlocks.wheel3x3,
+            smallBlocks.wheel5x5,
+            smallBlocks.wheelSuspension1x1Left,
+            smallBlocks.wheelSuspension3x3Left,
+            smallBlocks.wheelSuspension5x5Left,
+            smallBlocks.wheelSuspension1x1Right,
+            smallBlocks.wheelSuspension3x3Right,
+            smallBlocks.wheelSuspension5x5Right,
+            smallBlocks.offroadWheel1x1,
+            smallBlocks.offroadWheel3x3,
+            smallBlocks.offroadWheel5x5,
+            smallBlocks.offroadwheelSuspension1x1Left,
+            smallBlocks.offroadwheelSuspension3x3Left,
+            smallBlocks.offroadwheelSuspension5x5Left,
+            smallBlocks.offroadwheelSuspension1x1Right,
+            smallBlocks.offroadwheelSuspension3x3Right,
+            smallBlocks.offroadwheelSuspension5x5Right,
+            smallBlocks.exhaustPipe,
+        ],
     },
-    // end thrusters
+    // end wheels
 };
