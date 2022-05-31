@@ -2157,6 +2157,9 @@ const smallBlocks = {
         integrity: 900,
         img: "ladder.png",
     },
-
     // end stairs
+
+    // Мостики // catwalk
+    // ==== Блоки отсутствуют ====
+    // end catwalk
 };

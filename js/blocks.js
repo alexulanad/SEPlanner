@@ -668,4 +668,25 @@ const blockCategories = {
         ],
     },
     // end stairs
+
+    // Мостики // catwalk
+    catwalk: {
+        large: [
+            largeBlocks.steelCatwalk,
+            largeBlocks.steelCatwalkTwoSides,
+            largeBlocks.steelCatwalkCorner,
+            largeBlocks.steelCatwalkPlate,
+            largeBlocks.gratedCatwalk,
+            largeBlocks.gratedCatwalkStraight,
+            largeBlocks.gratedCatwalkCorner,
+            largeBlocks.gratedCatwalkWall,
+            largeBlocks.gratedCatwalkEnd,
+            largeBlocks.gratedCatwalkHalfRight,
+            largeBlocks.gratedCatwalkHalfLeft,
+        ],
+        small: [
+
+        ],
+    },
+    // end catwalk
 };

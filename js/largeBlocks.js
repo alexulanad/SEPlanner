@@ -2519,4 +2519,106 @@ const largeBlocks = {
         img: "gratedHalfStairsMirrored.png",
     },
     // end stairs
+
+    // Мостики // catwalk
+    steelCatwalk: {
+        title: {
+            ru: "Стальной мостик",
+            en: "Steel Catwalk",
+        },
+        weight: 201,
+        integrity: 855,
+        img: "steelCatwalk.png",
+    },
+    steelCatwalkTwoSides: {
+        title: {
+            ru: "Мостик с перилами",
+            en: "Steel Catwalk Two Sides",
+        },
+        weight: 252,
+        integrity: 1065,
+        img: "steelCatwalkTwoSides.png",
+    },
+    steelCatwalkCorner: {
+        title: {
+            ru: "Угловой мостик",
+            en: "Steel Catwalk Corner",
+        },
+        weight: 252,
+        integrity: 1065,
+        img: "steelCatwalkCorner.png",
+    },
+    steelCatwalkPlate: {
+        title: {
+            ru: "Плоский мостик",
+            en: "Steel Catwalk Plate",
+        },
+        weight: 193,
+        integrity: 810,
+        img: "steelCatwalkPlate.png",
+    },
+    gratedCatwalk: {
+        title: {
+            ru: "Решетчатый мостик",
+            en: "Grated Catwalk",
+        },
+        weight: 232,
+        integrity: 840,
+        img: "gratedCatwalk.png",
+    },
+    gratedCatwalkStraight: {
+        title: {
+            ru: "Прямой решетчатый мостик",
+            en: "Grated Catwalk Straight",
+        },
+        weight: 344,
+        integrity: 1260,
+        img: "gratedCatwalkStraight.png",
+    },
+    gratedCatwalkCorner: {
+        title: {
+            ru: "Угловой решетчатый мостик",
+            en: "Grated Catwalk Corner",
+        },
+        weight: 344,
+        integrity: 1260,
+        img: "gratedCatwalkCorner.png",
+    },
+    gratedCatwalkWall: {
+        title: {
+            ru: "Решетчатый мостик (приставной)",
+            en: "Grated Catwalk Wall",
+        },
+        weight: 288,
+        integrity: 1050,
+        img: "gratedCatwalkWall.png",
+    },
+    gratedCatwalkEnd: {
+        title: {
+            ru: "Решетчатый мостик (конец)",
+            en: "Grated Catwalk End",
+        },
+        weight: 400,
+        integrity: 1470,
+        img: "gratedCatwalkEnd.png",
+    },
+    gratedCatwalkHalfRight: {
+        title: {
+            ru: "Решетчатый мостик (половина, правая)",
+            en: "Grated Catwalk Half Right",
+        },
+        weight: 392,
+        integrity: 1440,
+        img: "gratedCatwalkHalfRight.png",
+    },
+    gratedCatwalkHalfLeft: {
+        title: {
+            ru: "Решетчатый мостик (половина, левая)",
+            en: "Grated Catwalk Half Left",
+        },
+        weight: 392,
+        integrity: 1440,
+        img: "gratedCatwalkHalfLeft.png",
+    },
+    // end catwalk
 };
