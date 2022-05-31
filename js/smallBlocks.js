@@ -1531,4 +1531,52 @@ const smallBlocks = {
         img: "exhaustPipeSmall.png",
     },
     // end wheels
+
+    // control // Управление
+    remoteControl: {
+        title: {
+            ru: "Дистанционное управление",
+            en: "Remote Control",
+        },
+        weight: 38.2,
+        integrity: 101,
+        img: "remoteControl.png",
+    },
+    camera: {
+        title: {
+            ru: "Камера",
+            en: "Camera",
+        },
+        weight: 0,
+        integrity: 203,
+        img: "camera.png",
+    },
+    gyroscope: {
+        title: {
+            ru: "Гироскоп",
+            en: "Gyroscope",
+        },
+        weight: 613.6,
+        integrity: 2793,
+        img: "gyroscope.png",
+    },
+    buttonPanel: {
+        title: {
+            ru: "Кнопочная панель",
+            en: "Button Panel",
+        },
+        weight: 22.2,
+        integrity: 91,
+        img: "buttonPanelSmall.png",
+    },
+    controlPanel: {
+        title: {
+            ru: "Панель управления",
+            en: "Control Panel",
+        },
+        weight: 0,
+        integrity: 136,
+        img: "controlPanel.png",
+    },
+    // end control
 };

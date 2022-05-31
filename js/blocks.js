@@ -432,6 +432,28 @@ const blockCategories = {
             smallBlocks.offroadwheelSuspension5x5Right,
             smallBlocks.exhaustPipe,
         ],
+    }, // end wheels
+
+    // control // Управление
+    control: {
+        large: [
+            largeBlocks.remoteControl,
+            largeBlocks.camera,
+            largeBlocks.gyroscope,
+            largeBlocks.buttonPanel,
+            largeBlocks.controlPanel,
+            largeBlocks.sciFiFourButtonPanel,
+            largeBlocks.sciFiOneButtonTerminal,
+            largeBlocks.sciFiControlPanel,
+            largeBlocks.verticalButtonPanel,
+        ],
+        small: [
+            smallBlocks.remoteControl,
+            smallBlocks.camera,
+            smallBlocks.gyroscope,
+            smallBlocks.buttonPanel,
+            smallBlocks.controlPanel,
+        ],
     },
-    // end wheels
+    // end control
 };
