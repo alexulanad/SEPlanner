@@ -484,4 +484,28 @@ const blockCategories = {
         ],
     },
     // end electronics
+
+    // Вооружение // weapon
+    weapon: {
+        large: [
+            largeBlocks.gatlingTurret,
+            largeBlocks.missileTurret,
+            largeBlocks.interiorTurret,
+            largeBlocks.rocketLauncher,
+            largeBlocks.warhead,
+            largeBlocks.decoy,
+            largeBlocks.embrasure,
+            largeBlocks.targetDummy,
+        ],
+        small: [
+            smallBlocks.gatlingTurret,
+            smallBlocks.missileTurret,
+            smallBlocks.rocketLauncher,
+            smallBlocks.reloadableRocketLauncher,
+            smallBlocks.gatlingGun,
+            smallBlocks.warhead,
+            smallBlocks.decoy,
+        ],
+    },
+    // end weapon
 };

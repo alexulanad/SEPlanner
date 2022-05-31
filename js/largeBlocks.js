@@ -1790,4 +1790,79 @@ const largeBlocks = {
         img: "soundBlock.png",
     },
     // end electronics
+
+    // Вооружение // weapon
+    gatlingTurret: {
+        title: {
+            ru: "Турель Гатлинга",
+            en: "Gatling Turret",
+        },
+        weight: 948,
+        integrity: 3770,
+        img: "gatlingTurret.png",
+    },
+    missileTurret: {
+        title: {
+            ru: "Ракетная турель",
+            en: "Missile Turret",
+        },
+        weight: 1286.4,
+        integrity: 4362,
+        img: "missileTurret.png",
+    },
+    interiorTurret: {
+        title: {
+            ru: "Внутренняя турель",
+            en: "Interior Turret",
+        },
+        weight: 311,
+        integrity: 1190,
+        img: "interiorTurret.png",
+    },
+    rocketLauncher: {
+        title: {
+            ru: "Ракетница",
+            en: "Rocket Launcher",
+        },
+        weight: 1713.8,
+        integrity: 6384,
+        img: "rocketLauncher.png",
+    },
+    warhead: {
+        title: {
+            ru: "Боеголовка",
+            en: "Warhead",
+        },
+        weight: 700.4,
+        integrity: 2932,
+        img: "warhead.png",
+    },
+    decoy: {
+        title: {
+            ru: "Приманка",
+            en: "Decoy",
+        },
+        weight: 740,
+        integrity: 3445,
+        img: "decoy.png",
+    },
+    embrasure: {
+        title: {
+            ru: "Амбразура",
+            en: "Embrasure",
+        },
+        weight: 820,
+        integrity: 3900,
+        img: "embrasure.png",
+    },
+    targetDummy: {
+        title: {
+            ru: "Манекен для стрельбы",
+            en: "Target Dummy",
+        },
+        weight: 396.8,
+        integrity: 1739,
+        img: "targetDummy.png",
+    },
+    // end weapon
 };
