@@ -652,4 +652,20 @@ const blockCategories = {
         ],
     },
     // end lighting
+
+    // Лестницы // stairs
+    stairs: {
+        large: [
+            largeBlocks.ladder,
+            largeBlocks.stairs,
+            largeBlocks.ramp,
+            largeBlocks.gratedStairs,
+            largeBlocks.gratedHalfStairs,
+            largeBlocks.gratedHalfStairsMirrored,
+        ],
+        small: [
+            smallBlocks.ladder,
+        ],
+    },
+    // end stairs
 };

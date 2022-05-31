@@ -2146,4 +2146,17 @@ const smallBlocks = {
         img: "rotatingLight.png",
     },
     // end lighting
+
+    // Лестницы // stairs
+    ladder: {
+        title: {
+            ru: "Лестница",
+            en: "Ladder",
+        },
+        weight: 230,
+        integrity: 900,
+        img: "ladder.png",
+    },
+
+    // end stairs
 };

@@ -2462,4 +2462,61 @@ const largeBlocks = {
         img: "neonTubesUShape.png",
     },
     // end lighting
+
+    // Лестницы // stairs
+    ladder: {
+        title: {
+            ru: "Лестница",
+            en: "Ladder",
+        },
+        weight: 230,
+        integrity: 900,
+        img: "ladder.png",
+    },
+    stairs: {
+        title: {
+            ru: "Лестница",
+            en: "Stairs",
+        },
+        weight: 390,
+        integrity: 1650,
+        img: "stairs.png",
+    },
+    ramp: {
+        title: {
+            ru: "Рампа",
+            en: "Ramp",
+        },
+        weight: 338,
+        integrity: 1530,
+        img: "ramp.png",
+    },
+    gratedStairs: {
+        title: {
+            ru: "Решетчатая лестница",
+            en: "Grated Stairs",
+        },
+        weight: 272,
+        integrity: 1080,
+        img: "gratedStairs.png",
+    },
+    gratedHalfStairs: {
+        title: {
+            ru: "Половинная решетчатая лестница",
+            en: "Grated Half Stairs",
+        },
+        weight: 208,
+        integrity: 810,
+        img: "gratedHalfStairs.png",
+    },
+    gratedHalfStairsMirrored: {
+        title: {
+            ru: "Половинная решетчатая лестница (отраженная)",
+            en: "Grated Half Stairs Mirrored",
+        },
+        weight: 208,
+        integrity: 810,
+        img: "gratedHalfStairsMirrored.png",
+    },
+    // end stairs
 };
