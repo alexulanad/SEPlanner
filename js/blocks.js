@@ -456,4 +456,32 @@ const blockCategories = {
         ],
     },
     // end control
+
+    // Электроника // electronics
+    electronics: {
+        large: [
+            largeBlocks.oreDetector,
+            largeBlocks.beacon,
+            largeBlocks.antenna,
+            largeBlocks.laserAntenna,
+            largeBlocks.antennaDish,
+            largeBlocks.projector,
+            largeBlocks.programmableBlock,
+            largeBlocks.sensor,
+            largeBlocks.timerBlock,
+            largeBlocks.soundBlock,
+        ],
+        small: [
+            smallBlocks.oreDetector,
+            smallBlocks.beacon,
+            smallBlocks.antenna,
+            smallBlocks.LaserAntenna,
+            smallBlocks.projector,
+            smallBlocks.programmableBlock,
+            smallBlocks.sensor,
+            smallBlocks.timerBlock,
+            smallBlocks.soundBlock,
+        ],
+    },
+    // end electronics
 };

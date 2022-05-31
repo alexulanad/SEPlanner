@@ -1579,4 +1579,88 @@ const smallBlocks = {
         img: "controlPanel.png",
     },
     // end control
+
+    // Электроника // electronics
+    oreDetector: {
+        title: {
+            ru: "Детектор руды",
+            en: "Ore Detector",
+        },
+        weight: 105.2,
+        integrity: 405,
+        img: "oreDetector.png",
+    },
+    beacon: {
+        title: {
+            ru: "Маяк",
+            en: "Beacon",
+        },
+        weight: 84.2,
+        integrity: 306,
+        img: "beacon.png",
+    },
+    antenna: {
+        title: {
+            ru: "Антенна",
+            en: "Antenna",
+        },
+        weight: 72.2,
+        integrity: 236,
+        img: "antenna.png",
+    },
+    LaserAntenna: {
+        title: {
+            ru: "Лазерная антенна",
+            en: "Laser Antenna",
+        },
+        weight: 666,
+        integrity: 1925,
+        img: "LaserAntennaSmall.png",
+    },
+    projector: {
+        title: {
+            ru: "Проектор",
+            en: "Projector",
+        },
+        weight: 130.4,
+        integrity: 422,
+        img: "projector.png",
+    },
+    programmableBlock: {
+        title: {
+            ru: "Программируемый блок",
+            en: "Programmable Block",
+        },
+        weight: 138.4,
+        integrity: 427,
+        img: "programmableBlock.png",
+    },
+    sensor: {
+        title: {
+            ru: "Сенсор",
+            en: "Sensor",
+        },
+        weight: 0,
+        integrity: 515,
+        img: "sensor.png",
+    },
+    timerBlock: {
+        title: {
+            ru: "Таймер",
+            en: "Timer Block",
+        },
+        weight: 30.2,
+        integrity: 121,
+        img: "timerBlock.png",
+    },
+    soundBlock: {
+        title: {
+            ru: "Динамик",
+            en: "Sound Block",
+        },
+        weight: 0,
+        integrity: 243,
+        img: "soundBlock.png",
+    },
+    // end electronics
 };

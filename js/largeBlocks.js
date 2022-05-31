@@ -1697,4 +1697,97 @@ const largeBlocks = {
         img: "verticalButtonPanel.png",
     },
     // end control
+
+    // Электроника // electronics
+    oreDetector: {
+        title: {
+            ru: "Детектор руды",
+            en: "Ore Detector",
+        },
+        weight: 1545,
+        integrity: 6505,
+        img: "oreDetector.png",
+    },
+    beacon: {
+        title: {
+            ru: "Маяк",
+            en: "Beacon",
+        },
+        weight: 2662,
+        integrity: 10710,
+        img: "beacon.png",
+    },
+    antenna: {
+        title: {
+            ru: "Антенна",
+            en: "Antenna",
+        },
+        weight: 3401.6,
+        integrity: 12808,
+        img: "antenna.png",
+    },
+    laserAntenna: {
+        title: {
+            ru: "Лазерная антенна",
+            en: "Laser Antenna",
+        },
+        weight: 3584,
+        integrity: 8050,
+        img: "laserAntenna.png",
+    },
+    antennaDish: {
+        title: {
+            ru: "Тарелка антенны",
+            en: "Antenna Dish",
+        },
+        weight: 2961.6,
+        integrity: 11608,
+        img: "antennaDish.png",
+    },
+    projector: {
+        title: {
+            ru: "Проектор",
+            en: "Projector",
+        },
+        weight: 526.4,
+        integrity: 2382,
+        img: "projector.png",
+    },
+    programmableBlock: {
+        title: {
+            ru: "Программируемый блок",
+            en: "Programmable Block",
+        },
+        weight: 534.4,
+        integrity: 2387,
+        img: "programmableBlock.png",
+    },
+    sensor: {
+        title: {
+            ru: "Сенсор",
+            en: "Sensor",
+        },
+        weight: 0,
+        integrity: 515,
+        img: "sensor.png",
+    },
+    timerBlock: {
+        title: {
+            ru: "Таймер",
+            en: "Timer Block",
+        },
+        weight: 259,
+        integrity: 995,
+        img: "timerBlock.png",
+    },
+    soundBlock: {
+        title: {
+            ru: "Динамик",
+            en: "Sound Block",
+        },
+        weight: 0,
+        integrity: 243,
+        img: "soundBlock.png",
+    },
+    // end electronics
 };
