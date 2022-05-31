@@ -684,9 +684,7 @@ const blockCategories = {
             largeBlocks.gratedCatwalkHalfRight,
             largeBlocks.gratedCatwalkHalfLeft,
         ],
-        small: [
-
-        ],
+        small: [],
     },
     // end catwalk
 };

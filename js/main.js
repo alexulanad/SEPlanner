@@ -33,24 +33,29 @@ const displayBlocksCategory = function(categoryKey) {
     let blocks = [];
     if (largeBlockCategoryActive === true) {
         blocks = blockCategories[categoryKey].large;
-        console.log("Large");
     } else {
         blocks = blockCategories[categoryKey].small;
-        console.log("Small");
+        if (blocks.lenght == 0) {
+
+        }
     }
 
-     blocks.forEach(item => {
-        blockListCategory.innerHTML += `
-        <div class="content-block__block-item">
-            <img class="block-image--ss" src="img/blocks/${item.img}">
-            <span class="content-block__block-item-name">${item.title.ru}</span>
-        </div>
-        `;
-        // сделать появление каждого итема через определенный интервал (возможно добавить анимацию)
-        // реализовать через стили, скрытие элемента и появление его кажду итерацию на + 10мс
-    });
-
-    blockListCategory.lastElementChild.style.marginBottom = 0;
+    if (blocks.length != 0) {
+        blocks.forEach(item => {
+            blockListCategory.innerHTML += `
+            <div class="content-block__block-item">
+                <img class="block-image--ss" src="img/blocks/${item.img}">
+                <span class="content-block__block-item-name">${item.title.ru}</span>
+            </div>
+            `;
+            // сделать появление каждого итема через определенный интервал (возможно добавить анимацию)
+            // реализовать через стили, скрытие элемента и появление его кажду итерацию на + 10мс
+        });
+        blockListCategory.lastElementChild.style.marginBottom = 0;
+    }
+    // else {
+    //     blockListCategory.innerHTML = `<p style="text-align: center; color: #ccc">У данной категории отсутствуют малые блоки.</p>`;
+    // }
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
     if (blockListCategory.offsetWidth > blockListCategory.clientWidth) {
         let blockItem = document.querySelectorAll('.content-block__block-item').forEach(item => {
@@ -86,6 +91,14 @@ for (let item of categories.children) {
                     removeClass(item, "block-image--focus");
                 }
             }
+            // console.log(blockCategories[item.dataset.categoryKey].small.length);
+
+            // if (blockCategories[item.dataset.categoryKey].small.length == 0) {
+            //     blockSelectionSmall.style.pointerEvents = "none";
+            // } else {
+            //     blockSelectionSmall.style.pointerEvents = "auto";
+            // }
+
             // Вызов функции вывода блоков выбранной категории
             displayBlocksCategory(item.dataset.categoryKey);
             // Сохраняет ключ, выбранной категории, для передачи значения функции при выборе размера блока
