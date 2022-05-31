@@ -2051,4 +2051,286 @@ const largeBlocks = {
         img: "blastDoorEdge.png",
     },
     // end doors
+
+    // Окна // windows
+    window1x1Flat: {
+        title: {
+            ru: "Окно 1х1 плоское",
+            en: "Window 1x1 Flat",
+        },
+        weight: 435,
+        integrity: 1650,
+        img: "window1x1Flat.png",
+    },
+    window1x1FlatInv: {
+        title: {
+            ru: "Окно 1х1 плоское обратное",
+            en: "Window 1x1 Flat Inv.",
+        },
+        weight: 435,
+        integrity: 1650,
+        img: "window1x1FlatInv.png",
+    },
+    window1x1Slope: {
+        title: {
+            ru: "Окно 1х1 наклонное",
+            en: "Window 1x1 Slope",
+        },
+        weight: 597,
+        integrity: 2280,
+        img: "window1x1Slope.png",
+    },
+    window1x1Face: {
+        title: {
+            ru: "Окно 1х1 лицевое",
+            en: "Window 1x1 Face",
+        },
+        weight: 426,
+        integrity: 1605,
+        img: "window1x1Face.png",
+    },
+    window1x1FaceInv: {
+        title: {
+            ru: "Окно 1х1 лицевое обратное",
+            en: "Window 1x1 Face Inv.",
+        },
+        weight: 426,
+        integrity: 1605,
+        img: "window1x1FaceInv.png",
+    },
+    window1x1Side: {
+        title: {
+            ru: "Окно 1х1 угловое",
+            en: "Window 1x1 Side",
+        },
+        weight: 309,
+        integrity: 1155,
+        img: "window1x1Side.png",
+    },
+    window1x1SideInv: {
+        title: {
+            ru: "Окно 1х1 угловое обратное",
+            en: "Window 1x1 Side Inv.",
+        },
+        weight: 309,
+        integrity: 1155,
+        img: "window1x1SideInv.png",
+    },
+    window1x2Flat: {
+        title: {
+            ru: "Окно 1х2 плоское",
+            en: "Window 1x2 Flat",
+        },
+        weight: 840,
+        integrity: 3225,
+        img: "window1x2Flat.png",
+    },
+    window1x2FlatInv: {
+        title: {
+            ru: "Окно 1х2 плоское обратное",
+            en: "Window 1x2 Flat Inv.",
+        },
+        weight: 840,
+        integrity: 3225,
+        img: "window1x2FlatInv.png",
+    },
+    window1x2Slope: {
+        title: {
+            ru: "Окно 1х2 наклонное",
+            en: "Window 1x2 Slope",
+        },
+        weight: 921,
+        integrity: 3540,
+        img: "window1x2Slope.png",
+    },
+    window1x2Face: {
+        title: {
+            ru: "Окно 1х2 лицевое",
+            en: "Window 1x2 Face",
+        },
+        weight: 690,
+        integrity: 2625,
+        img: "window1x2Face.png",
+    },
+    window1x2FaceInv: {
+        title: {
+            ru: "Окно 1х2 лицевое обратное",
+            en: "Window 1x2 Face Inv.",
+        },
+        weight: 690,
+        integrity: 2625,
+        img: "window1x2FaceInv.png",
+    },
+    window1x2SideLeft: {
+        title: {
+            ru: "Окно 1х2 левый угол",
+            en: "Window 1x2 Side Left",
+        },
+        weight: 468,
+        integrity: 1755,
+        img: "window1x2SideLeft.png",
+    },
+    window1x2SideLeftInv: {
+        title: {
+            ru: "Окно 1х2 левый обратный угол",
+            en: "Window 1x2 Side Left Inv.",
+        },
+        weight: 468,
+        integrity: 1755,
+        img: "window1x2SideLeftInv.png",
+    },
+    window1x2SideRight: {
+        title: {
+            ru: "Окно 1х2 правый угол",
+            en: "Window 1x2 Side Right",
+        },
+        weight: 468,
+        integrity: 1755,
+        img: "window1x2SideRight.png",
+    },
+    window1x2SideRightInv: {
+        title: {
+            ru: "Окно 1х2 правый обратный угол",
+            en: "Window 1x2 Side Right Inv.",
+        },
+        weight: 468,
+        integrity: 1755,
+        img: "window1x2SideRightInv.png",
+    },
+    window2x3Flat: {
+        title: {
+            ru: "Окно 2х3 плоское",
+            en: "Window 2x3 Flat",
+        },
+        weight: 2250,
+        integrity: 8775,
+        img: "window2x3Flat.png",
+    },
+    window2x3FlatInv: {
+        title: {
+            ru: "Окно 2х3 плоское обратное",
+            en: "Window 2x3 Flat Inv.",
+        },
+        weight: 2250,
+        integrity: 8775,
+        img: "window2x3FlatInv.png",
+    },
+    window3x3Flat: {
+        title: {
+            ru: "Окно 3х3 плоское",
+            en: "Window 3x3 Flat",
+        },
+        weight: 3180,
+        integrity: 12360,
+        img: "window3x3Flat.png",
+    },
+    window3x3FlatInv: {
+        title: {
+            ru: "Окно 3х3 плоское обратное",
+            en: "Window 3x3 Flat Inv.",
+        },
+        weight: 3180,
+        integrity: 12360,
+        img: "window3x3FlatInv.png",
+    },
+    verticalWindow: {
+        title: {
+            ru: "Решетка",
+            en: "Vertical Window",
+        },
+        weight: 116,
+        integrity: 480,
+        img: "verticalWindow.png",
+    },
+    diagonalWindow: {
+        title: {
+            ru: "Диагональная решетка",
+            en: "Diagonal Window",
+        },
+        weight: 168,
+        integrity: 690,
+        img: "diagonalWindow.png",
+    },
+    windowWall: {
+        title: {
+            ru: "Стена с окном",
+            en: "Window Wall",
+        },
+        weight: 390,
+        integrity: 1700,
+        img: "windowWall.png",
+    },
+    windowWallLeft: {
+        title: {
+            ru: "Левая стена с окном",
+            en: "Window Wall Left",
+        },
+        weight: 400,
+        integrity: 1780,
+        img: "windowWallLeft.png",
+    },
+    windowWallRight: {
+        title: {
+            ru: "Правая стена с окном",
+            en: "Window Wall Right",
+        },
+        weight: 400,
+        integrity: 1780,
+        img: "windowWallRight.png",
+    },
+    viewport1: {
+        title: {
+            ru: "Смотровое окно 1",
+            en: "Viewport 1",
+        },
+        weight: 400,
+        integrity: 1780,
+        img: "viewport1.png",
+    },
+    viewport2: {
+        title: {
+            ru: "Смотровое окно 2",
+            en: "Viewport 2",
+        },
+        weight: 400,
+        integrity: 1780,
+        img: "viewport2.png",
+    },
+    halfWindow: {
+        title: {
+            ru: "Половинное окно",
+            en: "Half Window",
+        },
+        weight: 374,
+        integrity: 1660,
+        img: "halfWindow.png",
+    },
+    halfWindowInv: {
+        title: {
+            ru: "Половинное окно (обратное)",
+            en: "Half Window Inv.",
+        },
+        weight: 374,
+        integrity: 1660,
+        img: "halfWindowInv.png",
+    },
+    halfWindowCorner: {
+        title: {
+            ru: "Половинное окно (угол)",
+            en: "Half Window Corner",
+        },
+        weight: 748,
+        integrity: 3320,
+        img: "halfWindowCorner.png",
+    },
+    halfWindowCornerInv: {
+        title: {
+            ru: "Половинное окно (угол, обратное)",
+            en: "Half Window Corner Inv.",
+        },
+        weight: 748,
+        integrity: 3320,
+        img: "halfWindowCornerInv.png",
+    },
+    // end windows
 };

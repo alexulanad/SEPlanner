@@ -1861,4 +1861,223 @@ const smallBlocks = {
         img: "blastDoorEdge.png",
     },
     // end doors
+
+    // Окна // windows
+    window1x1Flat: {
+        title: {
+            ru: "Окно 1х1 плоское",
+            en: "Window 1x1 Flat",
+        },
+        weight: 36,
+        integrity: 135,
+        img: "window1x1Flat.png",
+    },
+    window1x1FlatInv: {
+        title: {
+            ru: "Окно 1х1 плоское обратное",
+            en: "Window 1x1 Flat Inv.",
+        },
+        weight: 36,
+        integrity: 135,
+        img: "window1x1FlatInv.png",
+    },
+    window1x1Slope: {
+        title: {
+            ru: "Окно 1х1 наклонное",
+            en: "Window 1x1 Slope",
+        },
+        weight: 36,
+        integrity: 135,
+        img: "window1x1Slope.png",
+    },
+    window1x1Face: {
+        title: {
+            ru: "Окно 1х1 лицевое",
+            en: "Window 1x1 Face",
+        },
+        weight: 36,
+        integrity: 135,
+        img: "window1x1Face.png",
+    },
+    window1x1FaceInv: {
+        title: {
+            ru: "Окно 1х1 лицевое обратное",
+            en: "Window 1x1 Face Inv.",
+        },
+        weight: 36,
+        integrity: 135,
+        img: "window1x1FaceInv.png",
+    },
+    window1x1Side: {
+        title: {
+            ru: "Окно 1х1 угловое",
+            en: "Window 1x1 Side",
+        },
+        weight: 36,
+        integrity: 135,
+        img: "window1x1Side.png",
+    },
+    window1x1SideInv: {
+        title: {
+            ru: "Окно 1х1 угловое обратное",
+            en: "Window 1x1 Side Inv.",
+        },
+        weight: 36,
+        integrity: 135,
+        img: "window1x1SideInv.png",
+    },
+    window1x2Flat: {
+        title: {
+            ru: "Окно 1х2 плоское",
+            en: "Window 1x2 Flat",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2Flat.png",
+    },
+    window1x2FlatInv: {
+        title: {
+            ru: "Окно 1х2 плоское обратное",
+            en: "Window 1x2 Flat Inv.",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2FlatInv.png",
+    },
+    window1x2Slope: {
+        title: {
+            ru: "Окно 1х2 наклонное",
+            en: "Window 1x2 Slope",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2Slope.png",
+    },
+    window1x2Face: {
+        title: {
+            ru: "Окно 1х2 лицевое",
+            en: "Window 1x2 Face",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2Face.png",
+    },
+    window1x2FaceInv: {
+        title: {
+            ru: "Окно 1х2 лицевое обратное",
+            en: "Window 1x2 Face Inv.",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2FaceInv.png",
+    },
+    window1x2SideLeft: {
+        title: {
+            ru: "Окно 1х2 левый угол",
+            en: "Window 1x2 Side Left",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2SideLeft.png",
+    },
+    window1x2SideLeftInv: {
+        title: {
+            ru: "Окно 1х2 левый обратный угол",
+            en: "Window 1x2 Side Left Inv.",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2SideLeftInv.png",
+    },
+    window1x2SideRight: {
+        title: {
+            ru: "Окно 1х2 правый угол",
+            en: "Window 1x2 Side Right",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2SideRight.png",
+    },
+    window1x2SideRightInv: {
+        title: {
+            ru: "Окно 1х2 правый обратный угол",
+            en: "Window 1x2 Side Right Inv.",
+        },
+        weight: 51,
+        integrity: 195,
+        img: "window1x2SideRightInv.png",
+    },
+    window2x3Flat: {
+        title: {
+            ru: "Окно 2х3 плоское",
+            en: "Window 2x3 Flat",
+        },
+        weight: 132,
+        integrity: 510,
+        img: "window2x3Flat.png",
+    },
+    window2x3FlatInv: {
+        title: {
+            ru: "Окно 2х3 плоское обратное",
+            en: "Window 2x3 Flat Inv.",
+        },
+        weight: 132,
+        integrity: 510,
+        img: "window2x3FlatInv.png",
+    },
+    window3x3Flat: {
+        title: {
+            ru: "Окно 3х3 плоское",
+            en: "Window 3x3 Flat",
+        },
+        weight: 198,
+        integrity: 765,
+        img: "window3x3Flat.png",
+    },
+    window3x3FlatInv: {
+        title: {
+            ru: "Окно 3х3 плоское обратное",
+            en: "Window 3x3 Flat Inv.",
+        },
+        weight: 198,
+        integrity: 765,
+        img: "window3x3FlatInv.png",
+    },
+    barredWindow: {
+        title: {
+            ru: "Решетчатое окно",
+            en: "Barred Window",
+        },
+        weight: 38,
+        integrity: 135,
+        img: "barredWindow.png",
+    },
+    barredWindowSlope: {
+        title: {
+            ru: "Решетчатое окно наклонное",
+            en: "Barred Window Slope",
+        },
+        weight: 38,
+        integrity: 135,
+        img: "barredWindowSlope.png",
+    },
+    barredWindowSide: {
+        title: {
+            ru: "Решетчатое окно угловое",
+            en: "Barred Window Side",
+        },
+        weight: 38,
+        integrity: 135,
+        img: "barredWindowSide.png",
+    },
+    barredWindowFace: {
+        title: {
+            ru: "Решетчатое окно лицевое",
+            en: "Barred Window Face",
+        },
+        weight: 38,
+        integrity: 135,
+        img: "barredWindowFace.png",
+    },
+    // end windows
 };
