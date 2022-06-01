@@ -2212,4 +2212,110 @@ const smallBlocks = {
         img: "spaceBall.png",
     },
     // end gravityBlocks
+
+    // Строительные блоки // buildingBlocks
+    beamBlock: {
+        title: {
+            ru: "Балочный блок",
+            en: "Beam Block",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlock.png",
+    },
+    beamBlockSlope: {
+        title: {
+            ru: "Балочный блок (скат)",
+            en: "Beam Block Slope",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlockSlope.png",
+    },
+    beamBlockRound: {
+        title: {
+            ru: "Балочный блок (круглый)",
+            en: "Beam Block Round",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlockRound.png",
+    },
+    beamBlock2x1Base: {
+        title: {
+            ru: "Балочный блок 2х1 (основание)",
+            en: "Beam Block 2x1 Base",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlock2x1Base.png",
+    },
+    beamBlock2x1Tip: {
+        title: {
+            ru: "Балочный блок 2х1 (конец)",
+            en: "Beam Block 2x1 Tip",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlock2x1Tip.png",
+    },
+    beamBlockHalf: {
+        title: {
+            ru: "Балочный блок (половина)",
+            en: "Beam Block Half",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlockHalf.png",
+    },
+    beamBlockHalfSlope: {
+        title: {
+            ru: "Балочный блок (половина, скат)",
+            en: "Beam Block Half Slope",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlockHalfSlope.png",
+    },
+    beamBlockEnd: {
+        title: {
+            ru: "Балочный блок (конец)",
+            en: "Beam Block End",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlockEnd.png",
+    },
+    beamBlockJunction: {
+        title: {
+            ru: "Балочный блок (пересечение)",
+            en: "Beam Block Junction",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlockJunction.png",
+    },
+    beamBlockTJjunction: {
+        title: {
+            ru: "Балочный блок (Т-образное пересечение)",
+            en: "Beam Block T-Junction",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "beamBlockTJjunction.png",
+    },
+    cylindricalColumn: {
+        title: {
+            ru: "Цилиндрическая колонна",
+            en: "Cylindrical Column",
+        },
+        weight: 39,
+        integrity: 165,
+        img: "cylindricalColumnSmall.png",
+    },
+    // end buildingBlocks
+
+    // Декоративные блоки // decorativeBlocks
+
+    // end decorativeBlocks
 };

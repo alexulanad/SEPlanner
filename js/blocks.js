@@ -761,4 +761,38 @@ const blockCategories = {
         ],
     },
     // end gravityBlocks
+
+    // Строительные блоки // buildingBlocks
+    buildingBlocks: {
+        large: [
+            largeBlocks.beamBlock,
+            largeBlocks.beamBlockSlope,
+            largeBlocks.beamBlockRound,
+            largeBlocks.beamBlock2x1Base,
+            largeBlocks.beamBlock2x1Tip,
+            largeBlocks.beamBlockHalf,
+            largeBlocks.beamBlockHalfSlope,
+            largeBlocks.beamBlockEnd,
+            largeBlocks.beamBlockJunction,
+            largeBlocks.beamBlockTJjunction,
+            largeBlocks.cylindricalColumn,
+            largeBlocks.InteriorWall,
+            largeBlocks.sciFiInteriorWall,
+            largeBlocks.interiorPillar,
+        ],
+        small: [
+            smallBlocks.beamBlock,
+            smallBlocks.beamBlockSlope,
+            smallBlocks.beamBlockRound,
+            smallBlocks.beamBlock2x1Base,
+            smallBlocks.beamBlock2x1Tip,
+            smallBlocks.beamBlockHalf,
+            smallBlocks.beamBlockHalfSlope,
+            smallBlocks.beamBlockEnd,
+            smallBlocks.beamBlockJunction,
+            smallBlocks.beamBlockTJjunction,
+            smallBlocks.cylindricalColumn,
+        ],
+    },
+    // end buildingBlocks
 };
