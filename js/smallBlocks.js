@@ -2326,4 +2326,403 @@ const smallBlocks = {
         img: "weaponRackSmall.png",
     },
     // end decorativeBlocks
+
+    // Символы // symbols
+    letterA: {
+        title: {
+            ru: "Буква A",
+            en: "Letter A",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterA.png",
+    },
+    letterB: {
+        title: {
+            ru: "Буква B",
+            en: "Letter B",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterB.png",
+    },
+    letterC: {
+        title: {
+            ru: "Буква C",
+            en: "Letter C",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterC.png",
+    },
+    letterD: {
+        title: {
+            ru: "Буква D",
+            en: "Letter D",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterD.png",
+    },
+    letterE: {
+        title: {
+            ru: "Буква E",
+            en: "Letter E",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterE.png",
+    },
+    letterF: {
+        title: {
+            ru: "Буква F",
+            en: "Letter F",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterF.png",
+    },
+    letterG: {
+        title: {
+            ru: "Буква G",
+            en: "Letter G",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterG.png",
+    },
+    letterH: {
+        title: {
+            ru: "Буква H",
+            en: "Letter H",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterH.png",
+    },
+    letterI: {
+        title: {
+            ru: "Буква I",
+            en: "Letter I",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterI.png",
+    },
+    letterJ: {
+        title: {
+            ru: "Буква J",
+            en: "Letter J",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterJ.png",
+    },
+    letterK: {
+        title: {
+            ru: "Буква K",
+            en: "Letter K",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterK.png",
+    },
+    letterL: {
+        title: {
+            ru: "Буква L",
+            en: "Letter L",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterL.png",
+    },
+    letterM: {
+        title: {
+            ru: "Буква M",
+            en: "Letter M",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterM.png",
+    },
+    letterN: {
+        title: {
+            ru: "Буква N",
+            en: "Letter N",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterN.png",
+    },
+    letterO: {
+        title: {
+            ru: "Буква O",
+            en: "Letter O",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterO.png",
+    },
+    letterP: {
+        title: {
+            ru: "Буква P",
+            en: "Letter P",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterP.png",
+    },
+    letterQ: {
+        title: {
+            ru: "Буква Q",
+            en: "Letter Q",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterQ.png",
+    },
+    letterR: {
+        title: {
+            ru: "Буква R",
+            en: "Letter R",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterR.png",
+    },
+    letterS: {
+        title: {
+            ru: "Буква S",
+            en: "Letter S",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterS.png",
+    },
+    letterT: {
+        title: {
+            ru: "Буква T",
+            en: "Letter T",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterT.png",
+    },
+    letterU: {
+        title: {
+            ru: "Буква U",
+            en: "Letter U",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterU.png",
+    },
+    letterV: {
+        title: {
+            ru: "Буква V",
+            en: "Letter V",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterV.png",
+    },
+    letterW: {
+        title: {
+            ru: "Буква W",
+            en: "Letter W",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterW.png",
+    },
+    letterX: {
+        title: {
+            ru: "Буква X",
+            en: "Letter X",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterX.png",
+    },
+    letterY: {
+        title: {
+            ru: "Буква Y",
+            en: "Letter Y",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterY.png",
+    },
+    letterZ: {
+        title: {
+            ru: "Буква Z",
+            en: "Letter Z",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "letterZ.png",
+    },
+    Number1: {
+        title: {
+            ru: "Цифра 1",
+            en: "Number 1",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number1.png",
+    },
+    Number2: {
+        title: {
+            ru: "Цифра 2",
+            en: "Number 2",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number2.png",
+    },
+    Number3: {
+        title: {
+            ru: "Цифра 3",
+            en: "Number 3",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number3.png",
+    },
+    Number4: {
+        title: {
+            ru: "Цифра 4",
+            en: "Number 4",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number4.png",
+    },
+    Number5: {
+        title: {
+            ru: "Цифра 5",
+            en: "Number 5",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number5.png",
+    },
+    Number6: {
+        title: {
+            ru: "Цифра 6",
+            en: "Number 6",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number6.png",
+    },
+    Number7: {
+        title: {
+            ru: "Цифра 7",
+            en: "Number 7",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number7.png",
+    },
+    Number8: {
+        title: {
+            ru: "Цифра 8",
+            en: "Number 8",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number8.png",
+    },
+    Number9: {
+        title: {
+            ru: "Цифра 9",
+            en: "Number 9",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number9.png",
+    },
+    Number0: {
+        title: {
+            ru: "Цифра 0",
+            en: "Number 0",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "Number0.png",
+    },
+    hyphen: {
+        title: {
+            ru: "Дефис",
+            en: "Hyphen",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "hyphen.png",
+    },
+    underscore: {
+        title: {
+            ru: "Подчеркивание",
+            en: "Underscore",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "underscore.png",
+    },
+    dot: {
+        title: {
+            ru: "Точка",
+            en: "Dot",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "dot.png",
+    },
+    apostrophe: {
+        title: {
+            ru: "Апостроф",
+            en: "Apostrophe",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "apostrophe.png",
+    },
+    and: {
+        title: {
+            ru: "И",
+            en: "And",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "and.png",
+    },
+    colon: {
+        title: {
+            ru: "Двоеточие",
+            en: "Colon",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "colon.png",
+    },
+    exclamationmark: {
+        title: {
+            ru: "Восклицательный знак",
+            en: "Exclamationmark",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "exclamationmark.png",
+    },
+    questionmark: {
+        title: {
+            ru: "Вопросительный знак",
+            en: "Questionmark",
+        },
+        weight: 20,
+        integrity: 100,
+        img: "questionmark.png",
+    },
+    // end symbols
 };
