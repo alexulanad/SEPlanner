@@ -35,9 +35,6 @@ const displayBlocksCategory = function(categoryKey) {
         blocks = blockCategories[categoryKey].large;
     } else {
         blocks = blockCategories[categoryKey].small;
-        if (blocks.lenght == 0) {
-
-        }
     }
 
     if (blocks.length != 0) {

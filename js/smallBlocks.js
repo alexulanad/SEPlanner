@@ -2162,4 +2162,12 @@ const smallBlocks = {
     // Мостики // catwalk
     // ==== Блоки отсутствуют ====
     // end catwalk
+
+    // Перегородки // partitions
+    // ==== Блоки отсутствуют ====
+    // end partitions
+
+    // Коридоры // passage
+    // ==== Блоки отсутствуют ====
+    // end passage
 };

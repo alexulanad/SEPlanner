@@ -2621,4 +2621,97 @@ const largeBlocks = {
         img: "gratedCatwalkHalfLeft.png",
     },
     // end catwalk
+
+    // Перегородки // partitions
+    coverWalls: {
+        title: {
+            ru: "Двойная перегородка",
+            en: "Cover Walls",
+        },
+        weight: 160,
+        integrity: 700,
+        img: "coverWalls.png",
+    },
+    halfCoverWalls: {
+        title: {
+            ru: "Одинарная перегородка",
+            en: "Half Cover Walls",
+        },
+        weight: 88,
+        integrity: 380,
+        img: "halfCoverWalls.png",
+    },
+    fireCover: {
+        title: {
+            ru: "Огневое укрытие",
+            en: "Fire Cover",
+        },
+        weight: 160,
+        integrity: 700,
+        img: "fireCover.png",
+    },
+    fireCoverCorner: {
+        title: {
+            ru: "Огневое укрытие (угол)",
+            en: "Fire Cover Corner",
+        },
+        weight: 320,
+        integrity: 1400,
+        img: "fireCoverCorner.png",
+    },
+    railingStraight: {
+        title: {
+            ru: "Прямые перила",
+            en: "Railing Straight",
+        },
+        weight: 88,
+        integrity: 330,
+        img: "railingStraight.png",
+    },
+    railingDouble: {
+        title: {
+            ru: "Двойные перила",
+            en: "Railing Double",
+        },
+        weight: 176,
+        integrity: 660,
+        img: "railingDouble.png",
+    },
+    railingDiagonal: {
+        title: {
+            ru: "Диагональные перила",
+            en: "Railing Diagonal",
+        },
+        weight: 132,
+        integrity: 495,
+        img: "railingDiagonal.png",
+    },
+    railingCorner: {
+        title: {
+            ru: "Угловые перила",
+            en: "Railing Corner",
+        },
+        weight: 176,
+        integrity: 660,
+        img: "railingCorner.png",
+    },
+    railingHalfRight: {
+        title: {
+            ru: "Перила (половина, правая)",
+            en: "Railing Half Right",
+        },
+        weight: 80,
+        integrity: 300,
+        img: "railingHalfRight.png",
+    },
+    railingHalfLeft: {
+        title: {
+            ru: "Перила (половина, левая)",
+            en: "Railing Half Left",
+        },
+        weight: 80,
+        integrity: 300,
+        img: "railingHalfLeft.png",
+    },
+    // end partitions
 };

@@ -687,4 +687,22 @@ const blockCategories = {
         small: [],
     },
     // end catwalk
+
+    // Перегородки // partitions
+    partitions: {
+        large: [
+            largeBlocks.coverWalls,
+            largeBlocks.halfCoverWalls,
+            largeBlocks.fireCover,
+            largeBlocks.fireCoverCorner,
+            largeBlocks.railingStraight,
+            largeBlocks.railingDouble,
+            largeBlocks.railingDiagonal,
+            largeBlocks.railingCorner,
+            largeBlocks.railingHalfRight,
+            largeBlocks.railingHalfLeft,
+        ],
+        small: [],
+    },
+    // end partitions
 };
