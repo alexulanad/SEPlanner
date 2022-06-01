@@ -724,4 +724,24 @@ const blockCategories = {
         small:[],
     },
     // end passage
+
+    // Социальные // social
+    social: {
+        large: [
+            largeBlocks.cryoChamber,
+            largeBlocks.medicalRoom,
+            largeBlocks.safeZone,
+            largeBlocks.jukebox,
+            largeBlocks.consoleBlock,
+            largeBlocks.store,
+            largeBlocks.contracts,
+            largeBlocks.atm,
+            largeBlocks.vendingMachine,
+            largeBlocks.dispenser,
+        ],
+        small: [
+            smallBlocks.cryoChamber,
+        ],
+    },
+    // end social
 };

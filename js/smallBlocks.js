@@ -2170,4 +2170,16 @@ const smallBlocks = {
     // Коридоры // passage
     // ==== Блоки отсутствуют ====
     // end passage
+
+    // Социальные // social
+    cryoChamber: {
+        title: {
+            ru: "Криокамера",
+            en: "Cryo Chamber",
+        },
+        weight: 796,
+        integrity: 1305,
+        img: "cryoChamberSmall.png",
+    },
+    // end social
 };

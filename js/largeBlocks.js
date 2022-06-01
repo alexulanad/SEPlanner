@@ -2816,4 +2816,97 @@ const largeBlocks = {
         img: "passage3Windowed.png",
     },
     // end passage
+
+    // Социальные // social
+    cryoChamber: {
+        title: {
+            ru: "Криокамера",
+            en: "Cryo Chamber",
+        },
+        weight: 1142,
+        integrity: 2400,
+        img: "cryoChamber.png",
+    },
+    medicalRoom: {
+        title: {
+            ru: "Медпункт",
+            en: "Medical Room",
+        },
+        weight: 4257,
+        integrity: 9510,
+        img: "medicalRoom.png",
+    },
+    safeZone: {
+        title: {
+            ru: "Безопасная зона",
+            en: "Safe Zone",
+        },
+        weight: 25950,
+        integrity: 92925,
+        img: "safeZone.png",
+    },
+    jukebox: {
+        title: {
+            ru: "Музыкальный автомат",
+            en: "Jukebox",
+        },
+        weight: 157.8,
+        integrity: 549,
+        img: "jukebox.png",
+    },
+    consoleBlock: {
+        title: {
+            ru: "Голографический стол",
+            en: "Console Block",
+        },
+        weight: 381.6,
+        integrity: 1258,
+        img: "consoleBlock.png",
+    },
+    store: {
+        title: {
+            ru: "Магазин",
+            en: "Store",
+        },
+        weight: 938,
+        integrity: 3870,
+        img: "store.png",
+    },
+    contracts: {
+        title: {
+            ru: "Контракты",
+            en: "Contracts",
+        },
+        weight: 938,
+        integrity: 3870,
+        img: "contracts.png",
+    },
+    atm: {
+        title: {
+            ru: "Банкомат",
+            en: "ATM",
+        },
+        weight: 642,
+        integrity: 2710,
+        img: "atm.png",
+    },
+    vendingMachine: {
+        title: {
+            ru: "Торговый автомат",
+            en: "Vending Machine",
+        },
+        weight: 270,
+        integrity: 790,
+        img: "vendingMachine.png",
+    },
+    dispenser: {
+        title: {
+            ru: "Раздатчик",
+            en: "Dispenser",
+        },
+        weight: 318,
+        integrity: 820,
+        img: "dispenser.png",
+    },
+    // end social
 };
