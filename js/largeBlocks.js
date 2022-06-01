@@ -3086,4 +3086,304 @@ const largeBlocks = {
         img: "interiorPillar.png",
     },
     // end buildingBlocks
+
+    // Декоративные блоки // decorativeBlocks
+    toilet: {
+        title: {
+            ru: "Туалет",
+            en: "Toilet",
+        },
+        weight: 508,
+        integrity: 1750,
+        img: "toilet.png",
+    },
+    toiletSeat: {
+        title: {
+            ru: "Унитаз",
+            en: "Toilet Seat",
+        },
+        weight: 231,
+        integrity: 770,
+        img: "toiletSeat.png",
+    },
+    bathroom: {
+        title: {
+            ru: "Ванная",
+            en: "Bathroom",
+        },
+        weight: 588,
+        integrity: 2050,
+        img: "bathroom.png",
+    },
+    shower: {
+        title: {
+            ru: "Душ",
+            en: "Shower",
+        },
+        weight: 388,
+        integrity: 1560,
+        img: "shower.png",
+    },
+    desk: {
+        title: {
+            ru: "Стол",
+            en: "Desk",
+        },
+        weight: 330,
+        integrity: 1350,
+        img: "desk.png",
+    },
+    chairlessDesk: {
+        title: {
+            ru: "Стол без сидения",
+            en: "Chairless Desk",
+        },
+        weight: 330,
+        integrity: 1350,
+        img: "chairlessDesk.png",
+    },
+    deskCorner: {
+        title: {
+            ru: "Угловой стол",
+            en: "Desk Corner",
+        },
+        weight: 220,
+        integrity: 900,
+        img: "deskCorner.png",
+    },
+    chairlessDeskCorner: {
+        title: {
+            ru: "Угловой стол без сидения",
+            en: "Chairless Desk Corner",
+        },
+        weight: 220,
+        integrity: 900,
+        img: "chairlessDeskCorner.png",
+    },
+    planters: {
+        title: {
+            ru: "Контейнер для растений",
+            en: "Planters",
+        },
+        weight: 342,
+        integrity: 1350,
+        img: "planters.png",
+    },
+    kitchen: {
+        title: {
+            ru: "Кухня",
+            en: "Kitchen",
+        },
+        weight: 654,
+        integrity: 2040,
+        img: "kitchen.png",
+    },
+    sciFiBarCounter: {
+        title: {
+            ru: "НФ Барная стойка",
+            en: "Sci-Fi Bar Counter",
+        },
+        weight: 242,
+        integrity: 940,
+        img: "sciFiBarCounter.png",
+    },
+    sciFiBarCounterCorner: {
+        title: {
+            ru: "НФ Барная стойка (угол)",
+            en: "Sci-Fi Bar Counter Corner",
+        },
+        weight: 382,
+        integrity: 1460,
+        img: "sciFiBarCounterCorner.png",
+    },
+    labEquipment: {
+        title: {
+            ru: "Лабораторное оборудование",
+            en: "Lab Equipment",
+        },
+        weight: 249,
+        integrity: 955,
+        img: "labEquipment.png",
+    },
+    couch: {
+        title: {
+            ru: "Диван",
+            en: "Couch",
+        },
+        weight: 330,
+        integrity: 1350,
+        img: "couch.png",
+    },
+    cornerCouch: {
+        title: {
+            ru: "Угловой диван",
+            en: "Corner Couch",
+        },
+        weight: 385,
+        integrity: 1575,
+        img: "cornerCouch.png",
+    },
+    bed: {
+        title: {
+            ru: "Кровать",
+            en: "Bed",
+        },
+        weight: 512,
+        integrity: 2070,
+        img: "bed.png",
+    },
+    storageShelf1: {
+        title: {
+            ru: "Стеллаж 1",
+            en: "Storage Shelf 1",
+        },
+        weight: 1810,
+        integrity: 8150,
+        img: "storageShelf1.png",
+    },
+    storageShelf2: {
+        title: {
+            ru: "Стеллаж 2",
+            en: "Storage Shelf 2",
+        },
+        weight: 1280,
+        integrity: 2850,
+        img: "storageShelf2.png",
+    },
+    storageShelf3: {
+        title: {
+            ru: "Стеллаж 3",
+            en: "Storage Shelf 3",
+        },
+        weight: 2460,
+        integrity: 1700,
+        img: "storageShelf3.png",
+    },
+    weaponRack: {
+        title: {
+            ru: "Оружейная стойка",
+            en: "Weapon Rack",
+        },
+        weight: 250,
+        integrity: 1050,
+        img: "weaponRack.png",
+    },
+    armory: {
+        title: {
+            ru: "Оружейная",
+            en: "Armory",
+        },
+        weight: 512,
+        integrity: 1970,
+        img: "armory.png",
+    },
+    armoryLockers: {
+        title: {
+            ru: "Угловая оружейная",
+            en: "Armory Lockers",
+        },
+        weight: 497,
+        integrity: 1895,
+        img: "armoryLockers.png",
+    },
+    lockers: {
+        title: {
+            ru: "Шкафчики",
+            en: "Lockers",
+        },
+        weight: 244.4,
+        integrity: 917,
+        img: "lockers.png",
+    },
+    freight1: {
+        title: {
+            ru: "Груз 1",
+            en: "Freight 1",
+        },
+        weight: 82,
+        integrity: 330,
+        img: "freight1.png",
+    },
+    freight2: {
+        title: {
+            ru: "Груз 2",
+            en: "Freight 2",
+        },
+        weight: 164,
+        integrity: 660,
+        img: "freight2.png",
+    },
+    freight3: {
+        title: {
+            ru: "Груз 3",
+            en: "Freight 3",
+        },
+        weight: 246,
+        integrity: 990,
+        img: "freight3.png",
+    },
+    medicalStation: {
+        title: {
+            ru: "Медицинский пункт",
+            en: "Medical Station",
+        },
+        weight: 379,
+        integrity: 835,
+        img: "medicalStation.png",
+    },
+    deadEngineer1: {
+        title: {
+            ru: "Мёртвый инженер 1",
+            en: "Dead Engineer 1",
+        },
+        weight: 31,
+        integrity: 80,
+        img: "deadEngineer1.png",
+    },
+    deadEngineer2: {
+        title: {
+            ru: "Мёртвый инженер 2",
+            en: "Dead Engineer 2",
+        },
+        weight: 31,
+        integrity: 80,
+        img: "deadEngineer2.png",
+    },
+    deadEngineer3: {
+        title: {
+            ru: "Мёртвый инженер 3",
+            en: "Dead Engineer 3",
+        },
+        weight: 31,
+        integrity: 80,
+        img: "deadEngineer3.png",
+    },
+    deadEngineer4: {
+        title: {
+            ru: "Мёртвый инженер 4",
+            en: "Dead Engineer 4",
+        },
+        weight: 31,
+        integrity: 80,
+        img: "deadEngineer4.png",
+    },
+    deadEngineer5: {
+        title: {
+            ru: "Мёртвый инженер 5",
+            en: "Dead Engineer 5",
+        },
+        weight: 31,
+        integrity: 80,
+        img: "deadEngineer5.png",
+    },
+    deadEngineer6: {
+        title: {
+            ru: "Мёртвый инженер 6",
+            en: "Dead Engineer 6",
+        },
+        weight: 31,
+        integrity: 80,
+        img: "deadEngineer6.png",
+    },
+    // end decorativeBlocks
 };

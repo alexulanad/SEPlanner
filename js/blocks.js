@@ -795,4 +795,47 @@ const blockCategories = {
         ],
     },
     // end buildingBlocks
+
+    // Декоративные блоки // decorativeBlocks
+    decorativeBlocks: {
+        large: [
+            largeBlocks.toilet,
+            largeBlocks.toiletSeat,
+            largeBlocks.bathroom,
+            largeBlocks.shower,
+            largeBlocks.desk,
+            largeBlocks.chairlessDesk,
+            largeBlocks.deskCorner,
+            largeBlocks.chairlessDeskCorner,
+            largeBlocks.planters,
+            largeBlocks.kitchen,
+            largeBlocks.sciFiBarCounter,
+            largeBlocks.sciFiBarCounterCorner,
+            largeBlocks.labEquipment,
+            largeBlocks.couch,
+            largeBlocks.cornerCouch,
+            largeBlocks.bed,
+            largeBlocks.storageShelf1,
+            largeBlocks.storageShelf2,
+            largeBlocks.storageShelf3,
+            largeBlocks.weaponRack,
+            largeBlocks.armory,
+            largeBlocks.armoryLockers,
+            largeBlocks.lockers,
+            largeBlocks.freight1,
+            largeBlocks.freight2,
+            largeBlocks.freight3,
+            largeBlocks.medicalStation,
+            largeBlocks.deadEngineer1,
+            largeBlocks.deadEngineer2,
+            largeBlocks.deadEngineer3,
+            largeBlocks.deadEngineer4,
+            largeBlocks.deadEngineer5,
+            largeBlocks.deadEngineer6,
+        ],
+        small: [
+            smallBlocks.weaponRack,
+        ],
+    },
+    // end decorativeBlocks
 };

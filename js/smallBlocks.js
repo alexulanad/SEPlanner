@@ -2316,6 +2316,14 @@ const smallBlocks = {
     // end buildingBlocks
 
     // Декоративные блоки // decorativeBlocks
-
+    weaponRack: {
+        title: {
+            ru: "Оружейная стойка",
+            en: "Weapon Rack",
+        },
+        weight: 33,
+        integrity: 135,
+        img: "weaponRackSmall.png",
+    },
     // end decorativeBlocks
 };
