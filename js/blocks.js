@@ -705,4 +705,23 @@ const blockCategories = {
         small: [],
     },
     // end partitions
+
+    // Коридоры // passage
+    passage: {
+        large:[
+            largeBlocks.passage,
+            largeBlocks.passage2,
+            largeBlocks.passage2Side,
+            largeBlocks.passage3,
+            largeBlocks.passage3Light,
+            largeBlocks.passage3Wall,
+            largeBlocks.passage3Cross,
+            largeBlocks.passage3Frame,
+            largeBlocks.passage3Corner,
+            largeBlocks.passage3TJunction,
+            largeBlocks.passage3Windowed,
+        ],
+        small:[],
+    },
+    // end passage
 };

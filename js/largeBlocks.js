@@ -2714,4 +2714,106 @@ const largeBlocks = {
         img: "railingHalfLeft.png",
     },
     // end partitions
+
+    // Коридоры // passage
+    passage: {
+        title: {
+            ru: "Коридор",
+            en: "Passage",
+        },
+        weight: 574,
+        integrity: 2430,
+        img: "passage.png",
+    },
+    passage2: {
+        title: {
+            ru: "Коридор 2",
+            en: "Passage 2",
+        },
+        weight: 574,
+        integrity: 2430,
+        img: "passage2.png",
+    },
+    passage2Side: {
+        title: {
+            ru: "Коридор 2 (угловой)",
+            en: "Passage 2 Side",
+        },
+        weight: 390,
+        integrity: 1650,
+        img: "passage2Side.png",
+    },
+    passage3: {
+        title: {
+            ru: "Коридор 3",
+            en: "Passage 3",
+        },
+        weight: 574,
+        integrity: 2430,
+        img: "passage3.png",
+    },
+    passage3Light: {
+        title: {
+            ru: "Коридор 3 (легкий)",
+            en: "Passage 3 Light",
+        },
+        weight: 574,
+        integrity: 2430,
+        img: "passage3Light.png",
+    },
+    passage3Wall: {
+        title: {
+            ru: "Коридор 3 (стена)",
+            en: "Passage 3 Wall",
+        },
+        weight: 390,
+        integrity: 1650,
+        img: "passage3Wall.png",
+    },
+    passage3Cross: {
+        title: {
+            ru: "Коридор 3 (пересечение)",
+            en: "Passage 3 Cross",
+        },
+        weight: 285,
+        integrity: 1200,
+        img: "passage3Cross.png",
+    },
+    passage3Frame: {
+        title: {
+            ru: "Коридор 3 (проем)",
+            en: "Passage 3 Frame",
+        },
+        weight: 285,
+        integrity: 1200,
+        img: "passage3Frame.png",
+    },
+    passage3Corner: {
+        title: {
+            ru: "Коридор 3 (угол)",
+            en: "Passage 3 Corner",
+        },
+        weight: 574,
+        integrity: 2430,
+        img: "passage3Corner.png",
+    },
+    passage3TJunction: {
+        title: {
+            ru: "Коридор 3 (Т-обр. пересечение)",
+            en: "Passage 3 T-Junction",
+        },
+        weight: 445,
+        integrity: 1875,
+        img: "passage3TJunction.png",
+    },
+    passage3Windowed: {
+        title: {
+            ru: "Коридор 3 (с окном)",
+            en: "Passage 3 Windowed",
+        },
+        weight: 700,
+        integrity: 2910,
+        img: "passage3Windowed.png",
+    },
+    // end passage
 };
