@@ -744,4 +744,21 @@ const blockCategories = {
         ],
     },
     // end social
+
+    // Гравитационные блоки // gravityBlocks
+    gravityBlocks: {
+        large: [
+            largeBlocks.parachuteHatch,
+            largeBlocks.artificialMass,
+            largeBlocks.gravityGenerator,
+            largeBlocks.sphericalGravityGenerator,
+            largeBlocks.spaceBall,
+        ],
+        small: [
+            smallBlocks.parachuteHatch,
+            smallBlocks.artificialMass,
+            smallBlocks.spaceBall,
+        ],
+    },
+    // end gravityBlocks
 };

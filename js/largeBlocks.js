@@ -2909,4 +2909,52 @@ const largeBlocks = {
         img: "dispenser.png",
     },
     // end social
+
+    // Гравитационные блоки // gravityBlocks
+    parachuteHatch: {
+        title: {
+            ru: "Парашютный люк",
+            en: "Parachute Hatch",
+        },
+        weight: 472.4,
+        integrity: 1847,
+        img: "parachuteHatch.png",
+    },
+    artificialMass: {
+        title: {
+            ru: "Искусственная масса",
+            en: "Artificial Mass",
+        },
+        weight: 9544,
+        integrity: 14520,
+        img: "artificialMass.png",
+    },
+    gravityGenerator: {
+        title: {
+            ru: "Гравитационный генератор",
+            en: "Gravity Generator",
+        },
+        weight: 8532,
+        integrity: 20320,
+        img: "gravityGenerator.png",
+    },
+    sphericalGravityGenerator: {
+        title: {
+            ru: "Сферический генератор гравитации",
+            en: "Spherical Gravity Generator",
+        },
+        weight: 8532,
+        integrity: 20320,
+        img: "sphericalGravityGenerator.png",
+    },
+    spaceBall: {
+        title: {
+            ru: "Космосфера",
+            en: "Space Ball",
+        },
+        weight: 7144,
+        integrity: 24920,
+        img: "spaceBall.png",
+    },
+    // end gravityBlocks
 };

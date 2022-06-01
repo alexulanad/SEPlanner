@@ -2182,4 +2182,34 @@ const smallBlocks = {
         img: "cryoChamberSmall.png",
     },
     // end social
+
+    // Гравитационные блоки // gravityBlocks
+    parachuteHatch: {
+        title: {
+            ru: "Парашютный люк",
+            en: "Parachute Hatch",
+        },
+        weight: 84.2,
+        integrity: 316,
+        img: "parachuteHatch.png",
+    },
+    artificialMass: {
+        title: {
+            ru: "Искусственная масса",
+            en: "Artificial Mass",
+        },
+        weight: 906.4,
+        integrity: 872,
+        img: "artificialMass.png",
+    },
+    spaceBall: {
+        title: {
+            ru: "Космосфера",
+            en: "Space Ball",
+        },
+        weight: 2281.4,
+        integrity: 7807,
+        img: "spaceBall.png",
+    },
+    // end gravityBlocks
 };
