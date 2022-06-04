@@ -9,6 +9,8 @@ body {
     background-size: cover;
     height: 100vh;
     padding: 8px 0 8px 0;
+    user-select: none;
+
 }
 
 /* main-block = Основной блок страницы с контентом */
@@ -70,6 +72,8 @@ body {
     flex: 1 0 auto;
     height: 50vh;
     overflow-y: auto;
+    user-select: none;
+
 }
 
 .blocks__list::-webkit-scrollbar {
@@ -293,13 +297,14 @@ body {
     margin-left: auto;
     /* margin-right: 4px; */
     /* padding: 2px; */
-    visibility: hidden;
+    /* visibility: hidden; */
     /* opacity: 0%; */
     /* transition: .35s opacity; */
     /* background-color: #486377; */
     /* border: 1px solid #486377; */
     /* border-radius: 4px 4px 4px 4px; */
     /* border: 1px solid rgba(255, 255, 255, 0.5); */
+    /* user-select: none; */
 }
 
 .button-add-block:hover {
@@ -315,8 +320,8 @@ body {
 }
 
 .button-add-block__svg--click{
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     padding-left: 1px;
     padding-bottom: 0px;
     /* viewBox="0 0 20 20" */
