@@ -80,7 +80,6 @@ body {
     /* -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.9) inset; */
     background-color: rgba(255, 255, 255, 0.00);
     /* background-color: #f9f9fd; */
-    
 }
 
 .blocks__list::-webkit-scrollbar-thumb {
@@ -208,8 +207,10 @@ body {
 }
 
 .content-block__menu {
-    margin-right: 6px;
+    /* margin-right: 6px; */
     margin-bottom: 8px;
+    display: flex;
+    /* border: 1px solid red; */
     /* border-color: rgba(255, 255, 255, 0.1); */
     /* padding-right: 6px; */
     /* padding-bottom: 8px; */
@@ -256,24 +257,69 @@ body {
     background-color: rgba(255, 255, 255, 0.03);
     margin-bottom: 4px;
     display: flex;
+    align-items: center;
 }
 
 .content-block__block-item-name {
     text-transform: uppercase;
-    align-self: center;
+    /* align-self: center; */
     font-size: 9px;
     font-weight: 500;
     color: #fff;
     letter-spacing: 1px;
     padding-left: 8px;
+    pointer-events: none;
+}
+.content-block__block-item-name:hover {
+    color: white;
 }
 
 .content-block__block-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.08);
+    /* border: 1px solid rgba(255, 255, 255, 0.5); */
+
 }
 
 .content-block__block-item--focus {
 
 }
 
+.button-add-block {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    /* margin-right: 4px; */
+    /* padding: 2px; */
+    visibility: hidden;
+    /* opacity: 0%; */
+    /* transition: .35s opacity; */
+    /* background-color: #486377; */
+    /* border: 1px solid #486377; */
+    /* border-radius: 4px 4px 4px 4px; */
+    /* border: 1px solid rgba(255, 255, 255, 0.5); */
+}
+
+.button-add-block:hover {
+}
+
+
+.button-add-block__path--hover {
+    fill: #fff;
+}
+.button-add-block__path--click {
+    /* padding: 2px; */
+    /* fill: #D0D0D0; */
+}
+
+.button-add-block__svg--click{
+    width: 26px;
+    height: 26px;
+    padding-left: 1px;
+    padding-bottom: 0px;
+    /* viewBox="0 0 20 20" */
+    /* viewBox: 20, 20, 20, 20; */
+}
 /* end content__block */
