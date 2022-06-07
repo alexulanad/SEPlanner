@@ -9,12 +9,15 @@ let categoryKeyTarget = "lightArmor";
 const blockSelectionLarge = document.querySelector('.size-block-selection__large');
 const blockSelectionSmall = document.querySelector('.size-block-selection__small');
 
-
-
 const categories = document.querySelector('#categories');
 let categoryTitle = document.querySelector('#category-title');
 let projectTitle = document.querySelector('#project-title');
 const blockListCategory = document.querySelector('#block-list-category');
+const blockListProject = document.querySelector('#block-list-project');
+
+// let blocks = [];
+let projectBlocks = [];
+let projectBlocksSmall = [];
 
 const addClass = function(event, className) {
     if (event.target) {
@@ -32,6 +35,73 @@ const removeClass = function(event, className) {
     }
 };
 
+// Функция вывода блоков проекта из массива projectBlocks
+
+let displayBlocksProject = function() {
+    blockListProject.innerHTML = "";
+    let blocks = [];
+    if (largeBlockProjectActive === true) {
+        blocks = projectBlocks;
+    } else {
+        blocks = projectBlocksSmall;
+    }
+    console.log(blocks);
+    console.log(projectBlocks);
+
+    if (blocks.length != 0) {
+        blocks.forEach((item, index) => {
+            blockListProject.innerHTML += `
+            <div class="content-block__block-item">
+                <img class="block-image--ss" src="img/blocks/${item.block.img}">
+                <span class="content-block__block-item-name">${item.block.title.ru}</span>
+                <span class="content-block__block-item-name">${item.amount}</span>
+                <div class="button-add-block" data-block-id="${index}">
+                    <svg class="button-add-block__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="button-add-block__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
+                    </svg>
+                </div>
+            </div>
+            `;
+        });
+        blockListProject.lastElementChild.style.marginBottom = 0;
+
+        // for (let item of blockListCategory.children) {
+        //     const delBlock = item.querySelector(".button-add-block");
+        //     const delBlockSvg = item.querySelector(".button-add-block__svg");
+        //     const delBlockSvgPath = item.querySelector(".button-add-block__svg-path");
+
+        //      delBlock.addEventListener("mouseover", () => {
+        //         addClass(delBlockSvgPath, "button-add-block__path--hover");
+        //      });
+
+        //      delBlock.addEventListener("mouseout", () => {
+        //         removeClass(delBlockSvgPath, "button-add-block__path--hover");
+        //      });
+
+        //      delBlock.addEventListener("mousedown", ()=> {
+        //         addClass(delBlockSvgPath, "button-add-block__path--click");
+        //         addClass(delBlockSvg, "button-add-block__svg--click");
+        //      });
+
+        //      delBlock.addEventListener("mouseup", (event)=> {
+        //         removeClass(delBlockSvgPath, "button-add-block__path--click");
+        //         removeClass(delBlockSvg, "button-add-block__svg--click");
+        //         console.log(item.dateset.blockId);
+        //         if (largeBlockCategoryActive === true) {
+        //             projectBlocks.push(blocks[event.currentTarget.dataset.blockId]);
+        //         } else {
+        //             projectBlocksSmall.push(blocks[event.currentTarget.dataset.blockId]);
+        //         }
+        //      }, false);
+        // }
+    }
+    // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
+    if (blockListProject.offsetWidth > blockListProject.clientWidth) {
+        let blockItem = document.querySelectorAll('.content-block__block-item').forEach(item => {
+            item.style.marginRight = "4px";
+        });
+    }
+};
 // Функция вывода блоков игры из выбранной категории
 const displayBlocksCategory = function(categoryKey) {
     blockListCategory.innerHTML = "";
@@ -42,66 +112,65 @@ const displayBlocksCategory = function(categoryKey) {
         blocks = blockCategories[categoryKey].small;
     }
     console.log(blocks.length);
-
     if (blocks.length != 0) {
         blocks.forEach((item, index) => {
             blockListCategory.innerHTML += `
-            <div class="content-block__block-item" data-block-id="${index}">
+            <div class="content-block__block-item">
                 <img class="block-image--ss" src="img/blocks/${item.img}">
                 <span class="content-block__block-item-name">${item.title.ru}</span>
-                <div class="button-add-block">
-                <svg class="button-add-block__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="button-add-block__path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="#AEC2CC"/>
-                </svg>
-
-
+                <div class="button-add-block" data-block-id="${index}">
+                    <svg class="button-add-block__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="button-add-block__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
+                    </svg>
                 </div>
             </div>
             `;
-
-            // сделать появление каждого итема через определенный интервал (возможно добавить анимацию)
-            // реализовать через стили, скрытие элемента и появление его кажду итерацию на + 10мс
         });
         blockListCategory.lastElementChild.style.marginBottom = 0;
 
         for (let item of blockListCategory.children) {
             const addBlock = item.querySelector(".button-add-block");
             const addBlockSvg = item.querySelector(".button-add-block__svg");
-            const addBlockIcon = item.querySelector(".button-add-block__path");
+            const addBlockSvgPath = item.querySelector(".button-add-block__svg-path");
 
 
              item.addEventListener("mouseover", () => {
                 // addBlock.style.visibility = "visible";
-                 console.log(item.dataset.blockId);
+                //  console.log(item.dataset.blockId);
              });
 
              item.addEventListener("mouseout", () => {
                 // addBlock.style.visibility = "hidden";
-                 console.log(item.dataset.blockId);
+                //  console.log(item.dataset.blockId);
              });
 
              addBlock.addEventListener("mouseover", () => {
-                addClass(addBlockIcon, "button-add-block__path--hover");
+                addClass(addBlockSvgPath, "button-add-block__path--hover");
              });
 
              addBlock.addEventListener("mouseout", () => {
-                removeClass(addBlockIcon, "button-add-block__path--hover");
+                removeClass(addBlockSvgPath, "button-add-block__path--hover");
              });
 
              addBlock.addEventListener("mousedown", ()=> {
-                addClass(addBlockIcon, "button-add-block__path--click");
+                addClass(addBlockSvgPath, "button-add-block__path--click");
                 addClass(addBlockSvg, "button-add-block__svg--click");
              });
 
-             addBlock.addEventListener("mouseup", ()=> {
-                removeClass(addBlockIcon, "button-add-block__path--click");
+             addBlock.addEventListener("mouseup", (event)=> {
+                removeClass(addBlockSvgPath, "button-add-block__path--click");
                 removeClass(addBlockSvg, "button-add-block__svg--click");
-             });
+                // console.log(item.dateset.blockId);
+                    projectBlocks.push({
+                        largeBlock: (largeBlockCategoryActive === true) ? true : false,
+                        block: blocks[event.currentTarget.dataset.blockId],
+                        amount: 1,
+                    });
+                    // console.log(event.currentTarget.dataset.blockId);
+                displayBlocksProject();
+             }, false);
         }
     }
-    // else {
-    //     blockListCategory.innerHTML = `<p style="text-align: center; color: #ccc">У данной категории отсутствуют малые блоки.</p>`;
-    // }
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
     if (blockListCategory.offsetWidth > blockListCategory.clientWidth) {
         let blockItem = document.querySelectorAll('.content-block__block-item').forEach(item => {
