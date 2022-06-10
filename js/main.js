@@ -6,8 +6,14 @@ let categoryKeyTarget = "lightArmor";
 
 // const blockSelectionLarge = document.querySelector('#block-selection-large');
 // const blockSelectionSmall = document.querySelector('#block-selection-small');
-const blockSelectionLarge = document.querySelector('.size-block-selection__large');
-const blockSelectionSmall = document.querySelector('.size-block-selection__small');
+const blockSelectionLarge = document.querySelectorAll('.size-block-selection__large');
+const blockSelectionSmall = document.querySelectorAll('.size-block-selection__small');
+const blockSelectionCategoryLarge = document.querySelector('#block-selection-category-large');
+const blockSelectionCategorySmall = document.querySelector('#block-selection-category-small');
+const blockSelectionProjectLarge = document.querySelector('#block-selection-project-large');
+const blockSelectionProjectSmall = document.querySelector('#block-selection-project-small');
+
+
 
 const categories = document.querySelector('#categories');
 let categoryTitle = document.querySelector('#category-title');
@@ -41,12 +47,12 @@ let displayBlocksProject = function() {
     blockListProject.innerHTML = "";
     let blocks = [];
     if (largeBlockProjectActive === true) {
-        blocks = projectBlocks;
+        blocks = projectBlocks.filter(item => item.largeBlock === true);
     } else {
-        blocks = projectBlocksSmall;
+        blocks = projectBlocks.filter(item => item.largeBlock === false);
     }
-    console.log(blocks);
-    console.log(projectBlocks);
+    // console.log(blocks);
+    // console.log(projectBlocks);
 
     if (blocks.length != 0) {
         blocks.forEach((item, index) => {
@@ -224,44 +230,72 @@ for (let item of categories.children) {
     }
 }
 
-blockSelectionLarge.addEventListener("mouseover", (event) => {
-    addClass(event, "size-block-selection--hover");
+blockSelectionLarge.forEach(item => {
+    item.addEventListener("mouseover", () => {
+    addClass(item, "size-block-selection--hover");
+    });
 });
 
-blockSelectionLarge.addEventListener("mouseout", (event) => {
-    removeClass(event, "size-block-selection--hover");
+blockSelectionLarge.forEach(item => {
+    item.addEventListener("mouseout", () => {
+    removeClass(item, "size-block-selection--hover");
+    });
 });
 
-blockSelectionLarge.addEventListener("click", (event)=> {
+blockSelectionSmall.forEach(item => {
+    item.addEventListener("mouseover", ()=> {
+        for (let i of item.children) {
+            addClass(i, "size-block-selection--hover");
+        }
+    });
+});
+
+blockSelectionSmall.forEach(item => {
+    item.addEventListener("mouseout", ()=> {
+        for (let i of item.children) {
+            removeClass(i, "size-block-selection--hover");
+        }
+    });
+});
+
+blockSelectionCategoryLarge.addEventListener("click", (event)=> {
     largeBlockCategoryActive = true;
     addClass(event, "size-block-selection--focus");
-    for (let item of blockSelectionSmall.children) {
+    for (let item of blockSelectionCategorySmall.children) {
         removeClass(item, "size-block-selection--focus");
     }
     displayBlocksCategory(categoryKeyTarget);
     blockListCategory.scrollTop = 0;
 });
 
-blockSelectionSmall.addEventListener("mouseover", ()=> {
-    for (let item of blockSelectionSmall.children) {
-        addClass(item, "size-block-selection--hover");
-    }
-});
-
-blockSelectionSmall.addEventListener("mouseout", ()=> {
-    for (let item of blockSelectionSmall.children) {
-        removeClass(item, "size-block-selection--hover");
-    }
-});
-
-blockSelectionSmall.addEventListener("click", ()=> {
+blockSelectionCategorySmall.addEventListener("click", ()=> {
     largeBlockCategoryActive = false;
-    removeClass(blockSelectionLarge, "size-block-selection--focus");
-    for (let item of blockSelectionSmall.children) {
+    removeClass(blockSelectionCategoryLarge, "size-block-selection--focus");
+    for (let item of blockSelectionCategorySmall.children) {
         addClass(item, "size-block-selection--focus");
     }
     displayBlocksCategory(categoryKeyTarget);
     blockListCategory.scrollTop = 0;
+}, false);
+
+blockSelectionProjectLarge.addEventListener("click", (event)=> {
+    largeBlockProjectActive = true;
+    addClass(event, "size-block-selection--focus");
+    for (let item of blockSelectionProjectSmall.children) {
+        removeClass(item, "size-block-selection--focus");
+    }
+    displayBlocksProject();
+    blockListProject.scrollTop = 0;
+});
+
+blockSelectionProjectSmall.addEventListener("click", ()=> {
+    largeBlockProjectActive = false;
+    removeClass(blockSelectionProjectLarge, "size-block-selection--focus");
+    for (let item of blockSelectionProjectSmall.children) {
+        addClass(item, "size-block-selection--focus");
+    }
+    displayBlocksProject();
+    blockListProject.scrollTop = 0;
 }, false);
 
 
