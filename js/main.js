@@ -12,6 +12,9 @@ const blockSelectionCategoryLarge = document.querySelector('#block-selection-cat
 const blockSelectionCategorySmall = document.querySelector('#block-selection-category-small');
 const blockSelectionProjectLarge = document.querySelector('#block-selection-project-large');
 const blockSelectionProjectSmall = document.querySelector('#block-selection-project-small');
+const sizeBlockSelectionTitleleft = document.querySelector('#size-block-selection__title--left');
+const sizeBlockSelectionTitleRight = document.querySelector('#size-block-selection__title--right');
+
 
 
 
@@ -22,7 +25,7 @@ const blockListCategory = document.querySelector('#block-list-category');
 const blockListProject = document.querySelector('#block-list-project');
 
 let projectBlocks = [];
-let projectBlocksSmall = [];
+// let projectBlocksSmall = [];
 
 const addClass = function(event, className) {
     if (event.target) {
@@ -137,7 +140,6 @@ const displayBlocksCategory = function(categoryKey) {
             const addBlock = item.querySelector(".button-add-block");
             const addBlockSvg = item.querySelector(".button-add-block__svg");
             const addBlockSvgPath = item.querySelector(".button-add-block__svg-path");
-
 
              item.addEventListener("mouseover", () => {
                 // addBlock.style.visibility = "visible";
@@ -265,6 +267,7 @@ blockSelectionCategoryLarge.addEventListener("click", (event)=> {
     }
     displayBlocksCategory(categoryKeyTarget);
     blockListCategory.scrollTop = 0;
+    sizeBlockSelectionTitleleft.textContent = "Большие блоки";
 });
 
 blockSelectionCategorySmall.addEventListener("click", ()=> {
@@ -275,7 +278,8 @@ blockSelectionCategorySmall.addEventListener("click", ()=> {
     }
     displayBlocksCategory(categoryKeyTarget);
     blockListCategory.scrollTop = 0;
-}, false);
+    sizeBlockSelectionTitleleft.textContent = "Малые блоки";
+});
 
 blockSelectionProjectLarge.addEventListener("click", (event)=> {
     largeBlockProjectActive = true;
@@ -285,6 +289,7 @@ blockSelectionProjectLarge.addEventListener("click", (event)=> {
     }
     displayBlocksProject();
     blockListProject.scrollTop = 0;
+    sizeBlockSelectionTitleRight.textContent = "Большие блоки";
 });
 
 blockSelectionProjectSmall.addEventListener("click", ()=> {
@@ -295,7 +300,8 @@ blockSelectionProjectSmall.addEventListener("click", ()=> {
     }
     displayBlocksProject();
     blockListProject.scrollTop = 0;
-}, false);
+    sizeBlockSelectionTitleRight.textContent = "Малые блоки";
+});
 
 let a = 10;
 let b = a;
