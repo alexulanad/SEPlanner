@@ -21,7 +21,6 @@ let projectTitle = document.querySelector('#project-title');
 const blockListCategory = document.querySelector('#block-list-category');
 const blockListProject = document.querySelector('#block-list-project');
 
-// let blocks = [];
 let projectBlocks = [];
 let projectBlocksSmall = [];
 
@@ -103,7 +102,7 @@ let displayBlocksProject = function() {
     }
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
     if (blockListProject.offsetWidth > blockListProject.clientWidth) {
-        let blockItem = document.querySelectorAll('.content-block__block-item').forEach(item => {
+        blockListProject.querySelectorAll('.content-block__block-item').forEach(item => {
             item.style.marginRight = "4px";
         });
     }
@@ -179,7 +178,7 @@ const displayBlocksCategory = function(categoryKey) {
     }
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
     if (blockListCategory.offsetWidth > blockListCategory.clientWidth) {
-        let blockItem = document.querySelectorAll('.content-block__block-item').forEach(item => {
+        blockListCategory.querySelectorAll('.content-block__block-item').forEach(item => {
             item.style.marginRight = "4px";
         });
     }
@@ -297,6 +296,14 @@ blockSelectionProjectSmall.addEventListener("click", ()=> {
     displayBlocksProject();
     blockListProject.scrollTop = 0;
 }, false);
+
+let a = 10;
+let b = a;
+console.log(a , b);
+a = 25;
+console.log(a , b);
+
+
 
 
 
