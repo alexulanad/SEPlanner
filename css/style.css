@@ -44,7 +44,16 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1 0 49%;
-    margin-right: 4px;
+}
+
+.blocks__left {
+    margin-right: 2px;
+
+}
+
+.blocks__right {
+    margin-left: 2px;
+
 }
 
 .project-blocks {
