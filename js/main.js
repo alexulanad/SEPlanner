@@ -15,9 +15,6 @@ const blockSelectionProjectSmall = document.querySelector('#block-selection-proj
 const sizeBlockSelectionTitleleft = document.querySelector('#size-block-selection__title--left');
 const sizeBlockSelectionTitleRight = document.querySelector('#size-block-selection__title--right');
 
-
-
-
 const categories = document.querySelector('#categories');
 let categoryTitle = document.querySelector('#category-title');
 let projectTitle = document.querySelector('#project-title');
@@ -45,21 +42,23 @@ const removeClass = function(event, className) {
 
 // Функция вывода блоков проекта из массива projectBlocks
 
-let displayBlocksProject = function() {
+const displayBlocksProject = function() {
 
     blockListProject.innerHTML = "";
 
     const addBlockProject = function(item, index) {
         blockListProject.innerHTML += `
-        <div class="content-block__block-item">
-        <img class="block-image--ss" src="img/blocks/${item.block.img}">
-        <span class="content-block__block-item-name">${item.block.title.ru}</span>
-        <span class="content-block__block-item-name">${item.amount}</span>
-        <div class="button-icon" data-block-id="${index}">
-            <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-playlist-remove">
-                <path class="button-icon__svg-path" d="M2,6V8H14V6H2M2,10V12H11V10H2M14.17,10.76L12.76,12.17L15.59,15L12.76,17.83L14.17,19.24L17,16.41L19.83,19.24L21.24,17.83L18.41,15L21.24,12.17L19.83,10.76L17,13.59L14.17,10.76M2,14V16H11V14H2Z" fill="rgb(174, 194, 204, 0.9)"/>
-            </svg>
-        </div>
+        <div class="block-item">
+            <div class="block-item__base">
+                <img class="block-image--ss" src="img/blocks/${item.block.img}">
+                <span class="block-item__name">${item.block.title.ru}</span>
+                <span class="block-item__name">${item.amount}</span>
+                <div class="button-icon" data-block-id="${index}">
+                    <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-playlist-remove">
+                        <path class="button-icon__svg-path" d="M2,6V8H14V6H2M2,10V12H11V10H2M14.17,10.76L12.76,12.17L15.59,15L12.76,17.83L14.17,19.24L17,16.41L19.83,19.24L21.24,17.83L18.41,15L21.24,12.17L19.83,10.76L17,13.59L14.17,10.76M2,14V16H11V14H2Z" fill="rgb(174, 194, 204, 0.9)"/>
+                    </svg>
+                </div>
+            </div>
         `;
     };
 
@@ -113,7 +112,7 @@ let displayBlocksProject = function() {
 
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
     if (blockListProject.offsetWidth > blockListProject.clientWidth) {
-        blockListProject.querySelectorAll('.content-block__block-item').forEach(item => {
+        blockListProject.querySelectorAll('.block-item').forEach(item => {
             item.style.marginRight = "4px";
         });
     }
@@ -127,19 +126,26 @@ const displayBlocksCategory = function(categoryKey) {
     } else {
         blocks = blockCategories[categoryKey].small;
     }
-    console.log(blocks.length);
+    // console.log(blocks.length);
+    console.log(blocks);
     if (blocks.length != 0) {
         blocks.forEach((item, index) => {
             blockListCategory.innerHTML += `
-            <div class="content-block__block-item">
-                <img class="block-image--ss" src="img/blocks/${item.img}">
-                <span class="content-block__block-item-name">${item.title.ru}</span>
-                <div class="button-icon" data-block-id="${index}">
-                    <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
-                    </svg>
+            <div class="block-item">
+                <div class="block-item__base">
+                    <img class="block-image--ss" src="img/blocks/${item.img}">
+                    <span class="block-item__name">${item.title.ru}</span>
+                    <div class="button-icon" data-block-id="${index}">
+                        <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="block-item__specification">
+
                 </div>
             </div>
+
             `;
         });
         blockListCategory.lastElementChild.style.marginBottom = 0;
@@ -149,34 +155,34 @@ const displayBlocksCategory = function(categoryKey) {
             const buttonIconSvg = item.querySelector(".button-icon__svg");
             const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
 
-             item.addEventListener("mouseover", () => {
+            item.addEventListener("mouseover", () => {
                 // addBlock.style.visibility = "visible";
                 //  console.log(item.dataset.blockId);
-             });
+            });
 
-             item.addEventListener("mouseout", () => {
+            item.addEventListener("mouseout", () => {
                 // addBlock.style.visibility = "hidden";
                 //  console.log(item.dataset.blockId);
                 // removeClass(buttonIconSvg, "button-icon__svg--click");
 
-             });
+            });
 
-             buttonIcon.addEventListener("mouseenter", () => {
+            buttonIcon.addEventListener("mouseenter", () => {
                 addClass(buttonIconSvgPath, "button-icon__svg-path--hover");
-             });
+            });
 
-             buttonIcon.addEventListener("mouseleave", () => {
+            buttonIcon.addEventListener("mouseleave", () => {
                 removeClass(buttonIconSvgPath, "button-icon__svg-path--hover");
                 if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
                     removeClass(buttonIconSvg, "button-icon__svg--click");
                 }
-             });
+            });
 
-             buttonIcon.addEventListener("mousedown", ()=> {
+            buttonIcon.addEventListener("mousedown", ()=> {
                 addClass(buttonIconSvg, "button-icon__svg--click");
-             });
+            });
 
-             buttonIcon.addEventListener("mouseup", (event)=> {
+            buttonIcon.addEventListener("mouseup", (event)=> {
                 removeClass(buttonIconSvg, "button-icon__svg--click");
                 // console.log(item.dateset.blockId);
                     projectBlocks.push({
@@ -185,12 +191,12 @@ const displayBlocksCategory = function(categoryKey) {
                         amount: 1,
                     });
                 displayBlocksProject();
-             });
+            });
         }
     }
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
     if (blockListCategory.offsetWidth > blockListCategory.clientWidth) {
-        blockListCategory.querySelectorAll('.content-block__block-item').forEach(item => {
+        blockListCategory.querySelectorAll('.block-item').forEach(item => {
             item.style.marginRight = "4px";
         });
     }
