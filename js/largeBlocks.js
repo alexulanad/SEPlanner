@@ -10,6 +10,7 @@ const largeBlocks = {
         weight: 500,
         integrity: 2500,
         img: "lightArmorBlock.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorSlope: {
         title: {
@@ -19,6 +20,7 @@ const largeBlocks = {
         weight: 260,
         integrity: 1300,
         img: "lightArmorSlope.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorCorner: {
         title: {
@@ -28,6 +30,7 @@ const largeBlocks = {
         weight: 80,
         integrity: 400,
         img: "lightArmorCorner.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorInvertedCorner: {
         title: {
@@ -37,6 +40,7 @@ const largeBlocks = {
         weight: 420,
         integrity: 2100,
         img: "lightArmorInvertedCorner.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorCornerSquareBlock: {
         title: {
@@ -46,6 +50,7 @@ const largeBlocks = {
         weight: 140,
         integrity: 700,
         img: "lightArmorCornerSquareBlock.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorCornerSquareInvertedBlock: {
         title: {
@@ -55,6 +60,7 @@ const largeBlocks = {
         weight: 380,
         integrity: 1900,
         img: "lightArmorCornerSquareInvertedBlock.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     roundArmorSlope: {
         title: {
@@ -64,6 +70,7 @@ const largeBlocks = {
         weight: 260,
         integrity: 1300,
         img: "roundArmorSlope.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     roundArmorCorner: {
         title: {
@@ -73,6 +80,7 @@ const largeBlocks = {
         weight: 80,
         integrity: 400,
         img: "roundArmorCorner.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     roundArmorInvertedCorner: {
         title: {
@@ -82,6 +90,7 @@ const largeBlocks = {
         weight: 420,
         integrity: 2100,
         img: "roundArmorInvertedCorner.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorSlope2x1x1Base: {
         title: {
@@ -91,6 +100,7 @@ const largeBlocks = {
         weight: 380,
         integrity: 1900,
         img: "lightArmorSlope2x1x1Base.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorSlope2x1x1Tip: {
         title: {
@@ -100,6 +110,7 @@ const largeBlocks = {
         weight: 140,
         integrity: 700,
         img: "lightArmorSlope2x1x1Tip.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     halfLightArmorBlock: {
         title: {
@@ -109,6 +120,7 @@ const largeBlocks = {
         weight: 240,
         integrity: 1200,
         img: "halfLightArmorBlock.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     halfSlopeLightArmorBlock: {
         title: {
@@ -118,6 +130,7 @@ const largeBlocks = {
         weight: 140,
         integrity: 700,
         img: "halfSlopeLightArmorBlock.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     halfSlopeCornerLightArmor: {
         title: {
@@ -127,6 +140,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "halfSlopeCornerLightArmor.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorHalfCornerBlock: {
         title: {
@@ -136,6 +150,7 @@ const largeBlocks = {
         weight: 120,
         integrity: 600,
         img: "lightArmorHalfCornerBlock.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorHalfSlopedCorner: {
         title: {
@@ -145,6 +160,7 @@ const largeBlocks = {
         weight: 220,
         integrity: 1100,
         img: "lightArmorHalfSlopedCorner.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorCorner2x1x1Base: {
         title: {
@@ -154,6 +170,7 @@ const largeBlocks = {
         weight: 200,
         integrity: 1000,
         img: "lightArmorCorner2x1x1Base.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorCorner2x1x1Tip: {
         title: {
@@ -163,6 +180,7 @@ const largeBlocks = {
         weight: 80,
         integrity: 400,
         img: "lightArmorCorner2x1x1Tip.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorInvertedCorner2x1x1Base: {
         title: {
@@ -172,6 +190,7 @@ const largeBlocks = {
         weight: 440,
         integrity: 2200,
         img: "lightArmorInvertedCorner2x1x1Base.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorInvertedCorner2x1x1Tip: {
         title: {
@@ -181,6 +200,7 @@ const largeBlocks = {
         weight: 320,
         integrity: 1600,
         img: "lightArmorInvertedCorner2x1x1Tip.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     halfSlopeCornerInvertedLightArmor: {
         title: {
@@ -190,6 +210,7 @@ const largeBlocks = {
         weight: 460,
         integrity: 2300,
         img: "halfSlopeCornerInvertedLightArmor.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     halfSlopeInvertedLightArmor: {
         title: {
@@ -199,6 +220,7 @@ const largeBlocks = {
         weight: 440,
         integrity: 2200,
         img: "halfSlopeInvertedLightArmor.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     slopedCornerLightArmorTip: {
         title: {
@@ -208,6 +230,7 @@ const largeBlocks = {
         weight: 100,
         integrity: 500,
         img: "slopedCornerLightArmorTip.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorSlopedCornerBase: {
         title: {
@@ -217,6 +240,7 @@ const largeBlocks = {
         weight: 400,
         integrity: 2000,
         img: "lightArmorSlopedCornerBase.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorSlopedCorner: {
         title: {
@@ -226,6 +250,7 @@ const largeBlocks = {
         weight: 260,
         integrity: 1300,
         img: "lightArmorSlopedCorner.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorHalfSlopedCornerBase: {
         title: {
@@ -235,6 +260,7 @@ const largeBlocks = {
         weight: 220,
         integrity: 1100,
         img: "lightArmorHalfSlopedCornerBase.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanel: {
         title: {
@@ -244,6 +270,7 @@ const largeBlocks = {
         weight: 100,
         integrity: 500,
         img: "lightArmorPanel.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanelSlope: {
         title: {
@@ -253,6 +280,7 @@ const largeBlocks = {
         weight: 120,
         integrity: 600,
         img: "lightArmorPanelSlope.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanelSide: {
         title: {
@@ -262,6 +290,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "lightArmorPanelSide.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanel2x1SlopeBase: {
         title: {
@@ -271,6 +300,7 @@ const largeBlocks = {
         weight: 100,
         integrity: 500,
         img: "lightArmorPanel2x1SlopeBase.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanel2x1SlopeTip: {
         title: {
@@ -280,6 +310,7 @@ const largeBlocks = {
         weight: 100,
         integrity: 500,
         img: "lightArmorPanel2x1SlopeTip.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanel2x1BaseRight: {
         title: {
@@ -289,6 +320,7 @@ const largeBlocks = {
         weight: 100,
         integrity: 500,
         img: "lightArmorPanel2x1BaseRight.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanel2x1TipRight: {
         title: {
@@ -298,6 +330,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "lightArmorPanel2x1TipRight.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanel2x1BaseLeft: {
         title: {
@@ -307,6 +340,7 @@ const largeBlocks = {
         weight: 100,
         integrity: 500,
         img: "lightArmorPanel2x1BaseLeft.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanel2x1TipLeft: {
         title: {
@@ -316,6 +350,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "lightArmorPanel2x1TipLeft.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorPanelHalfSlope: {
         title: {
@@ -325,6 +360,7 @@ const largeBlocks = {
         weight: 80,
         integrity: 400,
         img: "lightArmorPanelHalfSlope.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorHalfPanel2x1BaseRight: {
         title: {
@@ -334,6 +370,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "lightArmorHalfPanel2x1BaseRight.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorHalfPanel2x1TipRight: {
         title: {
@@ -343,6 +380,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "lightArmorHalfPanel2x1TipRight.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorHalfPanel2x1BaseLeft: {
         title: {
@@ -352,6 +390,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "lightArmorHalfPanel2x1BaseLeft.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorHalfPanel2x1TipLeft: {
         title: {
@@ -361,6 +400,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "lightArmorHalfPanel2x1TipLeft.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorHalfPanel: {
         title: {
@@ -370,6 +410,7 @@ const largeBlocks = {
         weight: 60,
         integrity: 300,
         img: "lightArmorHalfPanel.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     },
     lightArmorQuarterPanel: {
         title: {
@@ -379,6 +420,7 @@ const largeBlocks = {
         weight: 40,
         integrity: 200,
         img: "lightArmorQuarterPanel.png",
+        description: "Основная броня для придания структуры и формы кораблей и станций. Не очень прочная, зато легкая.",
     }, // End lightArmor
 
     // Тяжелая броня // Heavy Armor

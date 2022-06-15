@@ -141,8 +141,40 @@ const displayBlocksCategory = function(categoryKey) {
                         </svg>
                     </div>
                 </div>
-                <div class="block-item__specification">
 
+                <div class="block-item__specification">
+                    <div class="block-item__image-block">
+                        <img class="block-image--bs" src="img/blocks/${item.img}">
+                    </div>
+                    <div class="block-item__specification-block">
+                        <div class="block-item__content">
+                            <div class="block-item__content-block">
+                                <div class="block-item__content-title">Описание</div>
+                                <div class="block-item__content-description">${item.description}</div>
+                            </div>
+
+                            <div class="block-item__content-block">
+                                <div class="block-item__content-title">Характеристики</div>
+                                <div class="block-item__content-item">
+                                    <span class="block-item__content-item-title">Масса</span>
+                                    <span class="block-item__content-item-value">${item.weight}</span>
+                                    <span class="block-item__content-item-value-unit">кг.</span>
+                                </div>
+                                <div class="block-item__content-item">
+                                    <span class="block-item__content-item-title">Прочность</span>
+                                    <span class="block-item__content-item-value">${item.integrity}</span>
+                                    <span class="block-item__content-item-value-unit">ед.</span>
+                                </div>
+                            </div>
+
+                            <div class="block-item__content-block">
+                                <div class="block-item__content-title">Компоненты</div>
+                            </div>
+                            <div>
+                                <div class="block-item__content-title">Ресурсы</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
