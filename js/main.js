@@ -168,7 +168,6 @@ const displayBlocksCategory = function(categoryKey) {
                     </div>
                 </div>
             </div>
-
             `;
         });
         blockListCategory.lastElementChild.style.marginBottom = 0;
