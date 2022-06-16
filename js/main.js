@@ -147,31 +147,22 @@ const displayBlocksCategory = function(categoryKey) {
                         <img class="block-image--bs" src="img/blocks/${item.img}">
                     </div>
                     <div class="block-item__specification-block">
-                        <div class="block-item__content">
-                            <div class="block-item__content-block">
-                                <div class="block-item__content-title">Описание</div>
-                                <div class="block-item__content-description">${item.description}</div>
-                            </div>
+                        <div class="block-item__content-block">
+                            <div class="block-item__content-title">Описание</div>
+                            <div class="block-item__content-description">${item.description}</div>
+                        </div>
 
-                            <div class="block-item__content-block">
-                                <div class="block-item__content-title">Характеристики</div>
-                                <div class="block-item__content-item">
-                                    <span class="block-item__content-item-title">Масса</span>
-                                    <span class="block-item__content-item-value">${item.weight}</span>
-                                    <span class="block-item__content-item-value-unit">кг.</span>
-                                </div>
-                                <div class="block-item__content-item">
-                                    <span class="block-item__content-item-title">Прочность</span>
-                                    <span class="block-item__content-item-value">${item.integrity}</span>
-                                    <span class="block-item__content-item-value-unit">ед.</span>
-                                </div>
+                        <div class="block-item__content-block">
+                            <div class="block-item__content-title">Характеристики</div>
+                            <div class="block-item__content-item">
+                                <span class="block-item__content-item-title">Масса</span>
+                                <span class="block-item__content-item-value">${item.weight}</span>
+                                <span class="block-item__content-item-value-unit">кг.</span>
                             </div>
-
-                            <div class="block-item__content-block">
-                                <div class="block-item__content-title">Компоненты</div>
-                            </div>
-                            <div>
-                                <div class="block-item__content-title">Ресурсы</div>
+                            <div class="block-item__content-item">
+                                <span class="block-item__content-item-title">Прочность</span>
+                                <span class="block-item__content-item-value">${item.integrity}</span>
+                                <span class="block-item__content-item-value-unit">ед.</span>
                             </div>
                         </div>
                     </div>
@@ -186,6 +177,8 @@ const displayBlocksCategory = function(categoryKey) {
             const buttonIcon = item.querySelector(".button-icon");
             const buttonIconSvg = item.querySelector(".button-icon__svg");
             const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
+            const blockItemBase = item.querySelector(".block-item__base");
+            const blockItemSpecification = item.querySelector(".block-item__specification");
 
             item.addEventListener("mouseover", () => {
                 // addBlock.style.visibility = "visible";
@@ -198,6 +191,16 @@ const displayBlocksCategory = function(categoryKey) {
                 // removeClass(buttonIconSvg, "button-icon__svg--click");
 
             });
+
+            blockItemBase.addEventListener("click", (e)=> {
+                if (e.currentTarget == e.target)  {
+                    if (blockItemSpecification.style.display === "flex"){
+                        blockItemSpecification.style.display = "none";
+                    } else {
+                            blockItemSpecification.style.display = "flex";
+                    }
+                }
+            }, true);
 
             buttonIcon.addEventListener("mouseenter", () => {
                 addClass(buttonIconSvgPath, "button-icon__svg-path--hover");
