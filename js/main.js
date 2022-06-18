@@ -140,18 +140,21 @@ const displayBlocksProject = function() {
         blockItemBase.addEventListener("click", (e)=> {
             if (e.currentTarget == e.target) {
                 if (blockItemSpecification.style.maxHeight) {
+                    blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                     blockItemSpecification.style.maxHeight = null;
                     projectBlocks[buttonIcon.dataset.blockId].active = false;
                 } else {
                     for (let item of blockListProject.children) {
-                        const itemMaxHeight = item.querySelector(".block-item__specification");
+                        const blockItemSpecification = item.querySelector(".block-item__specification");
                         const buttonIcon = item.querySelector(".button-icon");
-                        if (itemMaxHeight.style.maxHeight) {
-                            itemMaxHeight.style.maxHeight = null;
+                        if (blockItemSpecification.style.maxHeight) {
+                            blockItemSpecification.style.transition = "max-height 0.2s ease-out";
+                            blockItemSpecification.style.maxHeight = null;
                             projectBlocks[buttonIcon.dataset.blockId].active = false;
                         }
                     }
                     // console.log(e.currentTarget, e.target);
+                    blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                     projectBlocks[buttonIcon.dataset.blockId].active = true;
                     blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
                 }
@@ -160,12 +163,11 @@ const displayBlocksProject = function() {
 
         // console.log(buttonIcon.dataset.blockId);
         if (projectBlocks[buttonIcon.dataset.blockId].active === true) {
+            blockItemSpecification.style.transition = "none";
             blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
             // projectBlocks.forEach(item => {
             //     item.active = false;
             // });
-        } else {
-            blockItemSpecification.style.maxHeight = null;
         }
 
         // console.log(buttonIcon);
