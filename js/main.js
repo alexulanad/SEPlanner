@@ -59,6 +59,32 @@ const displayBlocksProject = function() {
                     </svg>
                 </div>
             </div>
+            <div class="block-item__specification">
+                <div class="block-item__image-block">
+                    <img class="block-image--bs" src="img/blocks/${item.block.img}">
+                </div>
+                <div class="block-item__specification-block">
+                    <div class="block-item__content-block">
+                        <div class="block-item__content-title">Описание</div>
+                        <div class="block-item__content-description">${item.block.description}</div>
+                    </div>
+
+                    <div class="block-item__content-block">
+                        <div class="block-item__content-title">Характеристики</div>
+                        <div class="block-item__content-item">
+                            <span class="block-item__content-item-title">Масса</span>
+                            <span class="block-item__content-item-value">${item.block.weight}</span>
+                            <span class="block-item__content-item-value-unit">кг.</span>
+                        </div>
+                        <div class="block-item__content-item">
+                            <span class="block-item__content-item-title">Прочность</span>
+                            <span class="block-item__content-item-value">${item.block.integrity}</span>
+                            <span class="block-item__content-item-value-unit">ед.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         `;
     };
 
@@ -86,9 +112,11 @@ const displayBlocksProject = function() {
         const buttonIcon = item.querySelector(".button-icon");
         const buttonIconSvg = item.querySelector(".button-icon__svg");
         const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
+        const blockItemBase = item.querySelector(".block-item__base");
+        const blockItemSpecification = item.querySelector(".block-item__specification");
 
         buttonIcon.addEventListener("mouseenter", () => {
-        addClass(buttonIconSvgPath, "button-icon__svg-path--hover");
+            addClass(buttonIconSvgPath, "button-icon__svg-path--hover");
         });
 
         buttonIcon.addEventListener("mouseleave", () => {
@@ -99,15 +127,31 @@ const displayBlocksProject = function() {
         });
 
         buttonIcon.addEventListener("mousedown", ()=> {
-        addClass(buttonIconSvg, "button-icon__svg--click");
+            addClass(buttonIconSvg, "button-icon__svg--click");
         });
 
         buttonIcon.addEventListener("mouseup", (event)=> {
-        removeClass(buttonIconSvg, "button-icon__svg--click");
-        console.log(buttonIcon.dataset.blockId);
-        projectBlocks.splice(event.currentTarget.dataset.blockId, 1);
-        displayBlocksProject();
+            removeClass(buttonIconSvg, "button-icon__svg--click");
+            // console.log(buttonIcon.dataset.blockId);
+            projectBlocks.splice(event.currentTarget.dataset.blockId, 1);
+            displayBlocksProject();
         });
+
+        blockItemBase.addEventListener("click", (e)=> {
+            if (e.currentTarget == e.target) {
+                if (blockItemSpecification.style.maxHeight) {
+                    blockItemSpecification.style.maxHeight = null;
+                } else {
+                    for (let item of blockListProject.children) {
+                        const itemMaxHeight = item.querySelector(".block-item__specification");
+                        if (itemMaxHeight.style.maxHeight) {
+                            itemMaxHeight.style.maxHeight = null;
+                        }
+                    }
+                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+                }
+            }
+        }, true);
     }
 
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
@@ -117,6 +161,7 @@ const displayBlocksProject = function() {
         });
     }
 };
+
 // Функция вывода блоков игры из выбранной категории
 const displayBlocksCategory = function(categoryKey) {
     blockListCategory.innerHTML = "";
@@ -127,7 +172,7 @@ const displayBlocksCategory = function(categoryKey) {
         blocks = blockCategories[categoryKey].small;
     }
     // console.log(blocks.length);
-    console.log(blocks);
+    // console.log(blocks);
     if (blocks.length != 0) {
         blocks.forEach((item, index) => {
             blockListCategory.innerHTML += `
@@ -141,7 +186,6 @@ const displayBlocksCategory = function(categoryKey) {
                         </svg>
                     </div>
                 </div>
-
                 <div class="block-item__specification">
                     <div class="block-item__image-block">
                         <img class="block-image--bs" src="img/blocks/${item.img}">
@@ -170,6 +214,7 @@ const displayBlocksCategory = function(categoryKey) {
             </div>
             `;
         });
+
         blockListCategory.lastElementChild.style.marginBottom = 0;
 
         for (let item of blockListCategory.children) {
@@ -192,11 +237,28 @@ const displayBlocksCategory = function(categoryKey) {
             });
 
             blockItemBase.addEventListener("click", (e)=> {
-                if (e.currentTarget == e.target)  {
-                    if (blockItemSpecification.style.display === "flex"){
-                        blockItemSpecification.style.display = "none";
+                // let itemBaseActive = e.querySelector(".block-item__base-active");
+                if (e.currentTarget == e.target) {
+                    if (blockItemSpecification.style.maxHeight) {
+                        blockItemSpecification.style.maxHeight = null;
+                        // removeClass(blockItemBase, "block-item__base-active");
+                        // setTimeout(removeClass, 190, blockItemSpecification, "block-item__specification-active");
+                        // removeClass(blockItemSpecification, "block-item__specification-active");
                     } else {
-                            blockItemSpecification.style.display = "flex";
+                        for (let item of blockListCategory.children) {
+                            const itemMaxHeight = item.querySelector(".block-item__specification");
+                            // const itemBaseNonActive = item.querySelector(".block-item__base");
+                            if (itemMaxHeight.style.maxHeight) {
+                                itemMaxHeight.style.maxHeight = null;
+                                // removeClass(itemBaseNonActive, "block-item__base-active");
+                                // setTimeout(removeClass, 190, itemMaxHeight, "block-item__specification-active");
+                                // removeClass(itemMaxHeight, "block-item__specification-active");
+                            }
+                        }
+                        // console.log(e.currentTarget.style);
+                        // addClass(blockItemSpecification, "block-item__specification-active");
+                        // addClass(blockItemBase, "block-item__base-active");
+                        blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
                     }
                 }
             }, true);
@@ -221,8 +283,10 @@ const displayBlocksCategory = function(categoryKey) {
                 // console.log(item.dateset.blockId);
                     projectBlocks.push({
                         largeBlock: (largeBlockCategoryActive === true) ? true : false,
-                        block: blocks[event.currentTarget.dataset.blockId],
+                        // block: blocks[event.currentTarget.dataset.blockId],
+                        block: blocks[buttonIcon.dataset.blockId],
                         amount: 1,
+                        active: false,
                     });
                 displayBlocksProject();
             });
@@ -352,15 +416,3 @@ blockSelectionProjectSmall.addEventListener("click", ()=> {
     blockListProject.scrollTop = 0;
     sizeBlockSelectionTitleRight.textContent = "Малые блоки";
 });
-
-let a = 10;
-let b = a;
-console.log(a , b);
-a = 25;
-console.log(a , b);
-
-
-
-
-
-
