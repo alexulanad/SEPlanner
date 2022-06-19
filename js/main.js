@@ -132,7 +132,6 @@ const displayBlocksProject = function() {
 
         buttonIcon.addEventListener("mouseup", (event)=> {
             removeClass(buttonIconSvg, "button-icon__svg--click");
-            // console.log(buttonIcon.dataset.blockId);
             projectBlocks.splice(event.currentTarget.dataset.blockId, 1);
             displayBlocksProject();
         });
@@ -153,7 +152,6 @@ const displayBlocksProject = function() {
                             projectBlocks[buttonIcon.dataset.blockId].active = false;
                         }
                     }
-                    // console.log(e.currentTarget, e.target);
                     blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                     projectBlocks[buttonIcon.dataset.blockId].active = true;
                     blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
@@ -161,23 +159,10 @@ const displayBlocksProject = function() {
             }
         }, true);
 
-        // console.log(buttonIcon.dataset.blockId);
         if (projectBlocks[buttonIcon.dataset.blockId].active === true) {
             blockItemSpecification.style.transition = "none";
             blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
-            // projectBlocks.forEach(item => {
-            //     item.active = false;
-            // });
         }
-
-        // console.log(buttonIcon);
-        // console.log(projectBlocks[buttonIcon.dataset.blockId].active);
-        // if (item.active === true) {
-        //     console.log(item.active);
-        // }
-            // const blockItemSpecification = blockListProject.children.querySelector(".block-item__specification");
-        //     blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
-        // }
     }
 
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
@@ -186,6 +171,11 @@ const displayBlocksProject = function() {
             item.style.marginRight = "4px";
         });
     }
+};
+
+let itemCategoryActive = {
+    largeBlockIndexActive: null,
+    smallBlockIndexActive: null,
 };
 
 // Функция вывода блоков игры из выбранной категории
@@ -197,8 +187,7 @@ const displayBlocksCategory = function(categoryKey) {
     } else {
         blocks = blockCategories[categoryKey].small;
     }
-    // console.log(blocks.length);
-    // console.log(blocks);
+
     if (blocks.length != 0) {
         blocks.forEach((item, index) => {
             blockListCategory.innerHTML += `
@@ -251,43 +240,54 @@ const displayBlocksCategory = function(categoryKey) {
             const blockItemSpecification = item.querySelector(".block-item__specification");
 
             item.addEventListener("mouseover", () => {
-                // addBlock.style.visibility = "visible";
-                //  console.log(item.dataset.blockId);
             });
 
             item.addEventListener("mouseout", () => {
-                // addBlock.style.visibility = "hidden";
-                //  console.log(item.dataset.blockId);
-                // removeClass(buttonIconSvg, "button-icon__svg--click");
-
             });
 
             blockItemBase.addEventListener("click", (e)=> {
-                // let itemBaseActive = e.querySelector(".block-item__base-active");
                 if (e.currentTarget == e.target) {
                     if (blockItemSpecification.style.maxHeight) {
+                        blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                         blockItemSpecification.style.maxHeight = null;
-                        // removeClass(blockItemBase, "block-item__base-active");
-                        // setTimeout(removeClass, 190, blockItemSpecification, "block-item__specification-active");
-                        // removeClass(blockItemSpecification, "block-item__specification-active");
+                        if (largeBlockCategoryActive === true) {
+                            itemCategoryActive.largeBlockIndexActive = null;
+                        } else {
+                            itemCategoryActive.smallBlockIndexActive = null;
+                        }
+                        console.log(itemCategoryActive);
                     } else {
                         for (let item of blockListCategory.children) {
+                            const blockItemSpecification = item.querySelector(".block-item__specification");
                             const itemMaxHeight = item.querySelector(".block-item__specification");
-                            // const itemBaseNonActive = item.querySelector(".block-item__base");
                             if (itemMaxHeight.style.maxHeight) {
+                                blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                                 itemMaxHeight.style.maxHeight = null;
-                                // removeClass(itemBaseNonActive, "block-item__base-active");
-                                // setTimeout(removeClass, 190, itemMaxHeight, "block-item__specification-active");
-                                // removeClass(itemMaxHeight, "block-item__specification-active");
                             }
                         }
-                        // console.log(e.currentTarget.style);
-                        // addClass(blockItemSpecification, "block-item__specification-active");
-                        // addClass(blockItemBase, "block-item__base-active");
+                        blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                         blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+                        if (largeBlockCategoryActive === true) {
+                            itemCategoryActive.largeBlockIndexActive = buttonIcon.dataset.blockId;
+                        } else {
+                            itemCategoryActive.smallBlockIndexActive = buttonIcon.dataset.blockId;
+                        }
+                        console.log(itemCategoryActive);
                     }
                 }
             }, true);
+
+            if (largeBlockCategoryActive === true) {
+                if (itemCategoryActive.largeBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.largeBlockIndexActive) {
+                    blockItemSpecification.style.transition = "none";
+                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+                }
+            } else {
+                if (itemCategoryActive.smallBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.smallBlockIndexActive) {
+                    blockItemSpecification.style.transition = "none";
+                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+                }
+            }
 
             buttonIcon.addEventListener("mouseenter", () => {
                 addClass(buttonIconSvgPath, "button-icon__svg-path--hover");
@@ -304,12 +304,10 @@ const displayBlocksCategory = function(categoryKey) {
                 addClass(buttonIconSvg, "button-icon__svg--click");
             });
 
-            buttonIcon.addEventListener("mouseup", (event)=> {
+            buttonIcon.addEventListener("mouseup", ()=> {
                 removeClass(buttonIconSvg, "button-icon__svg--click");
-                // console.log(item.dateset.blockId);
                     projectBlocks.push({
                         largeBlock: (largeBlockCategoryActive === true) ? true : false,
-                        // block: blocks[event.currentTarget.dataset.blockId],
                         block: blocks[buttonIcon.dataset.blockId],
                         amount: 1,
                         active: false,
@@ -343,7 +341,6 @@ for (let item of categories.children) {
         }, false);
 
         item.addEventListener("click", () => {
-            // item.dataset.active = "true";
             addClass(item, "block-image--focus");
             projectTitle.textContent = item.dataset.categoryName;
             const categoryName = item.dataset.categoryName;
@@ -353,13 +350,10 @@ for (let item of categories.children) {
                     removeClass(item, "block-image--focus");
                 }
             }
-            // console.log(blockCategories[item.dataset.categoryKey].small.length);
 
-            // if (blockCategories[item.dataset.categoryKey].small.length == 0) {
-            //     blockSelectionSmall.style.pointerEvents = "none";
-            // } else {
-            //     blockSelectionSmall.style.pointerEvents = "auto";
-            // }
+            itemCategoryActive.largeBlockIndexActive = null;
+            itemCategoryActive.smallBlockIndexActive = null;
+
 
             // Вызов функции вывода блоков выбранной категории
             displayBlocksCategory(item.dataset.categoryKey);
