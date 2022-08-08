@@ -29,6 +29,10 @@ const lib = {
         }
     },
 
+    addEvent(element, typeEvent, event) {
+        element.addEventListener(typeEvent, event);
+    },
+
     // enumerator(array, callback) {
     //     array.forEach(item => {
     //         callback(item, );
@@ -67,10 +71,13 @@ const main = {
     launchApp() {
         const categoryElement = this.categories.querySelector(`[data-category-key=${this.categoryKeyTarget}`);
         lib.classToggle(categoryElement, "block-image--focus");
-        main.projectTitle.textContent = categoryElement.dataset.categoryName;
+        this.projectTitle.textContent = categoryElement.dataset.categoryName;
         this.blockSizeSelection();
         this.largeBlockCategoryActive == true ? (this.sizeBlockSelectionTitleleft.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleleft.textContent = "Малые блоки");
         this.largeBlockProjectActive == true ? (this.sizeBlockSelectionTitleRight.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleRight.textContent = "Малые блоки");
+        // displayBlocksCategory(this.categoryKeyTarget);
+        const showCategoryBlocks = new ShowCategoryBlocks(this.categoryKeyTarget);
+        showCategoryBlocks.displayCategoryBlocks();
 
     },
     blockSizeSelection() {
@@ -91,6 +98,163 @@ const main = {
             }
         }
     },
+};
+
+class createBlocks {
+    constructor() {
+        this
+    }
+}
+class ShowCategoryBlocks {
+    constructor(categoryKey) {
+        // Сохраняет в массив блоки выбранной категории по ключу categoryKey, в зависимости от выбранного размера блоков
+        this.categoryBlocks = main.largeBlockCategoryActive == true ? blockCategories[categoryKey].large : blockCategories[categoryKey].small;
+    }
+    // генерирует html для каждого блока массива и выводит на экран все блоки выбранной категории и размера
+    displayCategoryBlocks() {
+        main.blockListCategory.innerHTML = "";
+        if (this.categoryBlocks.length != 0) {
+            this.categoryBlocks.forEach((item, index) => {
+                main.blockListCategory.innerHTML += `
+                <div class="block-item">
+                    <div class="block-item__base">
+                        <img class="block-image--ss" src="img/blocks/${item.img}">
+                        <span class="block-item__name">${item.title.ru}</span>
+                        <div class="button-icon" data-block-id="${index}">
+                            <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="block-item__specification">
+                        <div class="block-item__image-block">
+                            <img class="block-image--bs" src="img/blocks/${item.img}">
+                        </div>
+                        <div class="block-item__specification-block">
+                            <div class="block-item__content-block">
+                                <div class="block-item__content-title">Описание</div>
+                                <div class="block-item__content-description">${item.description}</div>
+                            </div>
+                            <div class="block-item__content-block">
+                                <div class="block-item__content-title">Характеристики</div>
+                                <div class="block-item__content-item">
+                                    <span class="block-item__content-item-title">Масса</span>
+                                    <span class="block-item__content-item-value">${item.weight}</span>
+                                    <span class="block-item__content-item-value-unit">кг.</span>
+                                </div>
+                                <div class="block-item__content-item">
+                                    <span class="block-item__content-item-title">Прочность</span>
+                                    <span class="block-item__content-item-value">${item.integrity}</span>
+                                    <span class="block-item__content-item-value-unit">ед.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+        }
+        this.addEvent();
+        this.scrollCheck();
+    }
+    addEvent() {
+        for (let item of main.blockListCategory.children) {
+            const buttonIcon = item.querySelector(".button-icon");
+            const buttonIconSvg = item.querySelector(".button-icon__svg");
+            const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
+            const blockItemBase = item.querySelector(".block-item__base");
+            const blockItemSpecification = item.querySelector(".block-item__specification");
+
+            blockItemBase.addEventListener("click", (e)=> {
+                if (e.currentTarget == e.target) {
+                    if (blockItemSpecification.style.maxHeight) {
+                        blockItemSpecification.style.transition = "max-height 0.2s ease-out";
+                        blockItemSpecification.style.maxHeight = null;
+                        if (main.largeBlockCategoryActive === true) {
+                            itemCategoryActive.largeBlockIndexActive = null;
+                        } else {
+                            itemCategoryActive.smallBlockIndexActive = null;
+                        }
+                        console.log(itemCategoryActive);
+                        console.log("sadfsa");
+                    } else {
+                        for (let item of main.blockListCategory.children) {
+                            const blockItemSpecification = item.querySelector(".block-item__specification");
+                            const itemMaxHeight = item.querySelector(".block-item__specification");
+                            if (itemMaxHeight.style.maxHeight) {
+                                blockItemSpecification.style.transition = "max-height 0.2s ease-out";
+                                itemMaxHeight.style.maxHeight = null;
+                            }
+                        }
+                        blockItemSpecification.style.transition = "max-height 0.2s ease-out";
+                        blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+                        if (main.largeBlockCategoryActive === true) {
+                            itemCategoryActive.largeBlockIndexActive = buttonIcon.dataset.blockId;
+                        } else {
+                            itemCategoryActive.smallBlockIndexActive = buttonIcon.dataset.blockId;
+                        }
+                        console.log(itemCategoryActive);
+                    }
+                }
+            }, true);
+
+            if (main.largeBlockCategoryActive === true) {
+                if (itemCategoryActive.largeBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.largeBlockIndexActive) {
+                    blockItemSpecification.style.transition = "none";
+                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+                }
+            } else {
+                if (itemCategoryActive.smallBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.smallBlockIndexActive) {
+                    blockItemSpecification.style.transition = "none";
+                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+                }
+            }
+
+            buttonIcon.addEventListener("mouseenter", () => {
+                // addClass(buttonIconSvgPath, "button-icon__svg-path--hover");
+                lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
+            });
+
+            buttonIcon.addEventListener("mouseleave", () => {
+                // removeClass(buttonIconSvgPath, "button-icon__svg-path--hover");
+                lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
+                if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
+                    // removeClass(buttonIconSvg, "button-icon__svg--click");
+                    lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+                }
+            });
+
+            buttonIcon.addEventListener("mousedown", ()=> {
+                // addClass(buttonIconSvg, "button-icon__svg--click");
+                lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+            });
+
+            buttonIcon.addEventListener("mouseup", ()=> {
+                // removeClass(buttonIconSvg, "button-icon__svg--click");
+                lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+                    main.projectBlocks.push({
+                        largeBlock: (main.largeBlockCategoryActive === true) ? true : false,
+                        block: blocks[buttonIcon.dataset.blockId],
+                        amount: 1,
+                        active: false,
+                    });
+                displayBlocksProject();
+            });
+        }
+    }
+    scrollCheck() {
+    // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
+        if (main.blockListCategory.offsetWidth > main.blockListCategory.clientWidth) {
+            main.blockListCategory.querySelectorAll('.block-item').forEach(item => {
+                item.style.marginRight = "4px";
+            });
+        }
+    }
+}
+
+let itemCategoryActive = {
+    largeBlockIndexActive: null,
+    smallBlockIndexActive: null,
 };
 
 main.launchApp();
@@ -139,7 +303,7 @@ main.launchApp();
 
 // Функция вывода блоков проекта из массива projectBlocks
 
-const displayBlocksProject = function() {
+function displayBlocksProject() {
 
     main.blockListProject.innerHTML = "";
 
@@ -275,167 +439,157 @@ const displayBlocksProject = function() {
     }
 };
 
-let itemCategoryActive = {
-    largeBlockIndexActive: null,
-    smallBlockIndexActive: null,
-};
-
 // Функция вывода блоков игры из выбранной категории
-const displayBlocksCategory = function(categoryKey) {
-    main.blockListCategory.innerHTML = "";
-    let blocks = [];
-    if (main.largeBlockCategoryActive === true) {
-        blocks = blockCategories[categoryKey].large;
-    } else {
-        blocks = blockCategories[categoryKey].small;
-    }
+function displayBlocksCategory(categoryKey) {
+    // main.blockListCategory.innerHTML = "";
+    // let blocks = [];
+    // if (main.largeBlockCategoryActive === true) {
+    //     blocks = blockCategories[categoryKey].large;
+    // } else {
+    //     blocks = blockCategories[categoryKey].small;
+    // }
 
-    if (blocks.length != 0) {
-        blocks.forEach((item, index) => {
-            main.blockListCategory.innerHTML += `
-            <div class="block-item">
-                <div class="block-item__base">
-                    <img class="block-image--ss" src="img/blocks/${item.img}">
-                    <span class="block-item__name">${item.title.ru}</span>
-                    <div class="button-icon" data-block-id="${index}">
-                        <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="block-item__specification">
-                    <div class="block-item__image-block">
-                        <img class="block-image--bs" src="img/blocks/${item.img}">
-                    </div>
-                    <div class="block-item__specification-block">
-                        <div class="block-item__content-block">
-                            <div class="block-item__content-title">Описание</div>
-                            <div class="block-item__content-description">${item.description}</div>
-                        </div>
+    // if (blocks.length != 0) {
+    //     blocks.forEach((item, index) => {
+    //         main.blockListCategory.innerHTML += `
+    //         <div class="block-item">
+    //             <div class="block-item__base">
+    //                 <img class="block-image--ss" src="img/blocks/${item.img}">
+    //                 <span class="block-item__name">${item.title.ru}</span>
+    //                 <div class="button-icon" data-block-id="${index}">
+    //                     <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    //                         <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
+    //                     </svg>
+    //                 </div>
+    //             </div>
+    //             <div class="block-item__specification">
+    //                 <div class="block-item__image-block">
+    //                     <img class="block-image--bs" src="img/blocks/${item.img}">
+    //                 </div>
+    //                 <div class="block-item__specification-block">
+    //                     <div class="block-item__content-block">
+    //                         <div class="block-item__content-title">Описание</div>
+    //                         <div class="block-item__content-description">${item.description}</div>
+    //                     </div>
 
-                        <div class="block-item__content-block">
-                            <div class="block-item__content-title">Характеристики</div>
-                            <div class="block-item__content-item">
-                                <span class="block-item__content-item-title">Масса</span>
-                                <span class="block-item__content-item-value">${item.weight}</span>
-                                <span class="block-item__content-item-value-unit">кг.</span>
-                            </div>
-                            <div class="block-item__content-item">
-                                <span class="block-item__content-item-title">Прочность</span>
-                                <span class="block-item__content-item-value">${item.integrity}</span>
-                                <span class="block-item__content-item-value-unit">ед.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `;
-        });
+    //                     <div class="block-item__content-block">
+    //                         <div class="block-item__content-title">Характеристики</div>
+    //                         <div class="block-item__content-item">
+    //                             <span class="block-item__content-item-title">Масса</span>
+    //                             <span class="block-item__content-item-value">${item.weight}</span>
+    //                             <span class="block-item__content-item-value-unit">кг.</span>
+    //                         </div>
+    //                         <div class="block-item__content-item">
+    //                             <span class="block-item__content-item-title">Прочность</span>
+    //                             <span class="block-item__content-item-value">${item.integrity}</span>
+    //                             <span class="block-item__content-item-value-unit">ед.</span>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //         `;
+    //     });
 
         main.blockListCategory.lastElementChild.style.marginBottom = 0;
 
-        for (let item of main.blockListCategory.children) {
-            const buttonIcon = item.querySelector(".button-icon");
-            const buttonIconSvg = item.querySelector(".button-icon__svg");
-            const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
-            const blockItemBase = item.querySelector(".block-item__base");
-            const blockItemSpecification = item.querySelector(".block-item__specification");
+    //     for (let item of main.blockListCategory.children) {
+    //         const buttonIcon = item.querySelector(".button-icon");
+    //         const buttonIconSvg = item.querySelector(".button-icon__svg");
+    //         const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
+    //         const blockItemBase = item.querySelector(".block-item__base");
+    //         const blockItemSpecification = item.querySelector(".block-item__specification");
 
-            item.addEventListener("mouseover", () => {
-            });
+    //         item.addEventListener("mouseover", () => {
+    //         });
 
-            item.addEventListener("mouseout", () => {
-            });
+    //         item.addEventListener("mouseout", () => {
+    //         });
 
-            blockItemBase.addEventListener("click", (e)=> {
-                if (e.currentTarget == e.target) {
-                    if (blockItemSpecification.style.maxHeight) {
-                        blockItemSpecification.style.transition = "max-height 0.2s ease-out";
-                        blockItemSpecification.style.maxHeight = null;
-                        if (main.largeBlockCategoryActive === true) {
-                            itemCategoryActive.largeBlockIndexActive = null;
-                        } else {
-                            itemCategoryActive.smallBlockIndexActive = null;
-                        }
-                        console.log(itemCategoryActive);
-                    } else {
-                        for (let item of main.blockListCategory.children) {
-                            const blockItemSpecification = item.querySelector(".block-item__specification");
-                            const itemMaxHeight = item.querySelector(".block-item__specification");
-                            if (itemMaxHeight.style.maxHeight) {
-                                blockItemSpecification.style.transition = "max-height 0.2s ease-out";
-                                itemMaxHeight.style.maxHeight = null;
-                            }
-                        }
-                        blockItemSpecification.style.transition = "max-height 0.2s ease-out";
-                        blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
-                        if (main.largeBlockCategoryActive === true) {
-                            itemCategoryActive.largeBlockIndexActive = buttonIcon.dataset.blockId;
-                        } else {
-                            itemCategoryActive.smallBlockIndexActive = buttonIcon.dataset.blockId;
-                        }
-                        console.log(itemCategoryActive);
-                    }
-                }
-            }, true);
+    //         blockItemBase.addEventListener("click", (e)=> {
+    //             if (e.currentTarget == e.target) {
+    //                 if (blockItemSpecification.style.maxHeight) {
+    //                     blockItemSpecification.style.transition = "max-height 0.2s ease-out";
+    //                     blockItemSpecification.style.maxHeight = null;
+    //                     if (main.largeBlockCategoryActive === true) {
+    //                         itemCategoryActive.largeBlockIndexActive = null;
+    //                     } else {
+    //                         itemCategoryActive.smallBlockIndexActive = null;
+    //                     }
+    //                     console.log(itemCategoryActive);
+    //                 } else {
+    //                     for (let item of main.blockListCategory.children) {
+    //                         const blockItemSpecification = item.querySelector(".block-item__specification");
+    //                         const itemMaxHeight = item.querySelector(".block-item__specification");
+    //                         if (itemMaxHeight.style.maxHeight) {
+    //                             blockItemSpecification.style.transition = "max-height 0.2s ease-out";
+    //                             itemMaxHeight.style.maxHeight = null;
+    //                         }
+    //                     }
+    //                     blockItemSpecification.style.transition = "max-height 0.2s ease-out";
+    //                     blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+    //                     if (main.largeBlockCategoryActive === true) {
+    //                         itemCategoryActive.largeBlockIndexActive = buttonIcon.dataset.blockId;
+    //                     } else {
+    //                         itemCategoryActive.smallBlockIndexActive = buttonIcon.dataset.blockId;
+    //                     }
+    //                     console.log(itemCategoryActive);
+    //                 }
+    //             }
+    //         }, true);
 
-            if (main.largeBlockCategoryActive === true) {
-                if (itemCategoryActive.largeBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.largeBlockIndexActive) {
-                    blockItemSpecification.style.transition = "none";
-                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
-                }
-            } else {
-                if (itemCategoryActive.smallBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.smallBlockIndexActive) {
-                    blockItemSpecification.style.transition = "none";
-                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
-                }
-            }
+    //         if (main.largeBlockCategoryActive === true) {
+    //             if (itemCategoryActive.largeBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.largeBlockIndexActive) {
+    //                 blockItemSpecification.style.transition = "none";
+    //                 blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+    //             }
+    //         } else {
+    //             if (itemCategoryActive.smallBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.smallBlockIndexActive) {
+    //                 blockItemSpecification.style.transition = "none";
+    //                 blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
+    //             }
+    //         }
 
-            buttonIcon.addEventListener("mouseenter", () => {
-                // addClass(buttonIconSvgPath, "button-icon__svg-path--hover");
-                lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-            });
+    //         buttonIcon.addEventListener("mouseenter", () => {
+    //             // addClass(buttonIconSvgPath, "button-icon__svg-path--hover");
+    //             lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
+    //         });
 
-            buttonIcon.addEventListener("mouseleave", () => {
-                // removeClass(buttonIconSvgPath, "button-icon__svg-path--hover");
-                lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-                if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
-                    // removeClass(buttonIconSvg, "button-icon__svg--click");
-                    lib.classToggle(buttonIconSvg, "button-icon__svg--click");
-                }
-            });
+    //         buttonIcon.addEventListener("mouseleave", () => {
+    //             // removeClass(buttonIconSvgPath, "button-icon__svg-path--hover");
+    //             lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
+    //             if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
+    //                 // removeClass(buttonIconSvg, "button-icon__svg--click");
+    //                 lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+    //             }
+    //         });
 
-            buttonIcon.addEventListener("mousedown", ()=> {
-                // addClass(buttonIconSvg, "button-icon__svg--click");
-                lib.classToggle(buttonIconSvg, "button-icon__svg--click");
-            });
+    //         buttonIcon.addEventListener("mousedown", ()=> {
+    //             // addClass(buttonIconSvg, "button-icon__svg--click");
+    //             lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+    //         });
 
-            buttonIcon.addEventListener("mouseup", ()=> {
-                // removeClass(buttonIconSvg, "button-icon__svg--click");
-                lib.classToggle(buttonIconSvg, "button-icon__svg--click");
-                    main.projectBlocks.push({
-                        largeBlock: (main.largeBlockCategoryActive === true) ? true : false,
-                        block: blocks[buttonIcon.dataset.blockId],
-                        amount: 1,
-                        active: false,
-                    });
-                displayBlocksProject();
-            });
-        }
-    }
+    //         buttonIcon.addEventListener("mouseup", ()=> {
+    //             // removeClass(buttonIconSvg, "button-icon__svg--click");
+    //             lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+    //                 main.projectBlocks.push({
+    //                     largeBlock: (main.largeBlockCategoryActive === true) ? true : false,
+    //                     block: blocks[buttonIcon.dataset.blockId],
+    //                     amount: 1,
+    //                     active: false,
+    //                 });
+    //             displayBlocksProject();
+    //         });
+    //     }
+    // }
+
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
-    if (main.blockListCategory.offsetWidth > main.blockListCategory.clientWidth) {
-        main.blockListCategory.querySelectorAll('.block-item').forEach(item => {
-            item.style.marginRight = "4px";
-        });
-    }
+    // if (main.blockListCategory.offsetWidth > main.blockListCategory.clientWidth) {
+    //     main.blockListCategory.querySelectorAll('.block-item').forEach(item => {
+    //         item.style.marginRight = "4px";
+    //     });
+    // }
 };
-
-// Стартовый вызов функции вывода игровых блоков из первой категории
-// displayBlocksCategory(categories.firstElementChild.dataset.categoryKey);
-displayBlocksCategory(main.categoryKeyTarget);
-// displayBlocksCategory(categoryKeyTarget);
-
 
 // Инициализация событий для категорий
 for (let item of main.categories.children) {
@@ -470,7 +624,9 @@ for (let item of main.categories.children) {
             itemCategoryActive.smallBlockIndexActive = null;
 
             // Вызов функции вывода блоков выбранной категории
-            displayBlocksCategory(item.dataset.categoryKey);
+            // displayBlocksCategory(item.dataset.categoryKey);
+            const showCategoryBlocks = new ShowCategoryBlocks(item.dataset.categoryKey);
+            showCategoryBlocks.displayCategoryBlocks();
             // Сохраняет ключ, выбранной категории, для передачи значения функции при выборе размера блока
             main.categoryKeyTarget = item.dataset.categoryKey;
             // Возвращаем положение скролла в начальную позицию
