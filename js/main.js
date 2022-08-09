@@ -234,7 +234,7 @@ class ShowCategoryBlocks {
                 lib.classToggle(buttonIconSvg, "button-icon__svg--click");
                     main.projectBlocks.push({
                         largeBlock: (main.largeBlockCategoryActive === true) ? true : false,
-                        block: blocks[buttonIcon.dataset.blockId],
+                        block: this.categoryBlocks[buttonIcon.dataset.blockId],
                         amount: 1,
                         active: false,
                     });
@@ -635,6 +635,7 @@ for (let item of main.categories.children) {
     }
 }
 
+// Инициализация событий для переключателей больших и малых блоков
 main.blockSelectionLarge.forEach(item => {
     item.addEventListener("mouseover", () => {
     // addClass(item, "size-block-selection--hover");
@@ -676,7 +677,9 @@ main.blockSelectionCategoryLarge.addEventListener("click", (event)=> {
         // removeClass(item, "size-block-selection--focus");
         lib.removeClass(item, "size-block-selection--focus");
     }
-    displayBlocksCategory(main.categoryKeyTarget);
+    // displayBlocksCategory(main.categoryKeyTarget);
+    const showCategoryBlocks = new ShowCategoryBlocks(main.categoryKeyTarget);
+    showCategoryBlocks.displayCategoryBlocks();
     main.blockListCategory.scrollTop = 0;
     main.sizeBlockSelectionTitleleft.textContent = "Большие блоки";
 });
@@ -689,7 +692,9 @@ main.blockSelectionCategorySmall.addEventListener("click", ()=> {
         // addClass(item, "size-block-selection--focus");
         lib.addClass(item, "size-block-selection--focus");
     }
-    displayBlocksCategory(main.categoryKeyTarget);
+    // displayBlocksCategory(main.categoryKeyTarget);
+    const showCategoryBlocks = new ShowCategoryBlocks(main.categoryKeyTarget);
+    showCategoryBlocks.displayCategoryBlocks();
     main.blockListCategory.scrollTop = 0;
     main.sizeBlockSelectionTitleleft.textContent = "Малые блоки";
 });
