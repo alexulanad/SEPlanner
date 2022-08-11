@@ -10,7 +10,6 @@ const lib = {
             event.classList.toggle(className);
         }
     },
-
     addClass(event, className) {
         if (event.target) {
             event.target.classList.add(className);
@@ -19,7 +18,6 @@ const lib = {
             event.classList.add(className);
         }
     },
-
     removeClass(event, className) {
         if (event.target) {
             event.target.classList.remove(className);
@@ -28,7 +26,6 @@ const lib = {
             event.classList.remove(className);
         }
     },
-
     addEvent(element, typeEvent, event) {
         element.addEventListener(typeEvent, event);
     },
@@ -39,6 +36,10 @@ const main = {
     largeBlockCategoryActive: true,
     largeBlockProjectActive: true,
     projectBlocks: [],
+    itemCategoryActive: {
+        largeBlockIndexActive: null,
+        smallBlockIndexActive: null,
+    },
 
     categories: document.querySelector('#categories'),
     blockSelectionLarge: document.querySelectorAll('.size-block-selection__large'),
@@ -62,7 +63,6 @@ const main = {
         this.largeBlockCategoryActive == true ? (this.sizeBlockSelectionTitleleft.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleleft.textContent = "Малые блоки");
         this.largeBlockProjectActive == true ? (this.sizeBlockSelectionTitleRight.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleRight.textContent = "Малые блоки");
         this.displayCategoryBlocks();
-
     },
     blockSizeSelection() {
         if (this.largeBlockCategoryActive === true) {
@@ -82,7 +82,6 @@ const main = {
             }
         }
     },
-
     // функция возвращает ссылку на массив: либо больших, либо малых блоков, согласно ключу largeBlockCategoryActive
     blockArrayDefinition() {
         return main.largeBlockCategoryActive == true ? blockCategories[this.categoryKeyTarget].large : blockCategories[this.categoryKeyTarget].small;
@@ -139,7 +138,6 @@ const main = {
         this.addEvent(categoryBlocks);
         this.scrollCheck(this.blockListCategory);
     },
-
     // функция добаления событий для блоков выбранной категории
     addEvent(categoryBlocks) {
         for (let item of main.blockListCategory.children) {
@@ -155,12 +153,10 @@ const main = {
                         blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                         blockItemSpecification.style.maxHeight = null;
                         if (main.largeBlockCategoryActive === true) {
-                            itemCategoryActive.largeBlockIndexActive = null;
+                            this.itemCategoryActive.largeBlockIndexActive = null;
                         } else {
-                            itemCategoryActive.smallBlockIndexActive = null;
+                            this.itemCategoryActive.smallBlockIndexActive = null;
                         }
-                        console.log(itemCategoryActive);
-                        console.log("sadfsa");
                     } else {
                         for (let item of main.blockListCategory.children) {
                             const blockItemSpecification = item.querySelector(".block-item__specification");
@@ -173,22 +169,21 @@ const main = {
                         blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                         blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
                         if (main.largeBlockCategoryActive === true) {
-                            itemCategoryActive.largeBlockIndexActive = buttonIcon.dataset.blockId;
+                            this.itemCategoryActive.largeBlockIndexActive = buttonIcon.dataset.blockId;
                         } else {
-                            itemCategoryActive.smallBlockIndexActive = buttonIcon.dataset.blockId;
+                            this.itemCategoryActive.smallBlockIndexActive = buttonIcon.dataset.blockId;
                         }
-                        console.log(itemCategoryActive);
                     }
                 }
             }, true);
 
             if (main.largeBlockCategoryActive === true) {
-                if (itemCategoryActive.largeBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.largeBlockIndexActive) {
+                if (this.itemCategoryActive.largeBlockIndexActive != null && buttonIcon.dataset.blockId === this.itemCategoryActive.largeBlockIndexActive) {
                     blockItemSpecification.style.transition = "none";
                     blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
                 }
             } else {
-                if (itemCategoryActive.smallBlockIndexActive != null && buttonIcon.dataset.blockId === itemCategoryActive.smallBlockIndexActive) {
+                if (this.itemCategoryActive.smallBlockIndexActive != null && buttonIcon.dataset.blockId === this.itemCategoryActive.smallBlockIndexActive) {
                     blockItemSpecification.style.transition = "none";
                     blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
                 }
@@ -226,7 +221,6 @@ const main = {
             });
         }
     },
-
     // Функция сортировки блоков проекта из массива projectBlocks, по критерию: большие, малые, и дальнейший вызов функции отображения блоков
     displayProjectBlocks() {
         main.blockListProject.innerHTML = "";
@@ -252,7 +246,6 @@ const main = {
         this.addEventProject();
         this.scrollCheck(this.blockListProject);
     },
-
     // функция добвления и вывода блоков проекта на экран
     addBlockProject(item, index) {
         main.blockListProject.innerHTML += `
@@ -295,7 +288,6 @@ const main = {
         </div>
         `;
     },
-
     // функция добавления событий для блоков проекта
     addEventProject() {
         for (let item of this.blockListProject.children) {
@@ -366,10 +358,10 @@ class CreateProjectBlock {
     }
 }
 
-let itemCategoryActive = {
-    largeBlockIndexActive: null,
-    smallBlockIndexActive: null,
-};
+// let itemCategoryActive = {
+//     largeBlockIndexActive: null,
+//     smallBlockIndexActive: null,
+// };
 
 main.launchApp();
 
@@ -397,8 +389,8 @@ for (let item of main.categories.children) {
                 }
             }
 
-            itemCategoryActive.largeBlockIndexActive = null;
-            itemCategoryActive.smallBlockIndexActive = null;
+            main.itemCategoryActive.largeBlockIndexActive = null;
+            main.itemCategoryActive.smallBlockIndexActive = null;
 
             // Сохраняет ключ категории, для передачи значения функции вывода блоков
             main.categoryKeyTarget = item.dataset.categoryKey;
@@ -429,7 +421,6 @@ main.blockSelectionSmall.forEach(item => {
             lib.classToggle(i, "size-block-selection--hover");
         }
     });
-    console.log(main.blockSelectionSmall);
 });
 
 main.blockSelectionSmall.forEach(item => {
