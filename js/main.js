@@ -136,9 +136,8 @@ const main = {
         if (this.blockListCategory.innerHTML != "") {
             this.blockListCategory.lastElementChild.style.marginBottom = 0;
         }
-
         this.addEvent(categoryBlocks);
-        this.scrollCheck();
+        this.scrollCheck(this.blockListCategory);
     },
 
     // функция добаления событий для блоков выбранной категории
@@ -219,20 +218,10 @@ const main = {
         }
     },
     // функция добавления отступа справа для каждого блока категории, при условии наличия скролла
-    scrollCheck() {
+    scrollCheck(blockList) {
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
-        if (main.blockListCategory.offsetWidth > main.blockListCategory.clientWidth) {
-            main.blockListCategory.querySelectorAll('.block-item').forEach(item => {
-                item.style.marginRight = "4px";
-            });
-        }
-    },
-
-    // функция добавления отступа справа для каждого блока проекта, при условии наличия скролла
-    scrollCheckProject() {
-    // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
-        if (main.blockListProject.offsetWidth > main.blockListProject.clientWidth) {
-            main.blockListProject.querySelectorAll('.block-item').forEach(item => {
+        if (blockList.offsetWidth > blockList.clientWidth) {
+            blockList.querySelectorAll('.block-item').forEach(item => {
                 item.style.marginRight = "4px";
             });
         }
@@ -261,7 +250,7 @@ const main = {
             this.blockListProject.lastElementChild.style.marginBottom = 0;
         }
         this.addEventProject();
-        this.scrollCheckProject();
+        this.scrollCheck(this.blockListProject);
     },
 
     // функция добвления и вывода блоков проекта на экран
