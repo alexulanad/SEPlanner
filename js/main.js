@@ -212,15 +212,9 @@ const main = {
 
             buttonIcon.addEventListener("mouseup", ()=> {
                 lib.classToggle(buttonIconSvg, "button-icon__svg--click");
-                    this.projectBlocks.push({
-                        largeBlock: (main.largeBlockCategoryActive === true) ? true : false,
-                        block: categoryBlocks[buttonIcon.dataset.blockId],
-                        amount: 1,
-                        active: false,
-                    });
-                    console.log(this.projectBlocks);
+                const createProjectBlock = new CreateProjectBlock(categoryBlocks[buttonIcon.dataset.blockId], (main.largeBlockCategoryActive === true) ? true : false, 1, false);
+                this.projectBlocks.push(createProjectBlock);
                 this.displayProjectBlocks();
-                console.log(this.projectBlocks);
             });
         }
     },
