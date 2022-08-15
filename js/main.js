@@ -26,8 +26,8 @@ const lib = {
             event.classList.remove(className);
         }
     },
-    addEvent(element, typeEvent, event) {
-        element.addEventListener(typeEvent, event);
+    addEvent(element, event, handler) {
+        element.addEventListener(event, handler);
     },
 };
 
@@ -62,6 +62,8 @@ const main = {
         this.blockSizeSelection();
         this.largeBlockCategoryActive == true ? (this.sizeBlockSelectionTitleleft.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleleft.textContent = "Малые блоки");
         this.largeBlockProjectActive == true ? (this.sizeBlockSelectionTitleRight.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleRight.textContent = "Малые блоки");
+        this.addEventForCategories();
+        this.addEventForBlockSizeSwitches();
         this.displayCategoryBlocks();
     },
     blockSizeSelection() {
@@ -82,11 +84,123 @@ const main = {
             }
         }
     },
-    // функция возвращает ссылку на массив: либо больших, либо малых блоков, согласно ключу largeBlockCategoryActive
+    // функция возвращает ссылку на массив: либо больших, либо малых блоков, согласно ключу categoryKeyTarget
     blockArrayDefinition() {
         return main.largeBlockCategoryActive == true ? blockCategories[this.categoryKeyTarget].large : blockCategories[this.categoryKeyTarget].small;
     },
-    // функция отображения блоков категории на экране
+    // Инициализация событий для категорий
+    addEventForCategories() {
+        for (let item of main.categories.children) {
+            if (item.tagName === "IMG") {
+                item.addEventListener("mouseover", (event) => {
+                    lib.classToggle(event, "block-image--hover");
+                    main.categoryTitle.textContent = item.dataset.categoryName;
+                }, false);
+
+                item.addEventListener("mouseout", (event) => {
+                    lib.classToggle(event, "block-image--hover");
+                    main.categoryTitle.textContent = "";
+                }, false);
+
+                item.addEventListener("click", () => {
+                    lib.classToggle(item, "block-image--focus");
+                    main.projectTitle.textContent = item.dataset.categoryName;
+                    const categoryName = item.dataset.categoryName;
+                    for (let item of main.categories.children) {
+                        if (item.dataset.categoryName != categoryName) {
+                            item.dataset.active = "false";
+                            item.classList.remove("block-image--focus");
+                        }
+                    }
+
+                    main.itemCategoryActive.largeBlockIndexActive = null;
+                    main.itemCategoryActive.smallBlockIndexActive = null;
+
+                    // Сохраняет ключ категории, для передачи значения функции вывода блоков
+                    main.categoryKeyTarget = item.dataset.categoryKey;
+                    // Вызов функции вывода блоков выбранной категории
+                    main.displayCategoryBlocks();
+                    // Возвращаем положение скролла в начальную позицию
+                    main.blockListCategory.scrollTop = 0;
+                });
+            }
+        }
+    },
+    // Инициализация событий для переключателей больших и малых блоков
+    addEventForBlockSizeSwitches() {
+        main.blockSelectionLarge.forEach(item => {
+            item.addEventListener("mouseover", () => {
+            lib.classToggle(item, "size-block-selection--hover");
+            });
+        });
+
+        main.blockSelectionLarge.forEach(item => {
+            item.addEventListener("mouseout", () => {
+            lib.classToggle(item, "size-block-selection--hover");
+            });
+        });
+
+        main.blockSelectionSmall.forEach(item => {
+            item.addEventListener("mouseover", ()=> {
+                for (let i of item.children) {
+                    lib.classToggle(i, "size-block-selection--hover");
+                }
+            });
+        });
+
+        main.blockSelectionSmall.forEach(item => {
+            item.addEventListener("mouseout", ()=> {
+                for (let i of item.children) {
+                    lib.classToggle(i, "size-block-selection--hover");
+                }
+            });
+        });
+
+        main.blockSelectionCategoryLarge.addEventListener("click", (event)=> {
+            main.largeBlockCategoryActive = true;
+            lib.addClass(event, "size-block-selection--focus");
+            for (let item of main.blockSelectionCategorySmall.children) {
+                lib.removeClass(item, "size-block-selection--focus");
+            }
+            main.displayCategoryBlocks();
+            main.blockListCategory.scrollTop = 0;
+            main.sizeBlockSelectionTitleleft.textContent = "Большие блоки";
+        });
+
+        main.blockSelectionCategorySmall.addEventListener("click", ()=> {
+            main.largeBlockCategoryActive = false;
+            lib.removeClass(main.blockSelectionCategoryLarge, "size-block-selection--focus");
+            for (let item of main.blockSelectionCategorySmall.children) {
+                lib.addClass(item, "size-block-selection--focus");
+            }
+            main.displayCategoryBlocks();
+            main.blockListCategory.scrollTop = 0;
+            main.sizeBlockSelectionTitleleft.textContent = "Малые блоки";
+        });
+
+        main.blockSelectionProjectLarge.addEventListener("click", (event)=> {
+            main.largeBlockProjectActive = true;
+            lib.addClass(event, "size-block-selection--focus");
+            for (let item of main.blockSelectionProjectSmall.children) {
+                lib.removeClass(item, "size-block-selection--focus");
+            }
+            main.displayProjectBlocks();
+            main.blockListProject.scrollTop = 0;
+            main.sizeBlockSelectionTitleRight.textContent = "Большие блоки";
+        });
+
+        main.blockSelectionProjectSmall.addEventListener("click", ()=> {
+            main.largeBlockProjectActive = false;
+            lib.removeClass(main.blockSelectionProjectLarge, "size-block-selection--focus");
+            for (let item of main.blockSelectionProjectSmall.children) {
+                lib.addClass(item, "size-block-selection--focus");
+            }
+            main.displayProjectBlocks();
+            main.blockListProject.scrollTop = 0;
+            main.sizeBlockSelectionTitleRight.textContent = "Малые блоки";
+        });
+    },
+    // функция для отображения блоков из выбранной категории на экране
     displayCategoryBlocks() {
         main.blockListCategory.innerHTML = "";
         const categoryBlocks = this.blockArrayDefinition();
@@ -358,119 +472,4 @@ class CreateProjectBlock {
     }
 }
 
-// let itemCategoryActive = {
-//     largeBlockIndexActive: null,
-//     smallBlockIndexActive: null,
-// };
-
 main.launchApp();
-
-// Инициализация событий для категорий
-for (let item of main.categories.children) {
-    if (item.tagName === "IMG") {
-        item.addEventListener("mouseover", (event) => {
-            lib.classToggle(event, "block-image--hover");
-            main.categoryTitle.textContent = item.dataset.categoryName;
-        }, false);
-
-        item.addEventListener("mouseout", (event) => {
-            lib.classToggle(event, "block-image--hover");
-            main.categoryTitle.textContent = "";
-        }, false);
-
-        item.addEventListener("click", () => {
-            lib.classToggle(item, "block-image--focus");
-            main.projectTitle.textContent = item.dataset.categoryName;
-            const categoryName = item.dataset.categoryName;
-            for (let item of main.categories.children) {
-                if (item.dataset.categoryName != categoryName) {
-                    item.dataset.active = "false";
-                    item.classList.remove("block-image--focus");
-                }
-            }
-
-            main.itemCategoryActive.largeBlockIndexActive = null;
-            main.itemCategoryActive.smallBlockIndexActive = null;
-
-            // Сохраняет ключ категории, для передачи значения функции вывода блоков
-            main.categoryKeyTarget = item.dataset.categoryKey;
-            // Вызов функции вывода блоков выбранной категории
-            main.displayCategoryBlocks();
-            // Возвращаем положение скролла в начальную позицию
-            main.blockListCategory.scrollTop = 0;
-        });
-    }
-}
-
-// Инициализация событий для переключателей больших и малых блоков
-main.blockSelectionLarge.forEach(item => {
-    item.addEventListener("mouseover", () => {
-    lib.classToggle(item, "size-block-selection--hover");
-    });
-});
-
-main.blockSelectionLarge.forEach(item => {
-    item.addEventListener("mouseout", () => {
-    lib.classToggle(item, "size-block-selection--hover");
-    });
-});
-
-main.blockSelectionSmall.forEach(item => {
-    item.addEventListener("mouseover", ()=> {
-        for (let i of item.children) {
-            lib.classToggle(i, "size-block-selection--hover");
-        }
-    });
-});
-
-main.blockSelectionSmall.forEach(item => {
-    item.addEventListener("mouseout", ()=> {
-        for (let i of item.children) {
-            lib.classToggle(i, "size-block-selection--hover");
-        }
-    });
-});
-
-main.blockSelectionCategoryLarge.addEventListener("click", (event)=> {
-    main.largeBlockCategoryActive = true;
-    lib.addClass(event, "size-block-selection--focus");
-    for (let item of main.blockSelectionCategorySmall.children) {
-        lib.removeClass(item, "size-block-selection--focus");
-    }
-    main.displayCategoryBlocks();
-    main.blockListCategory.scrollTop = 0;
-    main.sizeBlockSelectionTitleleft.textContent = "Большие блоки";
-});
-
-main.blockSelectionCategorySmall.addEventListener("click", ()=> {
-    main.largeBlockCategoryActive = false;
-    lib.removeClass(main.blockSelectionCategoryLarge, "size-block-selection--focus");
-    for (let item of main.blockSelectionCategorySmall.children) {
-        lib.addClass(item, "size-block-selection--focus");
-    }
-    main.displayCategoryBlocks();
-    main.blockListCategory.scrollTop = 0;
-    main.sizeBlockSelectionTitleleft.textContent = "Малые блоки";
-});
-
-main.blockSelectionProjectLarge.addEventListener("click", (event)=> {
-    main.largeBlockProjectActive = true;
-    lib.addClass(event, "size-block-selection--focus");
-    for (let item of main.blockSelectionProjectSmall.children) {
-        lib.removeClass(item, "size-block-selection--focus");
-    }
-    main.displayProjectBlocks();
-    main.blockListProject.scrollTop = 0;
-    main.sizeBlockSelectionTitleRight.textContent = "Большие блоки";
-});
-
-main.blockSelectionProjectSmall.addEventListener("click", ()=> {
-    main.largeBlockProjectActive = false;
-    lib.removeClass(main.blockSelectionProjectLarge, "size-block-selection--focus");
-    for (let item of main.blockSelectionProjectSmall.children) {
-        lib.addClass(item, "size-block-selection--focus");
-    }
-    main.displayProjectBlocks();
-    main.blockListProject.scrollTop = 0;
-    main.sizeBlockSelectionTitleRight.textContent = "Малые блоки";
-});
