@@ -1,5 +1,22 @@
 // Отключить событие, чтобы при повторном нажатии не менялся стиль на обратный (сейчас задействован addclass и removeclass)
+// Убрать баг, в котором при повторном нажатии на категорию, убирается выделяющий стиль
 "use strict";
+
+class $lib {
+    // создает объект c: selector - селектор для поиска, where - где искать (document по умолчанию)
+    constructor(selector, where = document) {
+        this.self = where.querySelector(selector);
+        this.elems = where.querySelectorAll(selector);
+    }
+
+    // метод перебора элементов, для каждого из которого вызывается переданная callback-функция, принимающая этот
+    // элемент в качестве параметра, для последующего взаимодействия с ним внутри данной callback-функции
+    each(callback) {
+        for(let elem of this.elems) {
+            callback(elem);
+        }
+    }
+}
 
 const lib = {
     classToggle(event, className) {
@@ -128,25 +145,51 @@ const main = {
     },
     // Инициализация событий для переключателей больших и малых блоков
     addEventForBlockSizeSwitches() {
-        main.blockSelectionLarge.forEach(item => {
-            item.addEventListener("mouseover", () => {
+        function addEvent(elem, event, callback) {
+            if (elem.length >= 1) {
+                console.log(elem.length);
+                console.log(elem);
+                elem.forEach(item => {
+                    item.addEventListener(event, callback);
+                });
+            }
+        }
+
+        addEvent(main.blockSelectionLarge, "mouseover", item => {
+            console.log(item);
             lib.classToggle(item, "size-block-selection--hover");
-            });
         });
 
-        main.blockSelectionLarge.forEach(item => {
-            item.addEventListener("mouseout", () => {
+        addEvent(main.blockSelectionLarge, "mouseout", item => {
             lib.classToggle(item, "size-block-selection--hover");
-            });
         });
 
-        main.blockSelectionSmall.forEach(item => {
-            item.addEventListener("mouseover", ()=> {
-                for (let i of item.children) {
-                    lib.classToggle(i, "size-block-selection--hover");
-                }
-            });
+        addEvent(main.blockSelectionSmall, "mouseover",  item => {
+            console.log(item, typeof(item));
+            for (let i of item.children) {
+                lib.classToggle(i, "size-block-selection--hover");
+            }
         });
+
+        // main.blockSelectionLarge.forEach(item => {
+        //     item.addEventListener("mouseover", () => {
+        //     lib.classToggle(item, "size-block-selection--hover");
+        //     });
+        // });
+
+        // main.blockSelectionLarge.forEach(item => {
+        //     item.addEventListener("mouseout", () => {
+        //     lib.classToggle(item, "size-block-selection--hover");
+        //     });
+        // });
+
+        // main.blockSelectionSmall.forEach(item => {
+        //     item.addEventListener("mouseover", ()=> {
+        //         for (let i of item.children) {
+        //             lib.classToggle(i, "size-block-selection--hover");
+        //         }
+        //     });
+        // });
 
         main.blockSelectionSmall.forEach(item => {
             item.addEventListener("mouseout", ()=> {
