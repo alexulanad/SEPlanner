@@ -80,39 +80,50 @@ const main = {
     sizeBlockSelectionTitleleft: document.querySelector('#size-block-selection__title--left'),
     sizeBlockSelectionTitleRight: document.querySelector('#size-block-selection__title--right'),
     categoryTitle: document.querySelector('#category-title'),
-    projectTitle: document.querySelector('#project-title'),
+    categoryTitleSelected: document.querySelector('#category-title-selected'),
     blockListCategory: document.querySelector('#block-list-category'),
     blockListProject: document.querySelector('#block-list-project'),
 
     launchApp() {
-        const categoryElement = this.categories.querySelector(`[data-category-key=${this.categoryKeyTarget}`);
-        lib.classToggle(categoryElement, "block-image--focus");
-        this.projectTitle.textContent = categoryElement.dataset.categoryName;
-        this.blockSizeSelection();
-        this.largeBlockCategoryActive == true ? (this.sizeBlockSelectionTitleleft.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleleft.textContent = "Малые блоки");
-        this.largeBlockProjectActive == true ? (this.sizeBlockSelectionTitleRight.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleRight.textContent = "Малые блоки");
+        // const categoryElement = this.categories.querySelector(`[data-category-key=${this.categoryKeyTarget}`);
+        // lib.classToggle(categoryElement, "block-image--focus");
+        // this.projectTitle.textContent = categoryElement.dataset.categoryName;
+        this.setFocusCategory();
+        this.setFocusBlockSize();
         this.addEventForCategories();
         this.addEventForBlockSizeSwitches();
         this.displayCategoryBlocks();
     },
-    blockSizeSelection() {
+    setFocusCategory() {
+        const categoryElement = document.querySelector(`[data-category-key=${this.categoryKeyTarget}`);
+        categoryElement.classList.add("block-image--focus");
+        this.categoryTitleSelected.textContent = categoryElement.dataset.categoryName;
+    },
+    // Устанавливает фокус на переключателях выбора размера блоков, согласно настройкам
+    setFocusBlockSize() {
         if (this.largeBlockCategoryActive === true) {
-            lib.addClass(this.blockSelectionCategoryLarge, "size-block-selection--focus");
+            document.querySelector('#block-selection-category-large').classList.add("size-block-selection--focus");
+        } else {
+            for (let item of document.querySelector('#block-selection-category-small').children) {
+                item.classList.add("size-block-selection--focus");
+            }
         }
         if (this.largeBlockProjectActive === true) {
-            lib.addClass(this.blockSelectionProjectLarge, "size-block-selection--focus");
-        }
-        if (this.largeBlockCategoryActive === false) {
-            for (let item of this.blockSelectionCategorySmall.children) {
-                lib.addClass(item, "size-block-selection--focus");
+            document.querySelector('#block-selection-project-large').classList.add("size-block-selection--focus");
+        } else {
+            for (let item of document.querySelector('#block-selection-project-small').children) {
+                item.classList.add("size-block-selection--focus");
             }
         }
-        if (this.largeBlockProjectActive === false) {
-            for (let item of this.blockSelectionProjectSmall.children) {
-                lib.addClass(item, "size-block-selection--focus");
-            }
-        }
+        this.blockSizeSelectedTitleContent();
     },
+
+    // функция проверки соответствия выбранному переключателем размера блоков и его заголовка
+    blockSizeSelectedTitleContent() {
+        this.largeBlockCategoryActive == true ? (this.sizeBlockSelectionTitleleft.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleleft.textContent = "Малые блоки");
+        this.largeBlockProjectActive == true ? (this.sizeBlockSelectionTitleRight.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleRight.textContent = "Малые блоки");
+    },
+
     // функция возвращает ссылку на массив: либо больших, либо малых блоков, согласно ключу categoryKeyTarget
     blockArrayDefinition() {
         return main.largeBlockCategoryActive == true ? blockCategories[this.categoryKeyTarget].large : blockCategories[this.categoryKeyTarget].small;
@@ -133,7 +144,7 @@ const main = {
 
                 item.addEventListener("click", () => {
                     lib.classToggle(item, "block-image--focus");
-                    main.projectTitle.textContent = item.dataset.categoryName;
+                    main.categoryTitleSelected.textContent = item.dataset.categoryName;
                     const categoryName = item.dataset.categoryName;
                     for (let item of main.categories.children) {
                         if (item.dataset.categoryName != categoryName) {
@@ -193,7 +204,7 @@ const main = {
             }
             main.displayCategoryBlocks();
             main.blockListCategory.scrollTop = 0;
-            main.sizeBlockSelectionTitleleft.textContent = "Большие блоки";
+            main.blockSizeSelectedTitleContent();
         });
 
         main.blockSelectionCategorySmall.addEventListener("click", ()=> {
@@ -204,7 +215,7 @@ const main = {
             }
             main.displayCategoryBlocks();
             main.blockListCategory.scrollTop = 0;
-            main.sizeBlockSelectionTitleleft.textContent = "Малые блоки";
+            main.blockSizeSelectedTitleContent();
         });
 
         main.blockSelectionProjectLarge.addEventListener("click", (event)=> {
@@ -215,7 +226,7 @@ const main = {
             }
             main.displayProjectBlocks();
             main.blockListProject.scrollTop = 0;
-            main.sizeBlockSelectionTitleRight.textContent = "Большие блоки";
+            main.blockSizeSelectedTitleContent();
         });
 
         main.blockSelectionProjectSmall.addEventListener("click", ()=> {
@@ -226,7 +237,7 @@ const main = {
             }
             main.displayProjectBlocks();
             main.blockListProject.scrollTop = 0;
-            main.sizeBlockSelectionTitleRight.textContent = "Малые блоки";
+            main.blockSizeSelectedTitleContent();
         });
     },
     // функция для отображения блоков из выбранной категории на экране
