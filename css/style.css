@@ -261,6 +261,10 @@ body {
     margin-right: 2px;
 }
 
+.size-selection__small-block:last-child {
+    margin-top: 2px;
+}
+
 .size-block-selection--hover {
     background-color: rgba(255, 255, 255, 0.1);
 }

@@ -1,51 +1,63 @@
 // Отключить событие, чтобы при повторном нажатии не менялся стиль на обратный (сейчас задействован addclass и removeclass)
 // Убрать баг, в котором при повторном нажатии на категорию, убирается выделяющий стиль
+// реализовать каждый визуальный компонент программы как отдельный, независимый модуль, напримен:
+// модуль отвечающий за вывод блоков категории - это объект, который создается при нажатии на категорию,
+// в конструкторе указать массив содержащий все блоки категории, а методы объекта- это работа с отдельным блоком
+// модуль отвечающий, за блоки проекта - это объект, а его методы позволяют добавлять или удалять блоки и работать с ними
 "use strict";
 
-class $lib {
+class Elements {
     // создает объект c: selector - селектор для поиска, where - где искать (document по умолчанию)
     constructor(selector, where = document) {
         this.self = where.querySelector(selector);
-        this.elems = where.querySelectorAll(selector);
+        this.all = where.querySelectorAll(selector);
     }
 
     // метод перебора элементов, для каждого из которого вызывается переданная callback-функция, принимающая этот
     // элемент в качестве параметра, для последующего взаимодействия с ним внутри данной callback-функции
     each(callback) {
-        for(let elem of this.elems) {
+        for(let elem of this.all) {
             callback(elem);
         }
+    }
+
+    // метод назначает событие и обработчик каждому элементу, возвращае обратно свой объект
+    on(event, callback) {
+        for(let elem of this.all) {
+            elem.addEventListener(event, callback);
+        }
+        return this;
     }
 }
 
 const lib = {
-    classToggle(event, className) {
-        if (event.target) {
-            event.target.classList.toggle(className);
+    classToggle(elem, className) {
+        if (elem.target) {
+            elem.target.classList.toggle(className);
         }
-        if (!event.target && event) {
-            event.classList.toggle(className);
-        }
-    },
-    addClass(event, className) {
-        if (event.target) {
-            event.target.classList.add(className);
-        }
-        if (!event.target && event) {
-            event.classList.add(className);
+        if (!elem.target && elem) {
+            elem.classList.toggle(className);
         }
     },
-    removeClass(event, className) {
-        if (event.target) {
-            event.target.classList.remove(className);
+    addClass(elem, className) {
+        if (elem.target) {
+            elem.target.classList.add(className);
         }
-        if (!event.target && event) {
-            event.classList.remove(className);
+        if (!elem.target && elem) {
+            elem.classList.add(className);
         }
     },
-    addEvent(element, event, handler) {
-        element.addEventListener(event, handler);
+    removeClass(elem, className) {
+        if (elem.target) {
+            elem.target.classList.remove(className);
+        }
+        if (!elem.target && elem) {
+            elem.classList.remove(className);
+        }
     },
+    // addEvent(element, event, handler) {
+    //     element.addEventListener(event, handler);
+    // },
 };
 
 const main = {
@@ -85,19 +97,19 @@ const main = {
     },
     blockSizeSelection() {
         if (this.largeBlockCategoryActive === true) {
-            lib.classToggle(this.blockSelectionCategoryLarge, "size-block-selection--focus");
+            lib.addClass(this.blockSelectionCategoryLarge, "size-block-selection--focus");
         }
         if (this.largeBlockProjectActive === true) {
-            lib.classToggle(this.blockSelectionProjectLarge, "size-block-selection--focus");
+            lib.addClass(this.blockSelectionProjectLarge, "size-block-selection--focus");
         }
         if (this.largeBlockCategoryActive === false) {
             for (let item of this.blockSelectionCategorySmall.children) {
-                lib.classToggle(item, "size-block-selection--focus");
+                lib.addClass(item, "size-block-selection--focus");
             }
         }
         if (this.largeBlockProjectActive === false) {
             for (let item of this.blockSelectionProjectSmall.children) {
-                lib.classToggle(item, "size-block-selection--focus");
+                lib.addClass(item, "size-block-selection--focus");
             }
         }
     },
@@ -145,51 +157,25 @@ const main = {
     },
     // Инициализация событий для переключателей больших и малых блоков
     addEventForBlockSizeSwitches() {
-        function addEvent(elem, event, callback) {
-            if (elem.length >= 1) {
-                console.log(elem.length);
-                console.log(elem);
-                elem.forEach(item => {
-                    item.addEventListener(event, callback);
-                });
-            }
-        }
-
-        addEvent(main.blockSelectionLarge, "mouseover", item => {
-            console.log(item);
+        main.blockSelectionLarge.forEach(item => {
+            item.addEventListener("mouseover", () => {
             lib.classToggle(item, "size-block-selection--hover");
+            });
         });
 
-        addEvent(main.blockSelectionLarge, "mouseout", item => {
+        main.blockSelectionLarge.forEach(item => {
+            item.addEventListener("mouseout", () => {
             lib.classToggle(item, "size-block-selection--hover");
+            });
         });
 
-        addEvent(main.blockSelectionSmall, "mouseover",  item => {
-            console.log(item, typeof(item));
-            for (let i of item.children) {
-                lib.classToggle(i, "size-block-selection--hover");
-            }
+        main.blockSelectionSmall.forEach(item => {
+            item.addEventListener("mouseover", ()=> {
+                for (let i of item.children) {
+                    lib.classToggle(i, "size-block-selection--hover");
+                }
+            });
         });
-
-        // main.blockSelectionLarge.forEach(item => {
-        //     item.addEventListener("mouseover", () => {
-        //     lib.classToggle(item, "size-block-selection--hover");
-        //     });
-        // });
-
-        // main.blockSelectionLarge.forEach(item => {
-        //     item.addEventListener("mouseout", () => {
-        //     lib.classToggle(item, "size-block-selection--hover");
-        //     });
-        // });
-
-        // main.blockSelectionSmall.forEach(item => {
-        //     item.addEventListener("mouseover", ()=> {
-        //         for (let i of item.children) {
-        //             lib.classToggle(i, "size-block-selection--hover");
-        //         }
-        //     });
-        // });
 
         main.blockSelectionSmall.forEach(item => {
             item.addEventListener("mouseout", ()=> {
