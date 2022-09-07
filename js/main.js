@@ -85,41 +85,54 @@ const main = {
     blockListProject: document.querySelector('#block-list-project'),
 
     launchApp() {
-        // const categoryElement = this.categories.querySelector(`[data-category-key=${this.categoryKeyTarget}`);
-        // lib.classToggle(categoryElement, "block-image--focus");
-        // this.projectTitle.textContent = categoryElement.dataset.categoryName;
         this.setFocusCategory();
-        this.setFocusBlockSize();
+        this.setFocusBlockSizeSwitchLeft();
+        this.setFocusBlockSizeSwitchRight();
+        this.setTitleBlockSizeSwitch();
         this.addEventForCategories();
         this.addEventForBlockSizeSwitches();
         this.displayCategoryBlocks();
     },
+
+    //Устанавливает фокус на выбранную категорию
     setFocusCategory() {
         const categoryElement = document.querySelector(`[data-category-key=${this.categoryKeyTarget}`);
         categoryElement.classList.add("block-image--focus");
         this.categoryTitleSelected.textContent = categoryElement.dataset.categoryName;
     },
-    // Устанавливает фокус на переключателях выбора размера блоков, согласно настройкам
-    setFocusBlockSize() {
+
+    // Устанавливает фокус на левом переключателе выбора размера блоков
+    setFocusBlockSizeSwitchLeft() {
         if (this.largeBlockCategoryActive === true) {
             document.querySelector('#block-selection-category-large').classList.add("size-block-selection--focus");
+            for (let item of document.querySelector('#block-selection-category-small').children) {
+                item.classList.remove("size-block-selection--focus");
+            }
         } else {
+            document.querySelector('#block-selection-category-large').classList.remove("size-block-selection--focus");
             for (let item of document.querySelector('#block-selection-category-small').children) {
                 item.classList.add("size-block-selection--focus");
             }
         }
+    },
+
+    // Устанавливает фокус на правом переключателе выбора размера блоков
+    setFocusBlockSizeSwitchRight() {
         if (this.largeBlockProjectActive === true) {
             document.querySelector('#block-selection-project-large').classList.add("size-block-selection--focus");
+            for (let item of document.querySelector('#block-selection-project-small').children) {
+                item.classList.remove("size-block-selection--focus");
+            }
         } else {
+            document.querySelector('#block-selection-project-large').classList.remove("size-block-selection--focus");
             for (let item of document.querySelector('#block-selection-project-small').children) {
                 item.classList.add("size-block-selection--focus");
             }
         }
-        this.blockSizeSelectedTitleContent();
     },
 
     // функция проверки соответствия выбранному переключателем размера блоков и его заголовка
-    blockSizeSelectedTitleContent() {
+    setTitleBlockSizeSwitch() {
         this.largeBlockCategoryActive == true ? (this.sizeBlockSelectionTitleleft.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleleft.textContent = "Малые блоки");
         this.largeBlockProjectActive == true ? (this.sizeBlockSelectionTitleRight.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleRight.textContent = "Малые блоки");
     },
@@ -143,7 +156,7 @@ const main = {
                 }, false);
 
                 item.addEventListener("click", () => {
-                    lib.classToggle(item, "block-image--focus");
+                    lib.addClass(item, "block-image--focus");
                     main.categoryTitleSelected.textContent = item.dataset.categoryName;
                     const categoryName = item.dataset.categoryName;
                     for (let item of main.categories.children) {
@@ -198,46 +211,34 @@ const main = {
 
         main.blockSelectionCategoryLarge.addEventListener("click", (event)=> {
             main.largeBlockCategoryActive = true;
-            lib.addClass(event, "size-block-selection--focus");
-            for (let item of main.blockSelectionCategorySmall.children) {
-                lib.removeClass(item, "size-block-selection--focus");
-            }
+            main.setFocusBlockSizeSwitchLeft();
             main.displayCategoryBlocks();
             main.blockListCategory.scrollTop = 0;
-            main.blockSizeSelectedTitleContent();
+            main.setTitleBlockSizeSwitch();
         });
 
         main.blockSelectionCategorySmall.addEventListener("click", ()=> {
             main.largeBlockCategoryActive = false;
-            lib.removeClass(main.blockSelectionCategoryLarge, "size-block-selection--focus");
-            for (let item of main.blockSelectionCategorySmall.children) {
-                lib.addClass(item, "size-block-selection--focus");
-            }
+            main.setFocusBlockSizeSwitchLeft();
             main.displayCategoryBlocks();
             main.blockListCategory.scrollTop = 0;
-            main.blockSizeSelectedTitleContent();
+            main.setTitleBlockSizeSwitch();
         });
 
         main.blockSelectionProjectLarge.addEventListener("click", (event)=> {
             main.largeBlockProjectActive = true;
-            lib.addClass(event, "size-block-selection--focus");
-            for (let item of main.blockSelectionProjectSmall.children) {
-                lib.removeClass(item, "size-block-selection--focus");
-            }
+            main.setFocusBlockSizeSwitchRight();
             main.displayProjectBlocks();
             main.blockListProject.scrollTop = 0;
-            main.blockSizeSelectedTitleContent();
+            main.setTitleBlockSizeSwitch();
         });
 
         main.blockSelectionProjectSmall.addEventListener("click", ()=> {
             main.largeBlockProjectActive = false;
-            lib.removeClass(main.blockSelectionProjectLarge, "size-block-selection--focus");
-            for (let item of main.blockSelectionProjectSmall.children) {
-                lib.addClass(item, "size-block-selection--focus");
-            }
+            main.setFocusBlockSizeSwitchRight();
             main.displayProjectBlocks();
             main.blockListProject.scrollTop = 0;
-            main.blockSizeSelectedTitleContent();
+            main.setTitleBlockSizeSwitch();
         });
     },
     // функция для отображения блоков из выбранной категории на экране
