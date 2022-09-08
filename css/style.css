@@ -214,9 +214,12 @@ body {
     height: 128px;
 }
 
-.block-image--hover {
+.block-image--ms:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
+/* .block-image--hover {
+    background-color: rgba(255, 255, 255, 0.1);
+} */
 
 .block-image--focus {
     background-color: rgba(255, 255, 255, 0.1);
@@ -247,10 +250,19 @@ body {
     margin-right: 4px;
 }
 
+
 .size-block-selection__small {
     width: 26px;
     display: flex;
     flex-wrap: wrap;
+}
+
+.size-block-selection__large:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.size-block-selection__small:hover div {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .size-selection__small-block {
@@ -264,10 +276,10 @@ body {
 .size-selection__small-block:last-child {
     margin-top: 2px;
 }
-
+/* 
 .size-block-selection--hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
+} */
 
 .size-block-selection--focus {
     background-color: rgba(255, 255, 255, 0.1);
@@ -333,15 +345,19 @@ body {
     margin-left: auto;
 }
 
+.button-icon:hover .button-icon__svg-path {
+    fill: #fff;
+}
+
 .button-icon__svg--click{
     width: 24px;
     height: 24px;
     padding-left: 1px;
     padding-bottom: 0px;
 }
-.button-icon__svg-path--hover {
+/* .button-icon__svg-path:hover {
     fill: #fff;
-}
+} */
 
 .block-item__specification {
     display: flex;

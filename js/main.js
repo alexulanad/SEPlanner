@@ -6,29 +6,29 @@
 // модуль отвечающий, за блоки проекта - это объект, а его методы позволяют добавлять или удалять блоки и работать с ними
 "use strict";
 
-class Elements {
-    // создает объект c: selector - селектор для поиска, where - где искать (document по умолчанию)
-    constructor(selector, where = document) {
-        this.self = where.querySelector(selector);
-        this.all = where.querySelectorAll(selector);
-    }
+// class Selector {
+//     // создает объект c: selector - селектор для поиска, where - где искать (document по умолчанию)
+//     constructor(selector, where = document) {
+//         this.self = where.querySelector(selector);
+//         this.all = where.querySelectorAll(selector);
+//     }
 
-    // метод перебора элементов, для каждого из которого вызывается переданная callback-функция, принимающая этот
-    // элемент в качестве параметра, для последующего взаимодействия с ним внутри данной callback-функции
-    each(callback) {
-        for(let elem of this.all) {
-            callback(elem);
-        }
-    }
+//     // метод перебора элементов, для каждого из которого вызывается переданная callback-функция, принимающая этот
+//     // элемент в качестве параметра, для последующего взаимодействия с ним внутри данной callback-функции
+//     each(callback) {
+//         for(let elem of this.all) {
+//             callback(elem);
+//         }
+//     }
 
-    // метод назначает событие и обработчик каждому элементу, возвращае обратно свой объект
-    on(event, callback) {
-        for(let elem of this.all) {
-            elem.addEventListener(event, callback);
-        }
-        return this;
-    }
-}
+//     // метод назначает событие и обработчик каждому элементу, возвращае обратно свой объект
+//     on(event, callback) {
+//         for(let elem of this.all) {
+//             elem.addEventListener(event, callback);
+//         }
+//         return this;
+//     }
+// }
 
 const lib = {
     classToggle(elem, className) {
@@ -58,6 +58,16 @@ const lib = {
     // addEvent(element, event, handler) {
     //     element.addEventListener(event, handler);
     // },
+};
+
+const settingsApp = {
+    categoryKeyTarget: "landingGear",
+    largeBlockCategoryActive: true,
+    largeBlockProjectActive: true,
+};
+
+const categoryBlockSizeSwitcher = {
+
 };
 
 const main = {
@@ -131,7 +141,7 @@ const main = {
         }
     },
 
-    // функция проверки соответствия выбранному переключателем размера блоков и его заголовка
+    // Устанавливает подпись для переключателей размера блока, согласно выбранному
     setTitleBlockSizeSwitch() {
         this.largeBlockCategoryActive == true ? (this.sizeBlockSelectionTitleleft.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleleft.textContent = "Малые блоки");
         this.largeBlockProjectActive == true ? (this.sizeBlockSelectionTitleRight.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleRight.textContent = "Малые блоки");
@@ -144,70 +154,66 @@ const main = {
     // Инициализация событий для категорий
     addEventForCategories() {
         for (let item of main.categories.children) {
-            if (item.tagName === "IMG") {
-                item.addEventListener("mouseover", (event) => {
-                    lib.classToggle(event, "block-image--hover");
-                    main.categoryTitle.textContent = item.dataset.categoryName;
-                }, false);
+            item.addEventListener("mouseover", (event) => {
+                main.categoryTitle.textContent = item.dataset.categoryName;
+            }, false);
 
-                item.addEventListener("mouseout", (event) => {
-                    lib.classToggle(event, "block-image--hover");
-                    main.categoryTitle.textContent = "";
-                }, false);
+            item.addEventListener("mouseout", (event) => {
+                main.categoryTitle.textContent = "";
+            }, false);
 
-                item.addEventListener("click", () => {
-                    lib.addClass(item, "block-image--focus");
-                    main.categoryTitleSelected.textContent = item.dataset.categoryName;
-                    const categoryName = item.dataset.categoryName;
-                    for (let item of main.categories.children) {
-                        if (item.dataset.categoryName != categoryName) {
-                            item.dataset.active = "false";
-                            item.classList.remove("block-image--focus");
-                        }
+            item.addEventListener("click", () => {
+                item.classList.add("block-image--focus");
+                main.categoryTitleSelected.textContent = item.dataset.categoryName;
+                const categoryName = item.dataset.categoryName;
+                for (let item of main.categories.children) {
+                    if (item.dataset.categoryName != categoryName) {
+                        item.dataset.active = "false";
+                        item.classList.remove("block-image--focus");
                     }
+                }
 
-                    main.itemCategoryActive.largeBlockIndexActive = null;
-                    main.itemCategoryActive.smallBlockIndexActive = null;
+                main.itemCategoryActive.largeBlockIndexActive = null;
+                main.itemCategoryActive.smallBlockIndexActive = null;
 
-                    // Сохраняет ключ категории, для передачи значения функции вывода блоков
-                    main.categoryKeyTarget = item.dataset.categoryKey;
-                    // Вызов функции вывода блоков выбранной категории
-                    main.displayCategoryBlocks();
-                    // Возвращаем положение скролла в начальную позицию
-                    main.blockListCategory.scrollTop = 0;
-                });
-            }
+                // Сохраняет ключ категории, для передачи значения функции вывода блоков
+                main.categoryKeyTarget = item.dataset.categoryKey;
+                // Вызов функции вывода блоков выбранной категории
+                main.displayCategoryBlocks();
+                // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
+                main.blockListCategory.scrollTop = 0;
+            });
         }
     },
     // Инициализация событий для переключателей больших и малых блоков
     addEventForBlockSizeSwitches() {
-        main.blockSelectionLarge.forEach(item => {
-            item.addEventListener("mouseover", () => {
-            lib.classToggle(item, "size-block-selection--hover");
-            });
-        });
+        // main.blockSelectionLarge.forEach(item => {
+        //     item.addEventListener("mouseover", () => {
+        //     lib.classToggle(item, "size-block-selection--hover");
+        //     });
+        // });
 
-        main.blockSelectionLarge.forEach(item => {
-            item.addEventListener("mouseout", () => {
-            lib.classToggle(item, "size-block-selection--hover");
-            });
-        });
+        // main.blockSelectionLarge.forEach(item => {
+        //     item.addEventListener("mouseout", () => {
+        //     lib.classToggle(item, "size-block-selection--hover");
+        //     });
+        // });
 
-        main.blockSelectionSmall.forEach(item => {
-            item.addEventListener("mouseover", ()=> {
-                for (let i of item.children) {
-                    lib.classToggle(i, "size-block-selection--hover");
-                }
-            });
-        });
+        // main.blockSelectionSmall.forEach(item => {
+        //     item.addEventListener("mouseover", ()=> {
+        //         for (let i of item.children) {
+        //             lib.classToggle(i, "size-block-selection--hover");
+        //         }
+        //     });
+        // });
 
-        main.blockSelectionSmall.forEach(item => {
-            item.addEventListener("mouseout", ()=> {
-                for (let i of item.children) {
-                    lib.classToggle(i, "size-block-selection--hover");
-                }
-            });
-        });
+        // main.blockSelectionSmall.forEach(item => {
+        //     item.addEventListener("mouseout", ()=> {
+        //         for (let i of item.children) {
+        //             lib.classToggle(i, "size-block-selection--hover");
+        //         }
+        //     });
+        // });
 
         main.blockSelectionCategoryLarge.addEventListener("click", (event)=> {
             main.largeBlockCategoryActive = true;
@@ -344,23 +350,26 @@ const main = {
                 }
             }
 
-            buttonIcon.addEventListener("mouseenter", () => {
-                lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-            });
+            // buttonIcon.addEventListener("mouseenter", () => {
+            //     lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
+            // });
 
             buttonIcon.addEventListener("mouseleave", () => {
-                lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-                if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
-                    lib.classToggle(buttonIconSvg, "button-icon__svg--click");
-                }
+                // lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
+                buttonIconSvg.classList.remove("button-icon__svg--click");
+                // if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
+                //     lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+                // }
             });
 
             buttonIcon.addEventListener("mousedown", ()=> {
-                lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+                buttonIconSvg.classList.add("button-icon__svg--click");
+                // lib.classToggle(buttonIconSvg, "button-icon__svg--click");
             });
 
             buttonIcon.addEventListener("mouseup", ()=> {
-                lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+                buttonIconSvg.classList.remove("button-icon__svg--click");
+                // lib.classToggle(buttonIconSvg, "button-icon__svg--click");
                 const createProjectBlock = new CreateProjectBlock(categoryBlocks[buttonIcon.dataset.blockId], (main.largeBlockCategoryActive === true) ? true : false, 1, false);
                 this.projectBlocks.push(createProjectBlock);
                 this.displayProjectBlocks();
