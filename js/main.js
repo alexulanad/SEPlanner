@@ -308,7 +308,7 @@ const main = {
             const blockItemBase = item.querySelector(".block-item__base");
             const blockItemSpecification = item.querySelector(".block-item__specification");
 
-            blockItemBase.addEventListener("click", (e)=> {
+            blockItemBase.addEventListener("mousedown", (e)=> {
                 if (e.currentTarget == e.target) {
                     if (blockItemSpecification.style.maxHeight) {
                         blockItemSpecification.style.transition = "max-height 0.2s ease-out";
