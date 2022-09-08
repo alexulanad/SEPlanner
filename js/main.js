@@ -1,69 +1,13 @@
-// Отключить событие, чтобы при повторном нажатии не менялся стиль на обратный (сейчас задействован addclass и removeclass)
-// Убрать баг, в котором при повторном нажатии на категорию, убирается выделяющий стиль
 // реализовать каждый визуальный компонент программы как отдельный, независимый модуль, напримен:
 // модуль отвечающий за вывод блоков категории - это объект, который создается при нажатии на категорию,
 // в конструкторе указать массив содержащий все блоки категории, а методы объекта- это работа с отдельным блоком
 // модуль отвечающий, за блоки проекта - это объект, а его методы позволяют добавлять или удалять блоки и работать с ними
 "use strict";
 
-// class Selector {
-//     // создает объект c: selector - селектор для поиска, where - где искать (document по умолчанию)
-//     constructor(selector, where = document) {
-//         this.self = where.querySelector(selector);
-//         this.all = where.querySelectorAll(selector);
-//     }
-
-//     // метод перебора элементов, для каждого из которого вызывается переданная callback-функция, принимающая этот
-//     // элемент в качестве параметра, для последующего взаимодействия с ним внутри данной callback-функции
-//     each(callback) {
-//         for(let elem of this.all) {
-//             callback(elem);
-//         }
-//     }
-
-//     // метод назначает событие и обработчик каждому элементу, возвращае обратно свой объект
-//     on(event, callback) {
-//         for(let elem of this.all) {
-//             elem.addEventListener(event, callback);
-//         }
-//         return this;
-//     }
-// }
-
-const lib = {
-    classToggle(elem, className) {
-        if (elem.target) {
-            elem.target.classList.toggle(className);
-        }
-        if (!elem.target && elem) {
-            elem.classList.toggle(className);
-        }
-    },
-    addClass(elem, className) {
-        if (elem.target) {
-            elem.target.classList.add(className);
-        }
-        if (!elem.target && elem) {
-            elem.classList.add(className);
-        }
-    },
-    removeClass(elem, className) {
-        if (elem.target) {
-            elem.target.classList.remove(className);
-        }
-        if (!elem.target && elem) {
-            elem.classList.remove(className);
-        }
-    },
-    // addEvent(element, event, handler) {
-    //     element.addEventListener(event, handler);
-    // },
-};
-
 const settingsApp = {
-    categoryKeyTarget: "landingGear",
-    largeBlockCategoryActive: true,
-    largeBlockProjectActive: true,
+    categoryKeyTarget: "energySources",
+    largeBlockCategoryActive: false,
+    largeBlockProjectActive: false,
 };
 
 const categoryBlockSizeSwitcher = {
@@ -71,9 +15,9 @@ const categoryBlockSizeSwitcher = {
 };
 
 const main = {
-    categoryKeyTarget: "landingGear",
-    largeBlockCategoryActive: true,
-    largeBlockProjectActive: true,
+    categoryKeyTarget: "energySources",
+    largeBlockCategoryActive: false,
+    largeBlockProjectActive: false,
     projectBlocks: [],
     itemCategoryActive: {
         largeBlockIndexActive: null,
@@ -185,36 +129,9 @@ const main = {
             });
         }
     },
+
     // Инициализация событий для переключателей больших и малых блоков
     addEventForBlockSizeSwitches() {
-        // main.blockSelectionLarge.forEach(item => {
-        //     item.addEventListener("mouseover", () => {
-        //     lib.classToggle(item, "size-block-selection--hover");
-        //     });
-        // });
-
-        // main.blockSelectionLarge.forEach(item => {
-        //     item.addEventListener("mouseout", () => {
-        //     lib.classToggle(item, "size-block-selection--hover");
-        //     });
-        // });
-
-        // main.blockSelectionSmall.forEach(item => {
-        //     item.addEventListener("mouseover", ()=> {
-        //         for (let i of item.children) {
-        //             lib.classToggle(i, "size-block-selection--hover");
-        //         }
-        //     });
-        // });
-
-        // main.blockSelectionSmall.forEach(item => {
-        //     item.addEventListener("mouseout", ()=> {
-        //         for (let i of item.children) {
-        //             lib.classToggle(i, "size-block-selection--hover");
-        //         }
-        //     });
-        // });
-
         main.blockSelectionCategoryLarge.addEventListener("click", (event)=> {
             main.largeBlockCategoryActive = true;
             main.setFocusBlockSizeSwitchLeft();
@@ -247,6 +164,7 @@ const main = {
             main.setTitleBlockSizeSwitch();
         });
     },
+
     // функция для отображения блоков из выбранной категории на экране
     displayCategoryBlocks() {
         main.blockListCategory.innerHTML = "";
@@ -299,12 +217,12 @@ const main = {
         this.addEvent(categoryBlocks);
         this.scrollCheck(this.blockListCategory);
     },
+
     // функция добаления событий для блоков выбранной категории
     addEvent(categoryBlocks) {
         for (let item of main.blockListCategory.children) {
             const buttonIcon = item.querySelector(".button-icon");
             const buttonIconSvg = item.querySelector(".button-icon__svg");
-            const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
             const blockItemBase = item.querySelector(".block-item__base");
             const blockItemSpecification = item.querySelector(".block-item__specification");
 
@@ -350,32 +268,23 @@ const main = {
                 }
             }
 
-            // buttonIcon.addEventListener("mouseenter", () => {
-            //     lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-            // });
-
             buttonIcon.addEventListener("mouseleave", () => {
-                // lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
                 buttonIconSvg.classList.remove("button-icon__svg--click");
-                // if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
-                //     lib.classToggle(buttonIconSvg, "button-icon__svg--click");
-                // }
             });
 
             buttonIcon.addEventListener("mousedown", ()=> {
                 buttonIconSvg.classList.add("button-icon__svg--click");
-                // lib.classToggle(buttonIconSvg, "button-icon__svg--click");
             });
 
             buttonIcon.addEventListener("mouseup", ()=> {
                 buttonIconSvg.classList.remove("button-icon__svg--click");
-                // lib.classToggle(buttonIconSvg, "button-icon__svg--click");
                 const createProjectBlock = new CreateProjectBlock(categoryBlocks[buttonIcon.dataset.blockId], (main.largeBlockCategoryActive === true) ? true : false, 1, false);
                 this.projectBlocks.push(createProjectBlock);
                 this.displayProjectBlocks();
             });
         }
     },
+
     // функция добавления отступа справа для каждого блока категории, при условии наличия скролла
     scrollCheck(blockList) {
     // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
@@ -457,30 +366,19 @@ const main = {
         for (let item of this.blockListProject.children) {
             const buttonIcon = item.querySelector(".button-icon");
             const buttonIconSvg = item.querySelector(".button-icon__svg");
-            // const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
             const blockItemBase = item.querySelector(".block-item__base");
             const blockItemSpecification = item.querySelector(".block-item__specification");
 
-            // buttonIcon.addEventListener("mouseenter", () => {
-            //     lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-            // });
-
             buttonIcon.addEventListener("mouseleave", () => {
                 buttonIconSvg.classList.remove("button-icon__svg--click");
-                // lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-                // if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
-                //     lib.classToggle(buttonIconSvg, "button-icon__svg--click");
-                // }
             });
 
             buttonIcon.addEventListener("mousedown", ()=> {
                 buttonIconSvg.classList.add("button-icon__svg--click");
-                // lib.classToggle(buttonIconSvg, "button-icon__svg--click");
             });
 
             buttonIcon.addEventListener("mouseup", (event)=> {
                 buttonIconSvg.classList.remove("button-icon__svg--click");
-                // lib.classToggle(buttonIconSvg, "button-icon__svg--click");
                 main.projectBlocks.splice(event.currentTarget.dataset.blockId, 1);
                 this.displayProjectBlocks();
             });
