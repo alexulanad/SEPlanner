@@ -457,32 +457,35 @@ const main = {
         for (let item of this.blockListProject.children) {
             const buttonIcon = item.querySelector(".button-icon");
             const buttonIconSvg = item.querySelector(".button-icon__svg");
-            const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
+            // const buttonIconSvgPath = item.querySelector(".button-icon__svg-path");
             const blockItemBase = item.querySelector(".block-item__base");
             const blockItemSpecification = item.querySelector(".block-item__specification");
 
-            buttonIcon.addEventListener("mouseenter", () => {
-                lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-            });
+            // buttonIcon.addEventListener("mouseenter", () => {
+            //     lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
+            // });
 
             buttonIcon.addEventListener("mouseleave", () => {
-                lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
-                if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
-                    lib.classToggle(buttonIconSvg, "button-icon__svg--click");
-                }
+                buttonIconSvg.classList.remove("button-icon__svg--click");
+                // lib.classToggle(buttonIconSvgPath, "button-icon__svg-path--hover");
+                // if (buttonIconSvg.classList.contains('button-icon__svg--click') == true) {
+                //     lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+                // }
             });
 
             buttonIcon.addEventListener("mousedown", ()=> {
-                lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+                buttonIconSvg.classList.add("button-icon__svg--click");
+                // lib.classToggle(buttonIconSvg, "button-icon__svg--click");
             });
 
             buttonIcon.addEventListener("mouseup", (event)=> {
-                lib.classToggle(buttonIconSvg, "button-icon__svg--click");
+                buttonIconSvg.classList.remove("button-icon__svg--click");
+                // lib.classToggle(buttonIconSvg, "button-icon__svg--click");
                 main.projectBlocks.splice(event.currentTarget.dataset.blockId, 1);
                 this.displayProjectBlocks();
             });
 
-            blockItemBase.addEventListener("click", (e)=> {
+            blockItemBase.addEventListener("mousedown", (e)=> {
                 if (e.currentTarget == e.target) {
                     if (blockItemSpecification.style.maxHeight) {
                         blockItemSpecification.style.transition = "max-height 0.2s ease-out";
