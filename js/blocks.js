@@ -1,6 +1,6 @@
 "use strict";
 
-const blockCategories = {
+const blocks = {
     // Легкая броня
     lightArmor: {
         large: [

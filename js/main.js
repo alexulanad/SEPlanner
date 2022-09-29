@@ -4,60 +4,87 @@
 // модуль отвечающий, за блоки проекта - это объект, а его методы позволяют добавлять или удалять блоки и работать с ними
 "use strict";
 
-const settingsApp = {
-    categoryKeyTarget: "energySources",
-    largeBlockCategoryActive: false,
-    largeBlockProjectActive: false,
-};
-
-const categoryBlockSizeSwitcher = {
-
-};
-
 const main = {
-    categoryKeyTarget: "energySources",
-    largeBlockCategoryActive: false,
+    categoryKeyTarget: "energySources", //landingGear energySources
+    largeBlockCategoryActive: true,
     largeBlockProjectActive: false,
     projectBlocks: [],
-    itemCategoryActive: {
-        largeBlockIndexActive: null,
-        smallBlockIndexActive: null,
-    },
 
-    categories: document.querySelector('#categories'),
-    blockSelectionLarge: document.querySelectorAll('.size-block-selection__large'),
-    blockSelectionSmall: document.querySelectorAll('.size-block-selection__small'),
-    blockSelectionCategoryLarge: document.querySelector('#block-selection-category-large'),
-    blockSelectionCategorySmall: document.querySelector('#block-selection-category-small'),
-    blockSelectionProjectLarge: document.querySelector('#block-selection-project-large'),
-    blockSelectionProjectSmall:  document.querySelector('#block-selection-project-small'),
-    sizeBlockSelectionTitleleft: document.querySelector('#size-block-selection__title--left'),
-    sizeBlockSelectionTitleRight: document.querySelector('#size-block-selection__title--right'),
-    categoryTitle: document.querySelector('#category-title'),
-    categoryTitleSelected: document.querySelector('#category-title-selected'),
-    blockListCategory: document.querySelector('#block-list-category'),
-    blockListProject: document.querySelector('#block-list-project'),
+    // itemCategoryActive: {
+    //     largeBlockIndexActive: null,
+    //     smallBlockIndexActive: null,
+    // },
+
+    // blockListCategory: document.querySelector('#block-list-category'),
+    // blockListProject: document.querySelector('#block-list-project'),
 
     launchApp() {
-        this.setFocusCategory();
-        this.setFocusBlockSizeSwitchLeft();
-        this.setFocusBlockSizeSwitchRight();
-        this.setTitleBlockSizeSwitch();
-        this.addEventForCategories();
-        this.addEventForBlockSizeSwitches();
-        this.displayCategoryBlocks();
+        categories.setFocus();
+        categories.addEvent();
+        blockSizeSwitchCategory.setFocus();
+        blockSizeSwitchCategory.setTitle();
+        blockSizeSwitchCategory.addEvent();
+        blockSizeSwitchProject.setFocus();
+        blockSizeSwitchProject.setTitle();
+        blockSizeSwitchProject.addEvent();
+        categoryBlocks.displayBlocks();
     },
+
+    // функция добавления отступа справа для каждого блока категории, при условии наличия скролла
+    scrollCheck(blockList) {
+    // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
+        if (blockList.offsetWidth > blockList.clientWidth) {
+            blockList.querySelectorAll('.block-item').forEach(item => {
+                item.style.marginRight = "4px";
+            });
+        }
+    },
+};
+
+class CreateProjectBlock {
+    constructor(block, largeBlock, amount, active) {
+        this.block = block; // ссылка на блок в массиве списка блоков (в зависимсости от размера и выбранной категории)
+        this.largeBlock = largeBlock; // размеры блока: true - большой, false - малый
+        this.amount = amount; // количество блоков данного типа
+        this.active = active; // true - активный, false - нет (для развертывания?)
+    }
+}
+
+const categories = {
+    categories: document.querySelector('#categories'),
+    categoryTitle: document.querySelector('#category-title'),
+    categoryTitleSelected: document.querySelector('#category-title-selected'),
 
     //Устанавливает фокус на выбранную категорию
-    setFocusCategory() {
-        const categoryElement = document.querySelector(`[data-category-key=${this.categoryKeyTarget}`);
-        categoryElement.classList.add("block-image--focus");
-        this.categoryTitleSelected.textContent = categoryElement.dataset.categoryName;
+    setFocus() {
+        const categoryFocus = document.querySelector(`[data-category-key=${main.categoryKeyTarget}`);
+        categoryFocus.classList.toggle("block-image--focus");
+        this.categoryTitleSelected.textContent = categoryFocus.dataset.categoryName;
     },
 
-    // Устанавливает фокус на левом переключателе выбора размера блоков
-    setFocusBlockSizeSwitchLeft() {
-        if (this.largeBlockCategoryActive === true) {
+    // Инициализация событий для категорий
+    addEvent() {
+        for (let item of this.categories.children) {
+            item.addEventListener("mouseover", () => {
+                this.categoryTitle.textContent = item.dataset.categoryName;
+            });
+            item.addEventListener("mouseout", () => {
+                this.categoryTitle.textContent = "";
+            });
+            item.addEventListener("click", () => {
+                this.setFocus();
+                main.categoryKeyTarget = item.dataset.categoryKey;
+                this.setFocus();
+                categoryBlocks.displayBlocks();
+            });
+        }
+    },
+};
+
+const blockSizeSwitchCategory = {
+    // Устанавливает фокус на выбранном переключателе размера блоков
+    setFocus() {
+        if (main.largeBlockCategoryActive === true) {
             document.querySelector('#block-selection-category-large').classList.add("size-block-selection--focus");
             for (let item of document.querySelector('#block-selection-category-small').children) {
                 item.classList.remove("size-block-selection--focus");
@@ -69,10 +96,32 @@ const main = {
             }
         }
     },
+    // Устанавливает заголовок для переключателей размера блока, согласно выбранному
+    setTitle() {
+        const title = document.querySelector('#size-block-selection__title--left');
+        main.largeBlockCategoryActive == true ? (title.textContent = "Большие блоки") : (title.textContent = "Малые блоки");
+    },
+    // Устанавливает события для переключателей размера блоков
+    addEvent() {
+        document.querySelector('#block-selection-category-large').addEventListener("click", ()=> {
+            main.largeBlockCategoryActive = true;
+            this.setFocus();
+            this.setTitle();
+            categoryBlocks.displayBlocks();
+        });
+        document.querySelector('#block-selection-category-small').addEventListener("click", ()=> {
+            main.largeBlockCategoryActive = false;
+            this.setFocus();
+            this.setTitle();
+            categoryBlocks.displayBlocks();
+        });
+    },
+};
 
-    // Устанавливает фокус на правом переключателе выбора размера блоков
-    setFocusBlockSizeSwitchRight() {
-        if (this.largeBlockProjectActive === true) {
+const blockSizeSwitchProject = {
+    // Устанавливает фокус на выбранном переключателе размера блоков
+    setFocus() {
+        if (main.largeBlockProjectActive === true) {
             document.querySelector('#block-selection-project-large').classList.add("size-block-selection--focus");
             for (let item of document.querySelector('#block-selection-project-small').children) {
                 item.classList.remove("size-block-selection--focus");
@@ -84,94 +133,46 @@ const main = {
             }
         }
     },
-
-    // Устанавливает подпись для переключателей размера блока, согласно выбранному
-    setTitleBlockSizeSwitch() {
-        this.largeBlockCategoryActive == true ? (this.sizeBlockSelectionTitleleft.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleleft.textContent = "Малые блоки");
-        this.largeBlockProjectActive == true ? (this.sizeBlockSelectionTitleRight.textContent = "Большие блоки") : (this.sizeBlockSelectionTitleRight.textContent = "Малые блоки");
+    // Устанавливает заголовок для переключателей размера блока, согласно выбранному
+    setTitle() {
+        const title = document.querySelector('#size-block-selection__title--right');
+        main.largeBlockProjectActive == true ? (title.textContent = "Большие блоки") : (title.textContent = "Малые блоки");
     },
+    // Устанавливает события для переключателей размера блоков
+    addEvent() {
+        document.querySelector('#block-selection-project-large').addEventListener("click", ()=> {
+            main.largeBlockProjectActive = true;
+            this.setFocus();
+            this.setTitle();
+            projectBlocks.displayBlocks();
+        });
+        document.querySelector('#block-selection-project-small').addEventListener("click", ()=> {
+            main.largeBlockProjectActive = false;
+            this.setFocus();
+            this.setTitle();
+            projectBlocks.displayBlocks();
+        });
+    },
+};
+
+const categoryBlocks = {
+    // blocks =  main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
+    blockList: document.querySelector('#block-list-category'),
+    largeBlockIndexActive: null,
+    smallBlockIndexActive: null,        // this.blockList = document.querySelector('#block-list-category');
 
     // функция возвращает ссылку на массив: либо больших, либо малых блоков, согласно ключу categoryKeyTarget
     blockArrayDefinition() {
-        return main.largeBlockCategoryActive == true ? blockCategories[this.categoryKeyTarget].large : blockCategories[this.categoryKeyTarget].small;
+        // запихать эту строку прямл в display
+        return main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
     },
-    // Инициализация событий для категорий
-    addEventForCategories() {
-        for (let item of main.categories.children) {
-            item.addEventListener("mouseover", (event) => {
-                main.categoryTitle.textContent = item.dataset.categoryName;
-            }, false);
-
-            item.addEventListener("mouseout", (event) => {
-                main.categoryTitle.textContent = "";
-            }, false);
-
-            item.addEventListener("click", () => {
-                item.classList.add("block-image--focus");
-                main.categoryTitleSelected.textContent = item.dataset.categoryName;
-                const categoryName = item.dataset.categoryName;
-                for (let item of main.categories.children) {
-                    if (item.dataset.categoryName != categoryName) {
-                        item.dataset.active = "false";
-                        item.classList.remove("block-image--focus");
-                    }
-                }
-
-                main.itemCategoryActive.largeBlockIndexActive = null;
-                main.itemCategoryActive.smallBlockIndexActive = null;
-
-                // Сохраняет ключ категории, для передачи значения функции вывода блоков
-                main.categoryKeyTarget = item.dataset.categoryKey;
-                // Вызов функции вывода блоков выбранной категории
-                main.displayCategoryBlocks();
-                // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
-                main.blockListCategory.scrollTop = 0;
-            });
-        }
-    },
-
-    // Инициализация событий для переключателей больших и малых блоков
-    addEventForBlockSizeSwitches() {
-        main.blockSelectionCategoryLarge.addEventListener("click", (event)=> {
-            main.largeBlockCategoryActive = true;
-            main.setFocusBlockSizeSwitchLeft();
-            main.displayCategoryBlocks();
-            main.blockListCategory.scrollTop = 0;
-            main.setTitleBlockSizeSwitch();
-        });
-
-        main.blockSelectionCategorySmall.addEventListener("click", ()=> {
-            main.largeBlockCategoryActive = false;
-            main.setFocusBlockSizeSwitchLeft();
-            main.displayCategoryBlocks();
-            main.blockListCategory.scrollTop = 0;
-            main.setTitleBlockSizeSwitch();
-        });
-
-        main.blockSelectionProjectLarge.addEventListener("click", (event)=> {
-            main.largeBlockProjectActive = true;
-            main.setFocusBlockSizeSwitchRight();
-            main.displayProjectBlocks();
-            main.blockListProject.scrollTop = 0;
-            main.setTitleBlockSizeSwitch();
-        });
-
-        main.blockSelectionProjectSmall.addEventListener("click", ()=> {
-            main.largeBlockProjectActive = false;
-            main.setFocusBlockSizeSwitchRight();
-            main.displayProjectBlocks();
-            main.blockListProject.scrollTop = 0;
-            main.setTitleBlockSizeSwitch();
-        });
-    },
-
-    // функция для отображения блоков из выбранной категории на экране
-    displayCategoryBlocks() {
-        main.blockListCategory.innerHTML = "";
+    // функция для вывода блоков из выбранной категории на экране
+    displayBlocks() {
+        this.blockList.innerHTML = "";
         const categoryBlocks = this.blockArrayDefinition();
         if (categoryBlocks.length != 0) {
             categoryBlocks.forEach((item, index) => {
-                main.blockListCategory.innerHTML += `
+                this.blockList.innerHTML += `
                 <div class="block-item">
                     <div class="block-item__base">
                         <img class="block-image--ss" src="img/blocks/${item.img}">
@@ -210,17 +211,23 @@ const main = {
                 `;
             });
         }
+        // Обнуляет запись об развернутых блоках с дополнительной информацией
+        // this.largeBlockIndexActive = null;
+        // this.smallBlockIndexActive = null;
+
         //Убирает лишний нижний отступ у последнего элемента в массиве
-        if (this.blockListCategory.innerHTML != "") {
-            this.blockListCategory.lastElementChild.style.marginBottom = 0;
+        if (this.blockList.innerHTML != "") {
+            this.blockList.lastElementChild.style.marginBottom = 0;
         }
         this.addEvent(categoryBlocks);
-        this.scrollCheck(this.blockListCategory);
+        main.scrollCheck(this.blockList);
+        // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
+        this.blockList.scrollTop = 0;
     },
 
     // функция добаления событий для блоков выбранной категории
     addEvent(categoryBlocks) {
-        for (let item of main.blockListCategory.children) {
+        for (let item of this.blockList.children) {
             const buttonIcon = item.querySelector(".button-icon");
             const buttonIconSvg = item.querySelector(".button-icon__svg");
             const blockItemBase = item.querySelector(".block-item__base");
@@ -228,41 +235,47 @@ const main = {
 
             blockItemBase.addEventListener("mousedown", (e)=> {
                 if (e.currentTarget == e.target) {
+                    // если блок раскрыт, сворачивает его и очищает переменную с индексом
                     if (blockItemSpecification.style.maxHeight) {
                         blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                         blockItemSpecification.style.maxHeight = null;
                         if (main.largeBlockCategoryActive === true) {
-                            this.itemCategoryActive.largeBlockIndexActive = null;
+                            this.largeBlockIndexActive = null;
                         } else {
-                            this.itemCategoryActive.smallBlockIndexActive = null;
+                            this.smallBlockIndexActive = null;
                         }
+                    // если блок закрыт, раскрывает его и сворачивает все остальные, если они открыты
                     } else {
-                        for (let item of main.blockListCategory.children) {
+                        // перебирает все блоки, если есть блок ранее раскрытый - сворачивает его
+                        for (let item of this.blockList.children) {
                             const blockItemSpecification = item.querySelector(".block-item__specification");
-                            const itemMaxHeight = item.querySelector(".block-item__specification");
-                            if (itemMaxHeight.style.maxHeight) {
+                            // const itemMaxHeight = item.querySelector(".block-item__specification");
+                            if (blockItemSpecification.style.maxHeight) {
                                 blockItemSpecification.style.transition = "max-height 0.2s ease-out";
-                                itemMaxHeight.style.maxHeight = null;
+                                blockItemSpecification.style.maxHeight = null;
+                                // itemMaxHeight.style.maxHeight = null;
                             }
                         }
+                        // раскрывает блок, добавляет индекс блока в переменную
                         blockItemSpecification.style.transition = "max-height 0.2s ease-out";
                         blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
                         if (main.largeBlockCategoryActive === true) {
-                            this.itemCategoryActive.largeBlockIndexActive = buttonIcon.dataset.blockId;
+                            this.largeBlockIndexActive = buttonIcon.dataset.blockId;
                         } else {
-                            this.itemCategoryActive.smallBlockIndexActive = buttonIcon.dataset.blockId;
+                            this.smallBlockIndexActive = buttonIcon.dataset.blockId;
                         }
                     }
                 }
             }, true);
 
+            // Проверяет блок на раскрытие, если сохраненный индек совпадает с индексом блока, то раскрывает его (без анимации)
             if (main.largeBlockCategoryActive === true) {
-                if (this.itemCategoryActive.largeBlockIndexActive != null && buttonIcon.dataset.blockId === this.itemCategoryActive.largeBlockIndexActive) {
+                if (this.largeBlockIndexActive != null && buttonIcon.dataset.blockId === this.largeBlockIndexActive) {
                     blockItemSpecification.style.transition = "none";
                     blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
                 }
             } else {
-                if (this.itemCategoryActive.smallBlockIndexActive != null && buttonIcon.dataset.blockId === this.itemCategoryActive.smallBlockIndexActive) {
+                if (this.smallBlockIndexActive != null && buttonIcon.dataset.blockId === this.smallBlockIndexActive) {
                     blockItemSpecification.style.transition = "none";
                     blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
                 }
@@ -279,49 +292,45 @@ const main = {
             buttonIcon.addEventListener("mouseup", ()=> {
                 buttonIconSvg.classList.remove("button-icon__svg--click");
                 const createProjectBlock = new CreateProjectBlock(categoryBlocks[buttonIcon.dataset.blockId], (main.largeBlockCategoryActive === true) ? true : false, 1, false);
-                this.projectBlocks.push(createProjectBlock);
-                this.displayProjectBlocks();
+                main.projectBlocks.push(createProjectBlock);
+                projectBlocks.displayBlocks();
             });
         }
     },
+};
 
-    // функция добавления отступа справа для каждого блока категории, при условии наличия скролла
-    scrollCheck(blockList) {
-    // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
-        if (blockList.offsetWidth > blockList.clientWidth) {
-            blockList.querySelectorAll('.block-item').forEach(item => {
-                item.style.marginRight = "4px";
-            });
-        }
-    },
+const projectBlocks = {
+    blockList: document.querySelector('#block-list-project'),
+
     // Функция сортировки блоков проекта из массива projectBlocks, по критерию: большие, малые, и дальнейший вызов функции отображения блоков
-    displayProjectBlocks() {
-        main.blockListProject.innerHTML = "";
+    displayBlocks() {
+        this.blockList.innerHTML = "";
         if (main.projectBlocks.length != 0) {
             if (main.largeBlockProjectActive === true) {
                 main.projectBlocks.filter(function (item, index) {
                     if (item.largeBlock === true) {
-                        main.addBlockProject(item, index);
+                        projectBlocks.addBlock(item, index);
                     }
                 });
             } else {
                 main.projectBlocks.filter(function (item, index) {
                     if (item.largeBlock !== true) {
-                        main.addBlockProject(item, index);
+                        projectBlocks.addBlock(item, index);
                     }
                 });
             }
         }
         // Удаляем лишний нижний отступ у последнего отображенного блока
-        if (this.blockListProject.innerHTML != "") {
-            this.blockListProject.lastElementChild.style.marginBottom = 0;
+        if (this.blockList.innerHTML != "") {
+            this.blockList.lastElementChild.style.marginBottom = 0;
         }
-        this.addEventProject();
-        this.scrollCheck(this.blockListProject);
+        this.addEvent();
+        main.scrollCheck(this.blockList);
     },
-    // функция добвления и вывода блоков проекта на экран
-    addBlockProject(item, index) {
-        main.blockListProject.innerHTML += `
+
+    // функция добавления и вывода блоков проекта на экран
+    addBlock(item, index) {
+        this.blockList.innerHTML += `
         <div class="block-item">
             <div class="block-item__base">
                 <img class="block-image--ss" src="img/blocks/${item.block.img}">
@@ -360,10 +369,11 @@ const main = {
             </div>
         </div>
         `;
+        document.querySelector('#block-list-project').scrollTop = 0;
     },
     // функция добавления событий для блоков проекта
-    addEventProject() {
-        for (let item of this.blockListProject.children) {
+    addEvent() {
+        for (let item of this.blockList.children) {
             const buttonIcon = item.querySelector(".button-icon");
             const buttonIconSvg = item.querySelector(".button-icon__svg");
             const blockItemBase = item.querySelector(".block-item__base");
@@ -380,7 +390,7 @@ const main = {
             buttonIcon.addEventListener("mouseup", (event)=> {
                 buttonIconSvg.classList.remove("button-icon__svg--click");
                 main.projectBlocks.splice(event.currentTarget.dataset.blockId, 1);
-                this.displayProjectBlocks();
+                this.displayBlocks();
             });
 
             blockItemBase.addEventListener("mousedown", (e)=> {
@@ -390,7 +400,7 @@ const main = {
                         blockItemSpecification.style.maxHeight = null;
                         main.projectBlocks[buttonIcon.dataset.blockId].active = false;
                     } else {
-                        for (let item of main.blockListProject.children) {
+                        for (let item of this.blockList.children) {
                             const blockItemSpecification = item.querySelector(".block-item__specification");
                             const buttonIcon = item.querySelector(".button-icon");
                             if (blockItemSpecification.style.maxHeight) {
@@ -413,14 +423,5 @@ const main = {
         }
     },
 };
-
-class CreateProjectBlock {
-    constructor(block, largeBlock, amount, active) {
-        this.block = block; // ссылка на блок в массиве списка блоков (в зависимсости от размера и выбранной категории)
-        this.largeBlock = largeBlock; // размеры блока: true - большой, false - малый
-        this.amount = amount; // количество блоков данного типа
-        this.active = active; // true - активный, false - нет (для развертывания?)
-    }
-}
 
 main.launchApp();
