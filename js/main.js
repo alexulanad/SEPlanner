@@ -1,22 +1,28 @@
-// реализовать каждый визуальный компонент программы как отдельный, независимый модуль, напримен:
-// модуль отвечающий за вывод блоков категории - это объект, который создается при нажатии на категорию,
-// в конструкторе указать массив содержащий все блоки категории, а методы объекта- это работа с отдельным блоком
-// модуль отвечающий, за блоки проекта - это объект, а его методы позволяют добавлять или удалять блоки и работать с ними
+// Сделать, чтобы scroll у блоков проекта, не обнулялся, при добавлении блока из категории, если скролл проекта сдвинут
+// Сделать, чтобы при добавлении блока категории в проект, список блоков проекта не обновлялся каждый раз, а просто добавлялся новый (решение для предыдущего задания?)
+
 "use strict";
+const $lib = {
+    dropDown(elem, transition = "0.0") {
+        if (elem.style.maxHeight) {
+            elem.style.transition = `max-height ${transition}s ease-out`;
+            elem.style.maxHeight = "";
+        } else {
+            elem.style.transition = `max-height ${transition}s ease-out`;
+            elem.style.maxHeight = elem.scrollHeight + "px";
+        }
+    }
+};
 
 const main = {
     categoryKeyTarget: "energySources", //landingGear energySources
     largeBlockCategoryActive: true,
     largeBlockProjectActive: false,
+    categoryLargeBlock: {index: null},
+    categorySmallBlock: {index: null},
+    projectLargeBlock: {index: null},
+    projectSmallBlock: {index: null},
     projectBlocks: [],
-
-    // itemCategoryActive: {
-    //     largeBlockIndexActive: null,
-    //     smallBlockIndexActive: null,
-    // },
-
-    // blockListCategory: document.querySelector('#block-list-category'),
-    // blockListProject: document.querySelector('#block-list-project'),
 
     launchApp() {
         categories.setFocus();
@@ -75,6 +81,9 @@ const categories = {
                 this.setFocus();
                 main.categoryKeyTarget = item.dataset.categoryKey;
                 this.setFocus();
+                // Обнуляет запись об развернутых блоках с дополнительной информацией
+                main.categoryLargeBlock.index = null;
+                main.categorySmallBlock.index = null;
                 categoryBlocks.displayBlocks();
             });
         }
@@ -155,15 +164,12 @@ const blockSizeSwitchProject = {
     },
 };
 
-const categoryBlocks = {
-    // blocks =  main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
+let categoryBlocks = {
     blockList: document.querySelector('#block-list-category'),
-    largeBlockIndexActive: null,
-    smallBlockIndexActive: null,        // this.blockList = document.querySelector('#block-list-category');
+    listType: "category",
 
     // функция возвращает ссылку на массив: либо больших, либо малых блоков, согласно ключу categoryKeyTarget
     blockArrayDefinition() {
-        // запихать эту строку прямл в display
         return main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
     },
     // функция для вывода блоков из выбранной категории на экране
@@ -177,13 +183,13 @@ const categoryBlocks = {
                     <div class="block-item__base">
                         <img class="block-image--ss" src="img/blocks/${item.img}">
                         <span class="block-item__name">${item.title.ru}</span>
-                        <div class="button-icon" data-block-id="${index}">
+                        <div class="button-icon">
                             <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
                             </svg>
                         </div>
                     </div>
-                    <div class="block-item__specification">
+                    <div class="block-item__specification" data-block-id="${index}">
                         <div class="block-item__image-block">
                             <img class="block-image--bs" src="img/blocks/${item.img}">
                         </div>
@@ -211,16 +217,12 @@ const categoryBlocks = {
                 `;
             });
         }
-        // Обнуляет запись об развернутых блоках с дополнительной информацией
-        // this.largeBlockIndexActive = null;
-        // this.smallBlockIndexActive = null;
 
         //Убирает лишний нижний отступ у последнего элемента в массиве
-        if (this.blockList.innerHTML != "") {
-            this.blockList.lastElementChild.style.marginBottom = 0;
-        }
+        if (this.blockList.innerHTML != "") {this.blockList.lastElementChild.style.marginBottom = 0;}
         this.addEvent(categoryBlocks);
         main.scrollCheck(this.blockList);
+        this.openBlockIndex();
         // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
         this.blockList.scrollTop = 0;
     },
@@ -231,72 +233,56 @@ const categoryBlocks = {
             const buttonIcon = item.querySelector(".button-icon");
             const buttonIconSvg = item.querySelector(".button-icon__svg");
             const blockItemBase = item.querySelector(".block-item__base");
-            const blockItemSpecification = item.querySelector(".block-item__specification");
+            const specification = item.querySelector(".block-item__specification");
 
             blockItemBase.addEventListener("mousedown", (e)=> {
                 if (e.currentTarget == e.target) {
-                    // если блок раскрыт, сворачивает его и очищает переменную с индексом
-                    if (blockItemSpecification.style.maxHeight) {
-                        blockItemSpecification.style.transition = "max-height 0.2s ease-out";
-                        blockItemSpecification.style.maxHeight = null;
-                        if (main.largeBlockCategoryActive === true) {
-                            this.largeBlockIndexActive = null;
-                        } else {
-                            this.smallBlockIndexActive = null;
-                        }
-                    // если блок закрыт, раскрывает его и сворачивает все остальные, если они открыты
-                    } else {
-                        // перебирает все блоки, если есть блок ранее раскрытый - сворачивает его
-                        for (let item of this.blockList.children) {
-                            const blockItemSpecification = item.querySelector(".block-item__specification");
-                            // const itemMaxHeight = item.querySelector(".block-item__specification");
-                            if (blockItemSpecification.style.maxHeight) {
-                                blockItemSpecification.style.transition = "max-height 0.2s ease-out";
-                                blockItemSpecification.style.maxHeight = null;
-                                // itemMaxHeight.style.maxHeight = null;
-                            }
-                        }
-                        // раскрывает блок, добавляет индекс блока в переменную
-                        blockItemSpecification.style.transition = "max-height 0.2s ease-out";
-                        blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
-                        if (main.largeBlockCategoryActive === true) {
-                            this.largeBlockIndexActive = buttonIcon.dataset.blockId;
-                        } else {
-                            this.smallBlockIndexActive = buttonIcon.dataset.blockId;
-                        }
+                    // Раскрывает дополнительную информацию о блоке, сворачивает предыдущий раскрытый блок, сворачивает раскрытый блок, сохраняет индекс раскрытого блока
+                    if (this.returnBlockIndex().index === null) {
+                        this.returnBlockIndex().index = specification.dataset.blockId;
+                        $lib.dropDown(specification, 0.2);
+                    } else if (this.returnBlockIndex().index !== null && this.returnBlockIndex().index === specification.dataset.blockId) {
+                        this.returnBlockIndex().index = null;
+                        $lib.dropDown(specification, 0.2);
+                    } else if (this.returnBlockIndex().index !== null && this.returnBlockIndex().index !== specification.dataset.blockId) {
+                        $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.returnBlockIndex().index}"]`), 0.2);
+                        this.returnBlockIndex().index = specification.dataset.blockId;
+                        $lib.dropDown(specification, 0.2);
                     }
                 }
-            }, true);
-
-            // Проверяет блок на раскрытие, если сохраненный индек совпадает с индексом блока, то раскрывает его (без анимации)
-            if (main.largeBlockCategoryActive === true) {
-                if (this.largeBlockIndexActive != null && buttonIcon.dataset.blockId === this.largeBlockIndexActive) {
-                    blockItemSpecification.style.transition = "none";
-                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
-                }
-            } else {
-                if (this.smallBlockIndexActive != null && buttonIcon.dataset.blockId === this.smallBlockIndexActive) {
-                    blockItemSpecification.style.transition = "none";
-                    blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
-                }
-            }
+            });
 
             buttonIcon.addEventListener("mouseleave", () => {
                 buttonIconSvg.classList.remove("button-icon__svg--click");
             });
 
-            buttonIcon.addEventListener("mousedown", ()=> {
+            buttonIcon.addEventListener("mousedown", () => {
                 buttonIconSvg.classList.add("button-icon__svg--click");
             });
 
-            buttonIcon.addEventListener("mouseup", ()=> {
+            //Добавляет блок в массив блоков проекта, запускает метод отображения блоков данного массива из списка блоков проекта
+            buttonIcon.addEventListener("mouseup", () => {
                 buttonIconSvg.classList.remove("button-icon__svg--click");
-                const createProjectBlock = new CreateProjectBlock(categoryBlocks[buttonIcon.dataset.blockId], (main.largeBlockCategoryActive === true) ? true : false, 1, false);
+                const createProjectBlock = new CreateProjectBlock(categoryBlocks[specification.dataset.blockId], (main.largeBlockCategoryActive === true) ? true : false, 1, false);
                 main.projectBlocks.push(createProjectBlock);
                 projectBlocks.displayBlocks();
             });
         }
     },
+    // Возвращает индекс блока, учитывая назначение списка блоков, а так же активный переключатель размера блоков
+    returnBlockIndex() {
+        if (this.listType === "category" && main.largeBlockCategoryActive === true) {return main.categoryLargeBlock;}
+        else if (this.listType === "category" && main.largeBlockCategoryActive === false) {return main.categorySmallBlock;}
+        else if (this.listType === "project" && main.largeBlockProjectActive === true) {return main.projectLargeBlock;}
+        else if (this.listType === "project" && main.largeBlockProjectActive === false) {return main.projectSmallBlock;}
+
+    },
+    // Раскрывает раннее развернутый блок
+    openBlockIndex() {
+        if (this.returnBlockIndex().index !== null) {
+            $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.returnBlockIndex().index}"]`), 0.0);
+        }
+    }
 };
 
 const projectBlocks = {
