@@ -35,16 +35,6 @@ const main = {
         blockSizeSwitchProject.addEvent();
         categoryBlocks.displayBlocks();
     },
-
-    // функция добавления отступа справа для каждого блока категории, при условии наличия скролла
-    scrollCheck(blockList) {
-    // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
-        if (blockList.offsetWidth > blockList.clientWidth) {
-            blockList.querySelectorAll('.block-item').forEach(item => {
-                item.style.marginRight = "4px";
-            });
-        }
-    },
 };
 
 class CreateProjectBlock {
@@ -221,7 +211,7 @@ let categoryBlocks = {
         //Убирает лишний нижний отступ у последнего элемента в массиве
         if (this.blockList.innerHTML != "") {this.blockList.lastElementChild.style.marginBottom = 0;}
         this.addEvent(categoryBlocks);
-        main.scrollCheck(this.blockList);
+        this.scrollCheck(this.blockList);
         this.openBlockIndex();
         // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
         this.blockList.scrollTop = 0;
@@ -282,7 +272,16 @@ let categoryBlocks = {
         if (this.returnBlockIndex().index !== null) {
             $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.returnBlockIndex().index}"]`), 0.0);
         }
-    }
+    },
+    // Метод добавляет отступ справа для каждого игрового блока, при условии появления скролла
+    scrollCheck(blockList) {
+        // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
+        if (blockList.offsetWidth > blockList.clientWidth) {
+            blockList.querySelectorAll('.block-item').forEach(item => {
+                item.style.marginRight = "4px";
+            });
+        }
+    },
 };
 
 const projectBlocks = {
@@ -311,7 +310,7 @@ const projectBlocks = {
             this.blockList.lastElementChild.style.marginBottom = 0;
         }
         this.addEvent();
-        main.scrollCheck(this.blockList);
+        this.scrollCheck(this.blockList);
     },
 
     // функция добавления и вывода блоков проекта на экран
@@ -406,6 +405,15 @@ const projectBlocks = {
                 blockItemSpecification.style.transition = "none";
                 blockItemSpecification.style.maxHeight = blockItemSpecification.scrollHeight + "px";
             }
+        }
+    },
+    // Метод добавляет отступ справа для каждого игрового блока, при условии появления скролла
+    scrollCheck(blockList) {
+        // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
+        if (blockList.offsetWidth > blockList.clientWidth) {
+            blockList.querySelectorAll('.block-item').forEach(item => {
+                item.style.marginRight = "4px";
+            });
         }
     },
 };
