@@ -1,6 +1,6 @@
 "use strict";
 
-const largeBlocks = {
+export const largeBlocks = {
     // Легкая броня // Light Armor
     lightArmorBlock: {
         title: {

@@ -1,5 +1,6 @@
 // Сделать, чтобы scroll у блоков проекта, не обнулялся, при добавлении блока из категории, если скролл проекта сдвинут
 // Сделать, чтобы при добавлении блока категории в проект, список блоков проекта не обновлялся каждый раз, а просто добавлялся новый (решение для предыдущего задания?)
+import {blocks} from "./blocks.js";
 
 "use strict";
 const $lib = {
@@ -154,6 +155,17 @@ const blockSizeSwitchProject = {
     },
 };
 
+// class CategoryBlocks {
+//     static blockList = document.querySelector('#block-list-category');
+// }
+
+// let x = new CategoryBlocks();
+// console.log(x.blockList);
+// console.log(CategoryBlocks.blockList);
+// var y = 300;
+// console.log(y);
+
+
 let categoryBlocks = {
     blockList: document.querySelector('#block-list-category'),
     listType: "category",
@@ -267,7 +279,7 @@ let categoryBlocks = {
         else if (this.listType === "project" && main.largeBlockProjectActive === false) {return main.projectSmallBlock;}
 
     },
-    // Раскрывает раннее развернутый блок
+    // Раскрывает раннее развернутый блок в списке
     openBlockIndex() {
         if (this.returnBlockIndex().index !== null) {
             $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.returnBlockIndex().index}"]`), 0.0);

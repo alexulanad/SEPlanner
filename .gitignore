@@ -4,6 +4,9 @@
 /fonts/font-style.css
 /fonts/fonts.html
 /workfiles/
+.eslintrc.json
+package-lock.json
+package.json
 
 # dependencies
 /node_modules

@@ -1,6 +1,8 @@
 "use strict";
+import {largeBlocks} from "./largeBlocks.js";
+import {smallBlocks} from "./smallBlocks.js";
 
-const blocks = {
+export const blocks = {
     // Легкая броня
     lightArmor: {
         large: [
@@ -241,7 +243,7 @@ const blocks = {
             smallBlocks.solarPanel,
         ], // end energySources--small
     }, // end energySources
-    
+
     // Производство
     production: {
         large: [
