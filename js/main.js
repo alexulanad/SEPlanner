@@ -158,10 +158,18 @@ const blockSizeSwitchProject = {
 class CategoryBlocks {
     constructor() {
         this.blockList = document.querySelector('#block-list-category');
-        this.listType = "category";
+        // this.listType = "category";
         this.blocks = main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
+        this.dropDownBlock = main.largeBlockCategoryActive === true ? main.categoryLargeBlock : main.categorySmallBlock;
     }
     displayBlocks() {
+        this.addBlock();
+        this.removePaddingBottom();
+        this.addPaddingRightWhenScrolling();
+        this.openBlockIndex();
+        this.addEvent();
+    }
+    addBlock() {
         this.blockList.innerHTML = "";
         if (this.blocks.length != 0) {
             this.blocks.forEach((item, index) => {
@@ -204,14 +212,27 @@ class CategoryBlocks {
                 `;
             });
         }
-
-        //Убирает лишний нижний отступ у последнего элемента в массиве
-        if (this.blockList.innerHTML != "") {this.blockList.lastElementChild.style.marginBottom = 0;}
-        this.addEvent();
-        this.scrollCheck(this.blockList);
-        this.openBlockIndex();
         // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
         this.blockList.scrollTop = 0;
+    }
+    //Убирает лишний нижний отступ у последнего элемента в массиве
+    removePaddingBottom() {
+        if (this.blockList.innerHTML != "") {this.blockList.lastElementChild.style.marginBottom = 0;}
+    }
+    // Метод добавляет отступ справа для каждого игрового блока, при условии появления скролла
+    addPaddingRightWhenScrolling() {
+        // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
+        if (this.blockList.offsetWidth > this.blockList.clientWidth) {
+            this.blockList.querySelectorAll('.block-item').forEach(item => {
+                item.style.marginRight = "4px";
+            });
+        }
+    }
+    // Раскрывает раннее развернутый блок в списке
+    openBlockIndex() {
+        if (this.dropDownBlock.index !== null) {
+            $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.dropDownBlock.index}"]`), 0.0);
+        }
     }
     // функция добаления событий для блоков выбранной категории
     addEvent() {
@@ -221,18 +242,35 @@ class CategoryBlocks {
             const blockItemBase = item.querySelector(".block-item__base");
             const specification = item.querySelector(".block-item__specification");
 
+            // blockItemBase.addEventListener("mousedown", (e)=> {
+            //     if (e.currentTarget == e.target) {
+            //         // Раскрывает дополнительную информацию о блоке, сворачивает предыдущий раскрытый блок, сворачивает раскрытый блок, сохраняет индекс раскрытого блока
+            //         if (this.returnBlockIndex().index === null) {
+            //             this.returnBlockIndex().index = specification.dataset.blockId;
+            //             $lib.dropDown(specification, 0.2);
+            //         } else if (this.returnBlockIndex().index !== null && this.returnBlockIndex().index === specification.dataset.blockId) {
+            //             this.returnBlockIndex().index = null;
+            //             $lib.dropDown(specification, 0.2);
+            //         } else if (this.returnBlockIndex().index !== null && this.returnBlockIndex().index !== specification.dataset.blockId) {
+            //             $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.returnBlockIndex().index}"]`), 0.2);
+            //             this.returnBlockIndex().index = specification.dataset.blockId;
+            //             $lib.dropDown(specification, 0.2);
+            //         }
+            //     }
+            // });
+
             blockItemBase.addEventListener("mousedown", (e)=> {
                 if (e.currentTarget == e.target) {
                     // Раскрывает дополнительную информацию о блоке, сворачивает предыдущий раскрытый блок, сворачивает раскрытый блок, сохраняет индекс раскрытого блока
-                    if (this.returnBlockIndex().index === null) {
-                        this.returnBlockIndex().index = specification.dataset.blockId;
+                    if (this.dropDownBlock.index === null) {
+                        this.dropDownBlock.index = specification.dataset.blockId;
                         $lib.dropDown(specification, 0.2);
-                    } else if (this.returnBlockIndex().index !== null && this.returnBlockIndex().index === specification.dataset.blockId) {
-                        this.returnBlockIndex().index = null;
+                    } else if (this.dropDownBlock.index !== null && this.dropDownBlock.index === specification.dataset.blockId) {
+                        this.dropDownBlock.index = null;
                         $lib.dropDown(specification, 0.2);
-                    } else if (this.returnBlockIndex().index !== null && this.returnBlockIndex().index !== specification.dataset.blockId) {
-                        $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.returnBlockIndex().index}"]`), 0.2);
-                        this.returnBlockIndex().index = specification.dataset.blockId;
+                    } else if (this.dropDownBlock.index !== null && this.dropDownBlock.index !== specification.dataset.blockId) {
+                        $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.dropDownBlock.index}"]`), 0.2);
+                        this.dropDownBlock.index = specification.dataset.blockId;
                         $lib.dropDown(specification, 0.2);
                     }
                 }
@@ -256,28 +294,12 @@ class CategoryBlocks {
         }
     }
     // Возвращает индекс блока, учитывая назначение списка блоков, а так же активный переключатель размера блоков
-    returnBlockIndex() {
-        if (this.listType === "category" && main.largeBlockCategoryActive === true) {return main.categoryLargeBlock;}
-        else if (this.listType === "category" && main.largeBlockCategoryActive === false) {return main.categorySmallBlock;}
-        else if (this.listType === "project" && main.largeBlockProjectActive === true) {return main.projectLargeBlock;}
-        else if (this.listType === "project" && main.largeBlockProjectActive === false) {return main.projectSmallBlock;}
-
-    }
-    // Раскрывает раннее развернутый блок в списке
-    openBlockIndex() {
-        if (this.returnBlockIndex().index !== null) {
-            $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.returnBlockIndex().index}"]`), 0.0);
-        }
-    }
-    // Метод добавляет отступ справа для каждого игрового блока, при условии появления скролла
-    scrollCheck(blockList) {
-        // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
-        if (blockList.offsetWidth > blockList.clientWidth) {
-            blockList.querySelectorAll('.block-item').forEach(item => {
-                item.style.marginRight = "4px";
-            });
-        }
-    }
+    // returnBlockIndex() {
+    //     if (this.listType === "category" && main.largeBlockCategoryActive === true) {return main.categoryLargeBlock;}
+    //     else if (this.listType === "category" && main.largeBlockCategoryActive === false) {return main.categorySmallBlock;}
+    //     else if (this.listType === "project" && main.largeBlockProjectActive === true) {return main.projectLargeBlock;}
+    //     else if (this.listType === "project" && main.largeBlockProjectActive === false) {return main.projectSmallBlock;}
+    // }
 }
 
 const projectBlocks = {
