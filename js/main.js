@@ -16,7 +16,7 @@ const $lib = {
 };
 
 const main = {
-    categoryKeyTarget: "energySources", //landingGear energySources
+    categoryKeyTarget: "landingGear", //landingGear energySources
     largeBlockCategoryActive: true,
     largeBlockProjectActive: false,
     categoryLargeBlock: {index: null},
@@ -34,7 +34,7 @@ const main = {
         blockSizeSwitchProject.setFocus();
         blockSizeSwitchProject.setTitle();
         blockSizeSwitchProject.addEvent();
-        categoryBlocks.displayBlocks();
+        new CategoryBlocks().displayBlocks();
     },
 };
 
@@ -75,7 +75,7 @@ const categories = {
                 // Обнуляет запись об развернутых блоках с дополнительной информацией
                 main.categoryLargeBlock.index = null;
                 main.categorySmallBlock.index = null;
-                categoryBlocks.displayBlocks();
+                new CategoryBlocks().displayBlocks();
             });
         }
     },
@@ -107,13 +107,13 @@ const blockSizeSwitchCategory = {
             main.largeBlockCategoryActive = true;
             this.setFocus();
             this.setTitle();
-            categoryBlocks.displayBlocks();
+            new CategoryBlocks().displayBlocks();
         });
         document.querySelector('#block-selection-category-small').addEventListener("click", ()=> {
             main.largeBlockCategoryActive = false;
             this.setFocus();
             this.setTitle();
-            categoryBlocks.displayBlocks();
+            new CategoryBlocks().displayBlocks();
         });
     },
 };
@@ -155,31 +155,16 @@ const blockSizeSwitchProject = {
     },
 };
 
-// class CategoryBlocks {
-//     static blockList = document.querySelector('#block-list-category');
-// }
-
-// let x = new CategoryBlocks();
-// console.log(x.blockList);
-// console.log(CategoryBlocks.blockList);
-// var y = 300;
-// console.log(y);
-
-
-let categoryBlocks = {
-    blockList: document.querySelector('#block-list-category'),
-    listType: "category",
-
-    // функция возвращает ссылку на массив: либо больших, либо малых блоков, согласно ключу categoryKeyTarget
-    blockArrayDefinition() {
-        return main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
-    },
-    // функция для вывода блоков из выбранной категории на экране
+class CategoryBlocks {
+    constructor() {
+        this.blockList = document.querySelector('#block-list-category');
+        this.listType = "category";
+        this.blocks = main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
+    }
     displayBlocks() {
         this.blockList.innerHTML = "";
-        const categoryBlocks = this.blockArrayDefinition();
-        if (categoryBlocks.length != 0) {
-            categoryBlocks.forEach((item, index) => {
+        if (this.blocks.length != 0) {
+            this.blocks.forEach((item, index) => {
                 this.blockList.innerHTML += `
                 <div class="block-item">
                     <div class="block-item__base">
@@ -222,15 +207,14 @@ let categoryBlocks = {
 
         //Убирает лишний нижний отступ у последнего элемента в массиве
         if (this.blockList.innerHTML != "") {this.blockList.lastElementChild.style.marginBottom = 0;}
-        this.addEvent(categoryBlocks);
+        this.addEvent();
         this.scrollCheck(this.blockList);
         this.openBlockIndex();
         // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
         this.blockList.scrollTop = 0;
-    },
-
+    }
     // функция добаления событий для блоков выбранной категории
-    addEvent(categoryBlocks) {
+    addEvent() {
         for (let item of this.blockList.children) {
             const buttonIcon = item.querySelector(".button-icon");
             const buttonIconSvg = item.querySelector(".button-icon__svg");
@@ -265,12 +249,12 @@ let categoryBlocks = {
             //Добавляет блок в массив блоков проекта, запускает метод отображения блоков данного массива из списка блоков проекта
             buttonIcon.addEventListener("mouseup", () => {
                 buttonIconSvg.classList.remove("button-icon__svg--click");
-                const createProjectBlock = new CreateProjectBlock(categoryBlocks[specification.dataset.blockId], (main.largeBlockCategoryActive === true) ? true : false, 1, false);
+                const createProjectBlock = new CreateProjectBlock(this.blocks[specification.dataset.blockId], (main.largeBlockCategoryActive === true) ? true : false, 1, false);
                 main.projectBlocks.push(createProjectBlock);
                 projectBlocks.displayBlocks();
             });
         }
-    },
+    }
     // Возвращает индекс блока, учитывая назначение списка блоков, а так же активный переключатель размера блоков
     returnBlockIndex() {
         if (this.listType === "category" && main.largeBlockCategoryActive === true) {return main.categoryLargeBlock;}
@@ -278,13 +262,13 @@ let categoryBlocks = {
         else if (this.listType === "project" && main.largeBlockProjectActive === true) {return main.projectLargeBlock;}
         else if (this.listType === "project" && main.largeBlockProjectActive === false) {return main.projectSmallBlock;}
 
-    },
+    }
     // Раскрывает раннее развернутый блок в списке
     openBlockIndex() {
         if (this.returnBlockIndex().index !== null) {
             $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.returnBlockIndex().index}"]`), 0.0);
         }
-    },
+    }
     // Метод добавляет отступ справа для каждого игрового блока, при условии появления скролла
     scrollCheck(blockList) {
         // проверяем реальную ширину offset* элемента и фактическую client* (без учета ширины scroll-а)
@@ -293,8 +277,8 @@ let categoryBlocks = {
                 item.style.marginRight = "4px";
             });
         }
-    },
-};
+    }
+}
 
 const projectBlocks = {
     blockList: document.querySelector('#block-list-project'),
