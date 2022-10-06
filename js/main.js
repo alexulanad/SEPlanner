@@ -147,14 +147,12 @@ const blockSizeSwitchProject = {
             this.setFocus();
             this.setTitle();
             new ProjectBlocks().displayBlocks();
-            // projectBlocks.displayBlocks();
         });
         document.querySelector('#block-selection-project-small').addEventListener("click", ()=> {
             main.largeBlockProjectActive = false;
             this.setFocus();
             this.setTitle();
             new ProjectBlocks().displayBlocks();
-            // projectBlocks.displayBlocks();
         });
     },
 };
@@ -163,6 +161,7 @@ class CategoryBlocks {
     constructor() {
         this.blockList = document.querySelector('#block-list-category');
         this.blocks = main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
+        this.projectBlocks = main.largeBlockCategoryActive == true ? main.projectBlocks.large : main.projectBlocks.small;
         this.dropDownBlock = main.largeBlockCategoryActive === true ? main.categoryLargeDropDownBlock : main.categorySmallDropDownBlock;
     }
     displayBlocks() {
@@ -279,11 +278,12 @@ class CategoryBlocks {
     addEventButtonIconMouseUp(buttonIcon, buttonIconSvg, specification) {
         buttonIcon.addEventListener("mouseup", () => {
             buttonIconSvg.classList.remove("button-icon__svg--click");
-            if (main.largeBlockCategoryActive === true) {
-                main.projectBlocks.large.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
-            } else {
-                main.projectBlocks.small.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
-            }
+            this.projectBlocks.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
+            // if (main.largeBlockCategoryActive === true) {
+            //     main.projectBlocks.large.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
+            // } else {
+            //     main.projectBlocks.small.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
+            // }
             new ProjectBlocks().displayBlocks();
         });
     }
@@ -294,7 +294,6 @@ class ProjectBlocks extends CategoryBlocks{
         this.blockList = document.querySelector('#block-list-project');
         this.blocks = main.largeBlockProjectActive == true ? main.projectBlocks.large : main.projectBlocks.small;
         this.dropDownBlock = main.largeBlockProjectActive === true ? main.projectLargeDropDownBlock : main.projectSmallDropDownBlock;
-        // this.projectBlocks = main.largeBlockProjectActive === true ? main.projectBlocks.large
     }
     addBlock() {
         this.blockList.innerHTML = "";
