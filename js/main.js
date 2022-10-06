@@ -294,6 +294,7 @@ class ProjectBlocks extends CategoryBlocks{
         this.blockList = document.querySelector('#block-list-project');
         this.blocks = main.largeBlockProjectActive == true ? main.projectBlocks.large : main.projectBlocks.small;
         this.dropDownBlock = main.largeBlockProjectActive === true ? main.projectLargeDropDownBlock : main.projectSmallDropDownBlock;
+        // this.projectBlocks = main.largeBlockProjectActive === true ? main.projectBlocks.large
     }
     addBlock() {
         this.blockList.innerHTML = "";
@@ -347,25 +348,11 @@ class ProjectBlocks extends CategoryBlocks{
     addEventButtonIconMouseUp(buttonIcon, buttonIconSvg, specification) {
         buttonIcon.addEventListener("mouseup", () => {
             buttonIconSvg.classList.remove("button-icon__svg--click");
-            if (main.largeBlockProjectActive === true) {
-                main.projectBlocks.large.splice(specification.dataset.blockId, 1);
-                this.dropDownBlockIndexOverride(main.projectLargeDropDownBlock, specification.dataset.blockId);
-            } else {
-                main.projectBlocks.small.splice(specification.dataset.blockId, 1);
-                this.dropDownBlockIndexOverride(main.projectSmallDropDownBlock, specification.dataset.blockId);
-            }
+            this.blocks.splice(specification.dataset.blockId, 1);
+            if (specification.dataset.blockId === this.dropDownBlock.index) {this.dropDownBlock.index = null;}
+            if (specification.dataset.blockId < this.dropDownBlock.index) {this.dropDownBlock.index = String(this.dropDownBlock.index - 1);}
             new ProjectBlocks().displayBlocks();
         });
     }
-    // Переопределяет индекс раскрытого блока в списке блоков проекта
-    dropDownBlockIndexOverride(savedDropDownBlock, remoteBlockIndex) {
-        if (remoteBlockIndex === savedDropDownBlock.index) {
-            savedDropDownBlock.index = null;
-        }
-        else if (remoteBlockIndex < savedDropDownBlock.index) {
-            savedDropDownBlock.index = String(savedDropDownBlock.index - 1);
-        }
-    }
 }
-
 main.launchApp();
