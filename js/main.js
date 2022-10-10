@@ -1,8 +1,11 @@
+// сделать переключатели через класс, с наследованием
+// подумать (и сделать) как собрать html для кадлого блока по кусочкам, учитывая наследование
 // Сделать, чтобы scroll у блоков проекта, не обнулялся, при добавлении блока из категории, если скролл проекта сдвинут
 // Сделать, чтобы при добавлении блока категории в проект, список блоков проекта не обновлялся каждый раз, а просто добавлялся новый (решение для предыдущего задания?)
 import {blocks} from "./blocks.js";
 
 "use strict";
+
 const $lib = {
     dropDown(elem, transition = "0.0") {
         if (elem.style.maxHeight) {
@@ -16,39 +19,23 @@ const $lib = {
 };
 
 const main = {
-    categoryKeyTarget: "landingGear", //landingGear energySources
-    largeBlockCategoryActive: true,
-    largeBlockProjectActive: false,
+    categoryKeyTarget: "energySources", //landingGear energySources
+    largeBlocksCategory: {active: true},
+    largeBlocksProject: {active: true},
     categoryLargeDropDownBlock: {index: null},
     categorySmallDropDownBlock: {index: null},
     projectLargeDropDownBlock: {index: null},
     projectSmallDropDownBlock: {index: null},
     projectBlocks: {large: [], small: []},
-    // projectBlocks: [],
-
-    launchApp() {
-        categories.setFocus();
-        categories.addEvent();
-        blockSizeSwitchCategory.setFocus();
-        blockSizeSwitchCategory.setTitle();
-        blockSizeSwitchCategory.addEvent();
-        blockSizeSwitchProject.setFocus();
-        blockSizeSwitchProject.setTitle();
-        blockSizeSwitchProject.addEvent();
-        new CategoryBlocks().displayBlocks();
-        new ProjectBlocks().displayBlocks();
-    },
 };
 
 class CreateProjectBlock {
     constructor(block, amount) {
         this.block = block; // ссылка на блок в массиве списка блоков (в зависимсости от размера и выбранной категории)
-        // this.largeBlock = largeBlock; // размеры блока: true - большой, false - малый
         this.amount = amount; // количество блоков данного типа
-        // this.active = active; // true - активный, false - нет (для развертывания?)
     }
 }
-
+// Объект отвечает за назначение событий для иконок выбора категории блоков, а так же за установку визуального фокуса на выбранной категории
 const categories = {
     categories: document.querySelector('#categories'),
     categoryTitle: document.querySelector('#category-title'),
@@ -77,100 +64,86 @@ const categories = {
                 // Обнуляет запись об развернутых блоках с дополнительной информацией
                 main.categoryLargeDropDownBlock.index = null;
                 main.categorySmallDropDownBlock.index = null;
-                new CategoryBlocks().displayBlocks();
+                new CategoryBlocks().display();
             });
         }
     },
 };
 
-const blockSizeSwitchCategory = {
+// Класс отвечает за переключатель размера блоков выбранной категории
+class CategoryBlockSizeSwitcher {
+    constructor() {
+        this.largeBlocks = main.largeBlocksCategory;
+        this.blocks = CategoryBlocks;
+        this.largeBlockSwitcher = document.querySelector('#block-selection-category-large');
+        this.smallBlockSwitcher = document.querySelector('#block-selection-category-small');
+        this.blockSizeSwitcherTitle = document.querySelector('#size-block-selection__title--left');
+    }
     // Устанавливает фокус на выбранном переключателе размера блоков
     setFocus() {
-        if (main.largeBlockCategoryActive === true) {
-            document.querySelector('#block-selection-category-large').classList.add("size-block-selection--focus");
-            for (let item of document.querySelector('#block-selection-category-small').children) {
+        if (this.largeBlocks.active === true) {
+            this.largeBlockSwitcher.classList.add("size-block-selection--focus");
+            for (let item of this.smallBlockSwitcher.children) {
                 item.classList.remove("size-block-selection--focus");
             }
         } else {
-            document.querySelector('#block-selection-category-large').classList.remove("size-block-selection--focus");
-            for (let item of document.querySelector('#block-selection-category-small').children) {
+            this.largeBlockSwitcher.classList.remove("size-block-selection--focus");
+            for (let item of this.smallBlockSwitcher.children) {
                 item.classList.add("size-block-selection--focus");
             }
         }
-    },
+        return this;
+    }
     // Устанавливает заголовок для переключателей размера блока, согласно выбранному
     setTitle() {
-        const title = document.querySelector('#size-block-selection__title--left');
-        main.largeBlockCategoryActive == true ? (title.textContent = "Большие блоки") : (title.textContent = "Малые блоки");
-    },
-    // Устанавливает события для переключателей размера блоков
+        this.largeBlocks.active === true ? (this.blockSizeSwitcherTitle.textContent = "Большие блоки") : (this.blockSizeSwitcherTitle.textContent = "Малые блоки");
+        return this;
+    }
+    // назначает события на переключатели выбора размера блоков
     addEvent() {
-        document.querySelector('#block-selection-category-large').addEventListener("click", ()=> {
-            main.largeBlockCategoryActive = true;
+        this.largeBlockSwitcher.addEventListener("click", ()=> {
+            this.largeBlocks.active = true;
             this.setFocus();
             this.setTitle();
-            new CategoryBlocks().displayBlocks();
+            new this.blocks().display();
         });
-        document.querySelector('#block-selection-category-small').addEventListener("click", ()=> {
-            main.largeBlockCategoryActive = false;
+        this.smallBlockSwitcher.addEventListener("click", ()=> {
+            this.largeBlocks.active = false;
             this.setFocus();
             this.setTitle();
-            new CategoryBlocks().displayBlocks();
+            new this.blocks().display();
         });
-    },
-};
+    }
+}
 
-const blockSizeSwitchProject = {
-    // Устанавливает фокус на выбранном переключателе размера блоков
-    setFocus() {
-        if (main.largeBlockProjectActive === true) {
-            document.querySelector('#block-selection-project-large').classList.add("size-block-selection--focus");
-            for (let item of document.querySelector('#block-selection-project-small').children) {
-                item.classList.remove("size-block-selection--focus");
-            }
-        } else {
-            document.querySelector('#block-selection-project-large').classList.remove("size-block-selection--focus");
-            for (let item of document.querySelector('#block-selection-project-small').children) {
-                item.classList.add("size-block-selection--focus");
-            }
-        }
-    },
-    // Устанавливает заголовок для переключателей размера блока, согласно выбранному
-    setTitle() {
-        const title = document.querySelector('#size-block-selection__title--right');
-        main.largeBlockProjectActive == true ? (title.textContent = "Большие блоки") : (title.textContent = "Малые блоки");
-    },
-    // Устанавливает события для переключателей размера блоков
-    addEvent() {
-        document.querySelector('#block-selection-project-large').addEventListener("click", ()=> {
-            main.largeBlockProjectActive = true;
-            this.setFocus();
-            this.setTitle();
-            new ProjectBlocks().displayBlocks();
-        });
-        document.querySelector('#block-selection-project-small').addEventListener("click", ()=> {
-            main.largeBlockProjectActive = false;
-            this.setFocus();
-            this.setTitle();
-            new ProjectBlocks().displayBlocks();
-        });
-    },
-};
-
+//Класс отвечает за переключатель выбора размера блоков проекта, наследует методы класса переключателя размера блоков категории
+class ProjectBlockSizeSwitcher extends CategoryBlockSizeSwitcher {
+    constructor() {
+        super();
+        this.largeBlocks = main.largeBlocksProject;
+        this.blocks = ProjectBlocks;
+        this.largeBlockSwitcher = document.querySelector('#block-selection-project-large');
+        this.smallBlockSwitcher = document.querySelector('#block-selection-project-small');
+        this.blockSizeSwitcherTitle = document.querySelector('#size-block-selection__title--right');
+    }
+}
+//Класс выводит блоки категории на экран, назначает события
 class CategoryBlocks {
     constructor() {
         this.blockList = document.querySelector('#block-list-category');
-        this.blocks = main.largeBlockCategoryActive == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
-        this.projectBlocks = main.largeBlockCategoryActive == true ? main.projectBlocks.large : main.projectBlocks.small;
-        this.dropDownBlock = main.largeBlockCategoryActive === true ? main.categoryLargeDropDownBlock : main.categorySmallDropDownBlock;
+        this.blocks = main.largeBlocksCategory.active == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
+        this.projectBlocks = main.largeBlocksCategory.active == true ? main.projectBlocks.large : main.projectBlocks.small;
+        this.dropDownBlock = main.largeBlocksCategory.active === true ? main.categoryLargeDropDownBlock : main.categorySmallDropDownBlock;
     }
-    displayBlocks() {
+    // Ощий метод, запускает все необходимые методы класса
+    display() {
         this.addBlock();
         this.removePaddingBottom();
         this.addPaddingRightWhenScrolling();
         this.openBlockIndex();
         this.addEvent();
     }
+    // выводит блоки выбранной категории на экран
     addBlock() {
         this.blockList.innerHTML = "";
         if (this.blocks.length != 0) {
@@ -279,21 +252,17 @@ class CategoryBlocks {
         buttonIcon.addEventListener("mouseup", () => {
             buttonIconSvg.classList.remove("button-icon__svg--click");
             this.projectBlocks.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
-            // if (main.largeBlockCategoryActive === true) {
-            //     main.projectBlocks.large.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
-            // } else {
-            //     main.projectBlocks.small.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
-            // }
-            new ProjectBlocks().displayBlocks();
+            new ProjectBlocks().display();
         });
     }
 }
+// Класс выводит блоки проекта, добавленные из списка блоков категории, наследует методы класса, отвечающие за блоки категории
 class ProjectBlocks extends CategoryBlocks{
     constructor() {
         super();
         this.blockList = document.querySelector('#block-list-project');
-        this.blocks = main.largeBlockProjectActive == true ? main.projectBlocks.large : main.projectBlocks.small;
-        this.dropDownBlock = main.largeBlockProjectActive === true ? main.projectLargeDropDownBlock : main.projectSmallDropDownBlock;
+        this.blocks = main.largeBlocksProject.active == true ? main.projectBlocks.large : main.projectBlocks.small;
+        this.dropDownBlock = main.largeBlocksProject.active === true ? main.projectLargeDropDownBlock : main.projectSmallDropDownBlock;
     }
     addBlock() {
         this.blockList.innerHTML = "";
@@ -350,8 +319,16 @@ class ProjectBlocks extends CategoryBlocks{
             this.blocks.splice(specification.dataset.blockId, 1);
             if (specification.dataset.blockId === this.dropDownBlock.index) {this.dropDownBlock.index = null;}
             if (specification.dataset.blockId < this.dropDownBlock.index) {this.dropDownBlock.index = String(this.dropDownBlock.index - 1);}
-            new ProjectBlocks().displayBlocks();
+            new ProjectBlocks().display();
         });
     }
 }
-main.launchApp();
+const launchApp = function () {
+    categories.setFocus();
+    categories.addEvent();
+    new CategoryBlockSizeSwitcher().setFocus().setTitle().addEvent();
+    new ProjectBlockSizeSwitcher().setFocus().setTitle().addEvent();
+    new CategoryBlocks().display();
+    new ProjectBlocks().display();
+};
+launchApp();
