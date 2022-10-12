@@ -6,6 +6,7 @@ import {blocks} from "./blocks.js";
 
 "use strict";
 
+// метод открывает или сворачивает переданный элемент, принимает сам элемент и скорость выполнения.
 const $lib = {
     dropDown(elem, transition = "0.0") {
         if (elem.style.maxHeight) {
@@ -134,35 +135,30 @@ class CategoryBlocks {
         this.projectBlocks = main.largeBlocksCategory.active == true ? main.projectBlocks.large : main.projectBlocks.small;
         this.dropDownBlock = main.largeBlocksCategory.active === true ? main.categoryLargeDropDownBlock : main.categorySmallDropDownBlock;
     }
-    // Общий метод, запускает все необходимые методы класса
+    // Общий метод, запускает все необходимые методы созданного объекта
     display() {
-        this.addBlock();
-        this.removePaddingBottom();
-        this.addPaddingRightWhenScrolling();
-        this.openBlockIndex();
-        this.addEvent();
+        this.addBlock().removePaddingBottom().addPaddingRightWhenScrolling().openBlockIndex().addEvent();
     }
-    // выводит блоки выбранной категории на экран.
+    // Индивидуальный метод объекта категории. Формирует html для каждого из блоков выбранной категории
     addBlock() {
         this.blockList.innerHTML = "";
         if (this.blocks.length != 0) {
             this.blocks.forEach((item, index) => {
                 this.templateBlock(item.title.ru, item.weight, item.integrity, item.img, item.description, index);
-                this.templateButtonAddBlock();
+                this.templateButtonAddBlockToProject();
             });
         }
+        // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
+        this.blockList.scrollTop = 0;
+        return this;
     }
+    // Для каждого блока категории или проекта формирует общий html-каркас с общими данными
     templateBlock(title, weight, integrity, img, description, index) {
         this.blockList.innerHTML += `
             <div class="block-item">
                 <div class="block-item__base">
                     <img class="block-image--ss" src="img/blocks/${img}">
                     <span class="block-item__name">${title}</span>
-                    <div class="button-icon">
-                        <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
-                        </svg>
-                    </div>
                 </div>
                 <div class="block-item__specification" data-block-id="${index}">
                     <div class="block-item__image-block">
@@ -190,60 +186,24 @@ class CategoryBlocks {
                 </div>
             </div>
         `;
+        return this;
     }
-    templateButtonAddBlock() {
-
+    // Индивидуальный метод объекта категории. Добавляет в общий html-каркас блока html-код кнопки добавления блока в проект
+    templateButtonAddBlockToProject() {
+        const lastAddedBlock = this.blockList.lastElementChild.querySelector(".block-item__base");
+        lastAddedBlock.insertAdjacentHTML('beforeend', `
+            <div class="button-icon">
+                <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
+                </svg>
+            </div>`
+        );
+        return this;
     }
-
-    // addBlock() {
-    //     this.blockList.innerHTML = "";
-    //     if (this.blocks.length != 0) {
-    //         this.blocks.forEach((item, index) => {
-    //             this.blockList.innerHTML += `
-    //             <div class="block-item">
-    //                 <div class="block-item__base">
-    //                     <img class="block-image--ss" src="img/blocks/${item.img}">
-    //                     <span class="block-item__name">${item.title.ru}</span>
-    //                     <div class="button-icon">
-    //                         <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    //                             <path class="button-icon__svg-path" d="M19 15V12H17V15H14V17H17V20H19V17H22V15H19ZM2 7H15V9H2V7ZM2 11H15V13H2V11ZM2 15H12V17H2V15Z" fill="rgb(174, 194, 204, 0.9)"/>
-    //                         </svg>
-    //                     </div>
-    //                 </div>
-    //                 <div class="block-item__specification" data-block-id="${index}">
-    //                     <div class="block-item__image-block">
-    //                         <img class="block-image--bs" src="img/blocks/${item.img}">
-    //                     </div>
-    //                     <div class="block-item__specification-block">
-    //                         <div class="block-item__content-block">
-    //                             <div class="block-item__content-title">Описание</div>
-    //                             <div class="block-item__content-description">${item.description}</div>
-    //                         </div>
-    //                         <div class="block-item__content-block">
-    //                             <div class="block-item__content-title">Характеристики</div>
-    //                             <div class="block-item__content-item">
-    //                                 <span class="block-item__content-item-title">Масса</span>
-    //                                 <span class="block-item__content-item-value">${item.weight}</span>
-    //                                 <span class="block-item__content-item-value-unit">кг.</span>
-    //                             </div>
-    //                             <div class="block-item__content-item">
-    //                                 <span class="block-item__content-item-title">Прочность</span>
-    //                                 <span class="block-item__content-item-value">${item.integrity}</span>
-    //                                 <span class="block-item__content-item-value-unit">ед.</span>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //             `;
-    //         });
-    //     }
-    //     // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
-    //     this.blockList.scrollTop = 0;
-    // }
     //Убирает лишний нижний отступ у последнего элемента в массиве
     removePaddingBottom() {
         if (this.blockList.innerHTML != "") {this.blockList.lastElementChild.style.marginBottom = 0;}
+        return this;
     }
     // Метод добавляет отступ справа для каждого игрового блока, при условии появления скролла
     addPaddingRightWhenScrolling() {
@@ -251,28 +211,32 @@ class CategoryBlocks {
         if (this.blockList.offsetWidth > this.blockList.clientWidth) {
             this.blockList.querySelectorAll('.block-item').forEach(item => {item.style.marginRight = "4px";});
         }
+        return this;
     }
     // Раскрывает раннее развернутый блок в списке
     openBlockIndex() {
         if (this.dropDownBlock.index !== null) {
             $lib.dropDown(this.blockList.querySelector(`[data-block-id="${this.dropDownBlock.index}"]`), 0.0);
         }
+        return this;
     }
-    // функция добаления событий для блоков выбранной категории
+    // Индивидуальный метод объекта категории. Формирует перечень событий для блоков выбранной категории
     addEvent() {
         for (let item of this.blockList.children) {
-            const buttonIcon = item.querySelector(".button-icon");
-            const buttonIconSvg = item.querySelector(".button-icon__svg");
-            const block = item.querySelector(".block-item__base");
-            const specification = item.querySelector(".block-item__specification");
+            const buttonAddBlock = item.querySelector(".button-icon");
+            const buttonAddBlockSvg = item.querySelector(".button-icon__svg");
+            const blockId = item.querySelector(".block-item__specification").dataset.blockId;
 
-            this.addEventBlockMouseDown(block, specification);
-            this.addEventButtonIconMouseLeave(buttonIcon, buttonIconSvg);
-            this.addEventButtonIconMouseDown(buttonIcon, buttonIconSvg);
-            this.addEventButtonIconMouseUp(buttonIcon, buttonIconSvg, specification);
+            this.addEventDropDownBlock(item);
+            this.addEventButtonLeaveAndDown(buttonAddBlock, buttonAddBlockSvg);
+            this.addEventButtonAddBlockClick(blockId, buttonAddBlock, buttonAddBlockSvg);
         }
+        return this;
     }
-    addEventBlockMouseDown(block, specification) {
+    // Наследуемый метод. Добавляет логику открытия, сворачивания, проверки на "уже открыт" и "уже есть открыт", для выпадающих блоков.
+    addEventDropDownBlock(item) {
+        const block = item.querySelector(".block-item__base");
+        const specification = item.querySelector(".block-item__specification");
         block.addEventListener("mousedown", (e)=> {
             if (e.currentTarget == e.target) {
                 // Раскрывает дополнительную информацию о блоке, сворачивает предыдущий раскрытый блок, сворачивает раскрытый блок, сохраняет индекс раскрытого блока
@@ -290,21 +254,19 @@ class CategoryBlocks {
             }
         });
     }
-    addEventButtonIconMouseLeave(buttonIcon, buttonIconSvg) {
-        buttonIcon.addEventListener("mouseleave", () => {buttonIconSvg.classList.remove("button-icon__svg--click");});
+    // Наследуемый метод. Меняет стиль кнопок для блоков категории и проекта, при нажатии и уходе с фокуса кнопки.
+    addEventButtonLeaveAndDown(button, buttonSvg) {
+        button.addEventListener("mouseleave", () => {buttonSvg.classList.remove("button-icon__svg--click");});
+        button.addEventListener("mousedown", () => {buttonSvg.classList.add("button-icon__svg--click");});
     }
-    addEventButtonIconMouseDown(buttonIcon, buttonIconSvg) {
-        buttonIcon.addEventListener("mousedown", () => {buttonIconSvg.classList.add("button-icon__svg--click");});
-    }
-    //Добавляет блок в массив блоков проекта, запускает метод отображения блоков данного массива из списка блоков проекта
-    addEventButtonIconMouseUp(buttonIcon, buttonIconSvg, specification) {
-        buttonIcon.addEventListener("mouseup", () => {
-            buttonIconSvg.classList.remove("button-icon__svg--click");
-            this.projectBlocks.push(new CreateProjectBlock(this.blocks[specification.dataset.blockId], 1));
+    //Добавляет игровой блок в массив для больших или мылых блоков проекта.
+    addEventButtonAddBlockClick(blockId, button, buttonSvg) {
+        button.addEventListener("mouseup", () => {
+            buttonSvg.classList.remove("button-icon__svg--click");
+            this.projectBlocks.push(new CreateProjectBlock(this.blocks[blockId], 1));
             new ProjectBlocks().display();
         });
-    }
-}
+    }}
 // Класс выводит блоки проекта, добавленные из списка блоков категории, наследует методы класса, отвечающие за блоки категории
 class ProjectBlocks extends CategoryBlocks{
     constructor() {
@@ -313,73 +275,56 @@ class ProjectBlocks extends CategoryBlocks{
         this.blocks = main.largeBlocksProject.active == true ? main.projectBlocks.large : main.projectBlocks.small;
         this.dropDownBlock = main.largeBlocksProject.active === true ? main.projectLargeDropDownBlock : main.projectSmallDropDownBlock;
     }
+    // Индивидуальный метод объекта блоков проекта. Формирует html для каждого из добавленных блоков в проект.
     addBlock() {
         this.blockList.innerHTML = "";
         if (this.blocks.length != 0) {
             this.blocks.forEach((item, index) => {
                 this.templateBlock(item.block.title.ru, item.block.weight, item.block.integrity, item.block.img, item.block.description, index)
+                this.templateButtonRemoveBlockProject(item.amount);
             });
         }
+        // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
+        this.blockList.scrollTop = 0;
+        return this;
     }
-    // addBlock() {
-    //     this.blockList.innerHTML = "";
-    //     if (this.blocks.length != 0) {
-    //         this.blocks.forEach((item, index) => {
-    //             this.blockList.innerHTML += `
-    //             <div class="block-item">
-    //                 <div class="block-item__base">
-    //                     <img class="block-image--ss" src="img/blocks/${item.block.img}">
-    //                     <span class="block-item__name">${item.block.title.ru}</span>
-    //                     <span class="block-item__name">${item.amount}</span>
-    //                     <div class="button-icon">
-    //                         <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-playlist-remove">
-    //                             <path class="button-icon__svg-path" d="M2,6V8H14V6H2M2,10V12H11V10H2M14.17,10.76L12.76,12.17L15.59,15L12.76,17.83L14.17,19.24L17,16.41L19.83,19.24L21.24,17.83L18.41,15L21.24,12.17L19.83,10.76L17,13.59L14.17,10.76M2,14V16H11V14H2Z" fill="rgb(174, 194, 204, 0.9)"/>
-    //                         </svg>
-    //                     </div>
-    //                 </div>
-    //                 <div class="block-item__specification" data-block-id="${index}">
-    //                     <div class="block-item__image-block">
-    //                         <img class="block-image--bs" src="img/blocks/${item.block.img}">
-    //                     </div>
-    //                     <div class="block-item__specification-block">
-    //                         <div class="block-item__content-block">
-    //                             <div class="block-item__content-title">Описание</div>
-    //                             <div class="block-item__content-description">${item.block.description}</div>
-    //                         </div>
+    // Индивидуальный метод объекта блоков проекта. Добавляет в общий html-каркас блока html-код кнопки удаления блока из проекта.
+    templateButtonRemoveBlockProject(amount) {
+        const lastAddedBlock = this.blockList.lastElementChild.querySelector(".block-item__base");
+        lastAddedBlock.insertAdjacentHTML('beforeend', `
+            <span class="block-item__name">${amount}</span>
+            <div class="button-icon">
+                <svg class="button-icon__svg" width="26" height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-playlist-remove">
+                    <path class="button-icon__svg-path" d="M2,6V8H14V6H2M2,10V12H11V10H2M14.17,10.76L12.76,12.17L15.59,15L12.76,17.83L14.17,19.24L17,16.41L19.83,19.24L21.24,17.83L18.41,15L21.24,12.17L19.83,10.76L17,13.59L14.17,10.76M2,14V16H11V14H2Z" fill="rgb(174, 194, 204, 0.9)"/>
+                </svg>
+            </div>`
+        );
+    }
+    // Индивидуальный метод объекта блоков проекта. Формирует перечень назначаемых событий для блоков данной области.
+    addEvent() {
+        for (let item of this.blockList.children) {
+            const buttonRemoveBlock = item.querySelector(".button-icon");
+            const buttonRemoveBlockSvg = item.querySelector(".button-icon__svg");
+            const blockId = item.querySelector(".block-item__specification").dataset.blockId;
 
-    //                         <div class="block-item__content-block">
-    //                             <div class="block-item__content-title">Характеристики</div>
-    //                             <div class="block-item__content-item">
-    //                                 <span class="block-item__content-item-title">Масса</span>
-    //                                 <span class="block-item__content-item-value">${item.block.weight}</span>
-    //                                 <span class="block-item__content-item-value-unit">кг.</span>
-    //                             </div>
-    //                             <div class="block-item__content-item">
-    //                                 <span class="block-item__content-item-title">Прочность</span>
-    //                                 <span class="block-item__content-item-value">${item.block.integrity}</span>
-    //                                 <span class="block-item__content-item-value-unit">ед.</span>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //             `;
-    //         });
-    //     }
-    //     // Возвращаем положение скролла в начальную позицию (сохраняет положение при смене категории)
-    //     this.blockList.scrollTop = 0;
-    // }
-    //Удаляет блок из массива блоков проекта, повторно запускает вывод блоков
-    addEventButtonIconMouseUp(buttonIcon, buttonIconSvg, specification) {
-        buttonIcon.addEventListener("mouseup", () => {
-            buttonIconSvg.classList.remove("button-icon__svg--click");
-            this.blocks.splice(specification.dataset.blockId, 1);
-            if (specification.dataset.blockId === this.dropDownBlock.index) {this.dropDownBlock.index = null;}
-            if (specification.dataset.blockId < this.dropDownBlock.index) {this.dropDownBlock.index = String(this.dropDownBlock.index - 1);}
+            this.addEventDropDownBlock(item);
+            this.addEventButtonLeaveAndDown(buttonRemoveBlock, buttonRemoveBlockSvg);
+            this.addEventButtonRemoveBlockClick(blockId, buttonRemoveBlock, buttonRemoveBlockSvg);
+        }
+        return this;
+    }
+    //Удаляет блок из массива больших или малых блоков проекта.
+    addEventButtonRemoveBlockClick(blockId, button, buttonSvg) {
+        button.addEventListener("mouseup", () => {
+            buttonSvg.classList.remove("button-icon__svg--click");
+            this.blocks.splice(blockId, 1);
+            if (blockId === this.dropDownBlock.index) {this.dropDownBlock.index = null;}
+            if (blockId < this.dropDownBlock.index) {this.dropDownBlock.index = String(this.dropDownBlock.index - 1);}
             new ProjectBlocks().display();
         });
     }
 }
+// основной метод первичного запуска приложения. Запускает основные необходимые процессы для дальнейшей работой и взаимодействия с пользователем.
 const launchApp = function () {
     categories.setFocus();
     categories.addEvent();
