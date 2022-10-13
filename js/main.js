@@ -31,9 +31,9 @@ const main = {
 };
 
 class CreateProjectBlock {
-    constructor(block, amount) {
+    constructor(block) {
         this.block = block; // ссылка на блок в массиве списка блоков (в зависимсости от размера и выбранной категории)
-        this.amount = amount; // количество блоков данного типа
+        this.amount = 1; // количество блоков данного типа
     }
 }
 // Объект отвечает за назначение событий для иконок выбора категории блоков, а так же за установку визуального фокуса на выбранной категории
@@ -132,7 +132,7 @@ class CategoryBlocks {
     constructor() {
         this.blockList = document.querySelector('#block-list-category');
         this.blocks = main.largeBlocksCategory.active == true ? blocks[main.categoryKeyTarget].large : blocks[main.categoryKeyTarget].small;
-        this.projectBlocks = main.largeBlocksCategory.active == true ? main.projectBlocks.large : main.projectBlocks.small;
+        this.projectBlocksList = main.largeBlocksCategory.active == true ? main.projectBlocks.large : main.projectBlocks.small;
         this.dropDownBlock = main.largeBlocksCategory.active === true ? main.categoryLargeDropDownBlock : main.categorySmallDropDownBlock;
     }
     // Общий метод, запускает все необходимые методы созданного объекта
@@ -229,7 +229,7 @@ class CategoryBlocks {
 
             this.addEventDropDownBlock(item);
             this.addEventButtonLeaveAndDown(buttonAddBlock, buttonAddBlockSvg);
-            this.addEventButtonAddBlockClick(blockId, buttonAddBlock, buttonAddBlockSvg);
+            this.addEventButtonAddBlockClick(buttonAddBlock, buttonAddBlockSvg, blockId);
         }
         return this;
     }
@@ -260,11 +260,33 @@ class CategoryBlocks {
         button.addEventListener("mousedown", () => {buttonSvg.classList.add("button-icon__svg--click");});
     }
     //Добавляет игровой блок в массив для больших или мылых блоков проекта.
-    addEventButtonAddBlockClick(blockId, button, buttonSvg) {
+    addEventButtonAddBlockClick(button, buttonSvg, blockId) {
         button.addEventListener("mouseup", () => {
             buttonSvg.classList.remove("button-icon__svg--click");
-            this.projectBlocks.push(new CreateProjectBlock(this.blocks[blockId], 1));
-            new ProjectBlocks().display();
+            const newBlock = new CreateProjectBlock(this.blocks[blockId]);
+            this.projectBlocksList.push(newBlock);
+            // this.projectBlocks.push(new CreateProjectBlock(this.blocks[blockId], 1));
+            if (main.largeBlocksCategory.active !== main.largeBlocksProject.active) {
+                main.largeBlocksProject.active = main.largeBlocksCategory.active;
+                new ProjectBlockSizeSwitcher().setFocus().setTitle();
+                new ProjectBlocks().display();
+            } else {
+                // const blockListProject = document.querySelector('#block-list-project');
+                console.log(newBlock);
+                console.log(main.largeBlocksCategory.active, main.largeBlocksProject.active);
+                // const block = this.blocks[blockId];
+                // console.log(block.title.ru, block.weight, block.integrity, block.img, block.description, blockId);
+                const projectBlocks = new ProjectBlocks();
+                projectBlocks.templateBlock(newBlock.block.title.ru, newBlock.block.weight, newBlock.block.integrity, newBlock.block.img, newBlock.block.description, blockId)
+                projectBlocks.templateButtonRemoveBlockProject(newBlock.amount);
+                projectBlocks.removePaddingBottom().addEvent();
+                projectBlocks.blockList.lastElementChild.style.marginTop = "4px";
+                // if (projectBlocks.blockList.innerHTML != "") {projectBlocks.blockList.lastElementChild.style.marginTop = 4;}
+                // new ProjectBlocks().templateButtonRemoveBlockProject(newBlock.amount);
+                // this.templateButtonAddBlockToProject(blockListProject,);
+                
+                // console.log(this.blocks);
+            }
         });
     }}
 // Класс выводит блоки проекта, добавленные из списка блоков категории, наследует методы класса, отвечающие за блоки категории
@@ -333,4 +355,5 @@ const launchApp = function () {
     new CategoryBlocks().display();
     new ProjectBlocks().display();
 };
+
 launchApp();
